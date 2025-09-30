@@ -17,11 +17,9 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B clean package
-        working-directory: ./Full-Group-4-DevOps
 
       - name: Debug file structure
-        run: ls -R ./Full-Group-4-DevOps
+        run: ls -R  # Optional: inspect all files
 
       - name: Run docker compose
         run: docker compose up --abort-on-container-exit
-        working-directory: ./Full-Group-4-DevOps
