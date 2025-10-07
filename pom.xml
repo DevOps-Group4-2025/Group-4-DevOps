@@ -12,7 +12,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.18</version>
+            <version>8.0.28</version>
         </dependency>
     </dependencies>
 
@@ -23,6 +23,19 @@
 
     <build>
         <plugins>
+            <!-- Disable the default JAR -->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Build single JAR with dependencies and versioned filename -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -36,6 +49,10 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!-- This ensures versioned filename -->
+                    <finalName>${project.artifactId}-${project.version}
+                    </finalName>
                 </configuration>
                 <executions>
                     <execution>
@@ -49,6 +66,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>

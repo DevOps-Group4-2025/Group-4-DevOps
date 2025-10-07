@@ -49,8 +49,8 @@ public class App
                 // Connect to database with proper parameters
                 con = DriverManager.getConnection(
                         "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
-                        "world-appuser",
-                        "world-app-password"   // ⚠️ corrected password to match your ENV
+                        "world_appuser",
+                        "world_app_password"   // ⚠️ corrected password to match your ENV
                 );
                 System.out.println("Successfully connected");
                 break;
