@@ -24,8 +24,8 @@ jobs:
       - name: Debug file structure
         run: ls -R  # Optional: inspect all files
 
-      - name: Build Docker image without cache
-        run: docker compose build --no-cache
+      #- name: Build Docker image without cache
+      #  run: docker compose build --no-cache
 
       - name: Run docker compose
         run: docker compose up --abort-on-container-exit
