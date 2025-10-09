@@ -82,6 +82,7 @@ public class App
                 {
                     int count = rset.getInt("total");
                     System.out.println("City table row count = " + count);
+                    System.out.println("Cotximahou check: The result should have been 4079");
                 }
             }
             catch (SQLException e)
