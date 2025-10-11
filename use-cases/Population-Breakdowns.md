@@ -7,7 +7,7 @@
 ### CHARACTERISTIC INFORMATION
 
 **Goal in Context**  
-As a *demographic analyst* I want *to produce a report showing total population, population in cities, and population not in cities for each continent* so that *I can analyze urbanization trends globally.*
+As a *data analyst* I want *to produce a report showing total population, population in cities, and population not in cities for each continent* so that *I can analyze global urbanization trends.*
 
 **Scope**  
 World demographic reporting system.
@@ -15,42 +15,43 @@ World demographic reporting system.
 **Level**  
 Primary task.
 
-**Preconditions**  
-- Database contains up-to-date population data for all countries and cities, categorized by continent.  
+**Preconditions**
+- The database contains up-to-date population data for all countries and cities, categorized by continent.
 - Data on urban and non-urban populations is available.
 
 **Success End Condition**  
-A report is available showing, for each continent:  
-- Total population  
-- Population in cities (+%)  
+A report is available showing, for each continent:
+- Total population
+- Population in cities (+%)
 - Population not in cities (+%)
 
 **Failed End Condition**  
 Report cannot be generated or contains incomplete data.
 
 **Primary Actor**  
-Demographic Analyst.
+Data Analyst.
 
 **Trigger**  
 A request is made for a population breakdown by continent.
 
 ### MAIN SUCCESS SCENARIO
-1. Analyst requests population breakdown by continent.  
-2. System retrieves total population for each continent.  
-3. System retrieves population in cities for each continent.  
-4. System calculates percentages for in-city and not-in-city populations.  
-5. System compiles and presents the data in a structured report.
+1. The analyst requests a population breakdown by continent.
+2. The system retrieves total population for each continent.
+3. The system retrieves population in cities for each continent.
+4. The system calculates percentages for in-city and not-in-city populations.
+5. The system compiles and presents the data in a structured report.
 
 ### EXTENSIONS
-- **2a.** Missing data → system notifies analyst and requests update.  
+- **2a.** Missing data → system notifies analyst and requests update.
 - **5a.** Analyst may choose report output format (PDF, CSV, or dashboard).
+- **5b.** *Interactive front end*: The analyst uses a graphical dashboard or web interface to select “Continent” as the report level, and optionally filter specific continents before generating the report.
 
 ### SUB-VARIATIONS
-- Report may include historical trends by year.  
+- Report may include historical trends by year.
 - Continent selection may be filtered.
 
 ### SCHEDULE
-**DUE DATE:** Release 1.0 for Group 4 Use Case 23  
+**DUE DATE:** Release 1.0 for Group 4 Use Case 23
 
 ---
 
@@ -59,7 +60,7 @@ A request is made for a population breakdown by continent.
 ### CHARACTERISTIC INFORMATION
 
 **Goal in Context**  
-As a *regional data officer* I want *to generate a report showing total population, population in cities, and population not in cities for each region* so that *I can support regional planning and policy development.*
+As a *data analyst* I want *to generate a report showing total population, population in cities, and population not in cities for each region* so that *I can support regional planning and policy development.*
 
 **Scope**  
 Regional population reporting system.
@@ -67,42 +68,43 @@ Regional population reporting system.
 **Level**  
 Primary task.
 
-**Preconditions**  
-- Regional and city-level population data exist in the database.  
+**Preconditions**
+- Regional and city-level population data exist in the database.
 - Each country is mapped to a region.
 
 **Success End Condition**  
-A report showing, for each region:  
-- Total population  
-- Population in cities (+%)  
+A report showing, for each region:
+- Total population
+- Population in cities (+%)
 - Population not in cities (+%)
 
 **Failed End Condition**  
 Report not produced or regional data missing.
 
 **Primary Actor**  
-Regional Data Officer.
+Data Analyst.
 
 **Trigger**  
-Request for regional population breakdown report.
+A request for a regional population breakdown report.
 
 ### MAIN SUCCESS SCENARIO
-1. Officer requests regional population breakdown.  
-2. System collects total population per region.  
-3. System collects urban and non-urban population data.  
-4. System computes urbanization percentages.  
-5. Report is generated and made available.
+1. The analyst requests a regional population breakdown.
+2. The system collects total population per region.
+3. The system collects urban and non-urban population data.
+4. The system computes urbanization percentages.
+5. The report is generated and made available.
 
 ### EXTENSIONS
-- **3a.** Some regions lack data → system highlights gaps.  
-- **5a.** Officer selects preferred output format.
+- **3a.** Some regions lack data → system highlights gaps.
+- **5a.** Analyst selects preferred output format.
+- **5b.** *Interactive front end*: Through the same dashboard interface, the analyst can select “Region” as the analysis level and optionally choose one or more regions to focus the report.
 
 ### SUB-VARIATIONS
-- Regions can be filtered by continent or country groupings.  
-- Report can include trend comparison between regions.
+- Regions can be filtered by continent or country groupings.
+- The report can include trend comparisons between regions.
 
 ### SCHEDULE
-**DUE DATE:** Release 1.0 for Group 4 Use Case 24  
+**DUE DATE:** Release 1.0 for Group 4 Use Case 24
 
 ---
 
@@ -111,7 +113,7 @@ Request for regional population breakdown report.
 ### CHARACTERISTIC INFORMATION
 
 **Goal in Context**  
-As a *national statistics officer* I want *to produce a report showing total population, population in cities, and population not in cities for each country* so that *I can assess national urbanization patterns.*
+As a *data analyst* I want *to produce a report showing total population, population in cities, and population not in cities for each country* so that *I can assess national urbanization patterns.*
 
 **Scope**  
 Country-level demographic reporting.
@@ -119,42 +121,42 @@ Country-level demographic reporting.
 **Level**  
 Primary task.
 
-**Preconditions**  
-- Country-level and city-level population data are stored in the database.  
+**Preconditions**
+- Country-level and city-level population data are stored in the database.
 - Urban and non-urban classifications exist.
 
 **Success End Condition**  
-A report is produced showing, for each country:  
-- Total population  
-- Population in cities (+%)  
+A report is produced showing, for each country:
+- Total population
+- Population in cities (+%)
 - Population not in cities (+%)
 
 **Failed End Condition**  
-
 Report generation fails or lacks complete data.
 
 **Primary Actor**  
-National Statistics Officer.
+Data Analyst.
 
 **Trigger**  
-A request for population breakdown by country.
+A request for a population breakdown by country.
 
 ### MAIN SUCCESS SCENARIO
-1. Officer requests country population breakdown.  
-2. System retrieves total, in-city, and not-in-city population figures.  
-3. System calculates corresponding percentages.  
-4. System compiles and formats the report.  
-5. Report is provided for analysis or publication.
+1. The analyst requests a country population breakdown.
+2. The system retrieves total, in-city, and not-in-city population figures.
+3. The system calculates corresponding percentages.
+4. The system compiles and formats the report.
+5. The report is provided for analysis or publication.
 
 ### EXTENSIONS
-- **2a.** If some data missing, system marks incomplete entries.  
-- **4a.** Officer may export to Excel, PDF, or online dashboard.
+- **2a.** If some data is missing, the system marks incomplete entries.
+- **4a.** Analyst may export to Excel, PDF, or online dashboard.
+- **5b.** *Interactive front end*: From the dashboard, the analyst can select “Country” as the report level, choose specific countries, and trigger generation of the detailed population breakdown.
 
 ### SUB-VARIATIONS
-- Country selection may be filtered by continent or region.  
+- Country selection may be filtered by continent or region.
 - Report may show historical comparisons.
 
 ### SCHEDULE
-**DUE DATE:** Release 1.0 for Group 4 Use Case 25  
+**DUE DATE:** Release 1.0 for Group 4 Use Case 25
 
 ---
