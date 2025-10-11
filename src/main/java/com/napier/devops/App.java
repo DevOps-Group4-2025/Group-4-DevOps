@@ -18,6 +18,18 @@ public class App
         // Run a simple query to check DB is working
         a.testQuery();
 
+        // Demonstrate PopulationBreakdownService usage, this will have to be revisited later
+        if (a.con != null) {
+            PopulationBreakdownService service = new PopulationBreakdownService(a.con);
+            PopulationBreakdown continentResult = service.getByContinent("Europe");
+            PopulationBreakdown regionResult = service.getByRegion("Western Europe");
+            PopulationBreakdown countryResult = service.getByCountry("France");
+
+            System.out.println("\nPopulation Breakdown by Continent (Europe):\n" + (continentResult != null ? continentResult : "No data found"));
+            System.out.println("\nPopulation Breakdown by Region (Western Europe):\n" + (regionResult != null ? regionResult : "No data found"));
+            System.out.println("\nPopulation Breakdown by Country (France):\n" + (countryResult != null ? countryResult : "No data found"));
+        }
+
         // Disconnect from database
         a.disconnect();
     }
