@@ -1,12 +1,52 @@
-version: '3'
+version: '3.8'
+
 services:
-  # Application Dockerfile is in same folder which is .
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: group4-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATASOURCE_DATABASE: world
+      MYSQL_USER: devops
+      MYSQL_PASSWORD: devops
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/world-db/world.sql:/docker-entrypoint-initdb.d/world.sql  # Updated path
+    networks:
+      - group4-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Your Spring Boot Application
   app:
     build: .
-
-  # db is is db folder
-  db:
-    build: db/.
-    restart: always
+    container_name: group4-app
     ports:
-      - "33060:3306"
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/world?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+      SPRING_JPA_SHOW_SQL: "true"
+      SERVER_PORT: 8080
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - group4-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  group4-network:
+    driver: bridge
