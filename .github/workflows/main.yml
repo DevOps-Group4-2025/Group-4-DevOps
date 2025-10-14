@@ -52,7 +52,6 @@ jobs:
       # Runs tests and produces JaCoCo report (jacoco.xml)
       - name: Build & Test
         run: mvn -B -DskipTests=false clean test
-
       # Upload coverage to Codecov
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
