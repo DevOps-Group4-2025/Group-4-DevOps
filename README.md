@@ -3,6 +3,7 @@
 ### Build Status
 
 **Master branch:**  
+
 [![Master Build](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Amaster)
 
 [![LICENSE](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps.svg?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
@@ -10,14 +11,14 @@
 [![Releases](https://img.shields.io/github/release/DevOps-Group4-2025/Group-4-DevOps/all.svg?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases)
 
 **Develop branch:**  
+
 [![Develop Build](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml/badge.svg?branch=develop)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Adevelop)
 
-**Milestone badges**
+**Milestone**
 
-![CR1 Progress](https://img.shields.io/github/milestones/open/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
-![CR1 Closed](https://img.shields.io/github/milestones/closed/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
+![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
+![CR1 Closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
-> **Status:** CI passing on `master` and `develop`. Latest release: `v0.1.0`.
 
 ## About the Project
 
