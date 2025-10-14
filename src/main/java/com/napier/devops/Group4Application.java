@@ -29,7 +29,9 @@ public class Group4Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
     displayWelcomeMessage();
 
-    // For Docker/containerized environment, automatically run Use Case 1
+    // For Docker/containerized environment, automatically run:
+
+    // Run Use Case 1: All the countries in the world organised by largest to smaller
     System.out.println("Running in containerized mode - automatically executing Use Case 1...");
     displayAllCountriesWorld();
 
@@ -49,15 +51,18 @@ public class Group4Application implements CommandLineRunner {
     System.out.println("Application will now exit.");
     }
 
+    // displays a welcome message
+
     private void displayWelcomeMessage() {
         System.out.println("\n" + "=".repeat(60));
-        System.out.println("    WELCOME TO WORLD POPULATION REPORTING SYSTEM");
+        System.out.println("    WELCOME TO WORLD POPULATION REPORTING SYSTEM BY GROUP 4");
         System.out.println("=".repeat(60));
         System.out.println("This system provides comprehensive population reports");
         System.out.println("for countries worldwide.");
         System.out.println("=".repeat(60));
     }
 
+    // future front end implementation
     private int mainMenu(Scanner scanner) {
         while (true) {
             try {
@@ -83,6 +88,7 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    // future front end implementation
     private void handleMenuSelection(int selection, Scanner scanner) {
         switch (selection) {
             case 1:
@@ -114,7 +120,15 @@ public class Group4Application implements CommandLineRunner {
         System.out.println("\nPress Enter to continue...");
         scanner.nextLine();
     }
-    // Use Case: Display Population Breakdown by Continent
+
+    // Use Case 1: Display All Countries in the World by Population
+    private void displayAllCountriesWorld() {
+        System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
+        List<Country> countries = countryController.getAllCountriesWorld();
+        displayCountries(countries);
+    }
+
+    // Use Case 23: Display Population Breakdown by Continent
     private void displayPopulationBreakdownByContinent(String continent) {
         com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByContinent(continent);
         if (breakdown == null) {
@@ -125,31 +139,24 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    // Use Case: Display Population Breakdown by Country
-    private void displayPopulationBreakdownByCountry(String country) {
-        com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByCountry(country);
-        if (breakdown == null) {
-            System.out.println("No population breakdown found for country: " + country);
-        } else {
-            System.out.println("\n=== POPULATION BREAKDOWN FOR COUNTRY: " + country + " ===");
-            System.out.println(breakdown);
-        }
-    }
-
-    // Use Case 1: Display All Countries in the World by Population
-    private void displayAllCountriesWorld() {
-        System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
-        List<Country> countries = countryController.getAllCountriesWorld();
-        displayCountries(countries);
-    }
-
-    // Use Case 4: Display Population Breakdown by Region
+    // Use Case 24: Display Population Breakdown by Region
     private void displayPopulationBreakdownByRegion(String region) {
         com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByRegion(region);
         if (breakdown == null) {
             System.out.println("No population breakdown found for region: " + region);
         } else {
             System.out.println("\n=== POPULATION BREAKDOWN FOR REGION: " + region + " ===");
+            System.out.println(breakdown);
+        }
+    }
+
+    // Use Case 25: Display Population Breakdown by Country
+    private void displayPopulationBreakdownByCountry(String country) {
+        com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByCountry(country);
+        if (breakdown == null) {
+            System.out.println("No population breakdown found for country: " + country);
+        } else {
+            System.out.println("\n=== POPULATION BREAKDOWN FOR COUNTRY: " + country + " ===");
             System.out.println(breakdown);
         }
     }
@@ -174,6 +181,7 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    // Display Helper Method for Population Breakdowns
     private void displayPopulationBreakdowns(List<com.napier.devops.model.PopulationBreakdown> breakdowns) {
         if (breakdowns == null || breakdowns.isEmpty()) {
             System.out.println("No population breakdowns found.");
