@@ -1,0 +1,59 @@
+@startuml
+title Group 5 — Basic Population Totals (UC58–UC62, UC65)
+
+left to right direction
+actor "Analyst" as Analyst
+
+rectangle "Population Totals" {
+  usecase "UC58: Population of the world" as UC58
+  usecase "UC59: Population of a continent" as UC59
+  usecase "UC60: Population of a region" as UC60
+  usecase "UC61: Population of a country" as UC61
+  usecase "UC62: Population of a district" as UC62
+  usecase "UC65: Population of a city" as UC65
+}
+
+Analyst --> UC58
+Analyst --> UC59
+Analyst --> UC60
+Analyst --> UC61
+Analyst --> UC62
+Analyst --> UC65
+
+' <<includes / extends>>
+UC59 .> UC58 : «include»\n(use world total as reference)
+UC60 .> UC59 : «include»\n(roll up regional → continental)
+UC61 .> UC60 : «include»\n(roll up country → region)
+UC62 .> UC61 : «include»\n(roll up district → country)
+UC65 .> UC62 : «include»\n(validate city within country)
+
+@enduml@startuml
+title Group 5 — Basic Population Totals (UC58–UC62, UC65)
+
+left to right direction
+actor "Analyst" as Analyst
+
+rectangle "Population Totals" {
+  usecase "UC58: Population of the world" as UC58
+  usecase "UC59: Population of a continent" as UC59
+  usecase "UC60: Population of a region" as UC60
+  usecase "UC61: Population of a country" as UC61
+  usecase "UC62: Population of a district" as UC62
+  usecase "UC65: Population of a city" as UC65
+}
+
+Analyst --> UC58
+Analyst --> UC59
+Analyst --> UC60
+Analyst --> UC61
+Analyst --> UC62
+Analyst --> UC65
+
+' <<includes / extends>>
+UC59 .> UC58 : «include»\n(use world total as reference)
+UC60 .> UC59 : «include»\n(roll up regional → continental)
+UC61 .> UC60 : «include»\n(roll up country → region)
+UC62 .> UC61 : «include»\n(roll up district → country)
+UC65 .> UC62 : «include»\n(validate city within country)
+
+@enduml
