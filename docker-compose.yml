@@ -11,9 +11,11 @@ services:
       MYSQL_USER: devops
       MYSQL_PASSWORD: devops
     ports:
+      # exposing port 3307 externally
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      # copy the db into the docker environment
       - ./db/world-db/world.sql:/docker-entrypoint-initdb.d/world.sql  # Updated path
     networks:
       - group4-network
@@ -23,7 +25,7 @@ services:
       timeout: 20s
       retries: 10
 
-  # Your Spring Boot Application
+  # Spring Boot Application
   app:
     build: .
     container_name: group4-app
