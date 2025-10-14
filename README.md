@@ -19,6 +19,9 @@
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
+[![Coverage – master](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps/branch/master/graph/badge.svg)](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps)
+[![Coverage – develop](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps/branch/develop/graph/badge.svg)](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps)
+
 ## About the Project
 
 **Group-4 DevOps** is a population insights reporting service for the SET09803 DevOps module.  
