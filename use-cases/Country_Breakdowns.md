@@ -1,6 +1,6 @@
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
+# GROUP 4 — Country Population Reports
 
-## USE CASE 32: List All Countries in the World by Population (Descending)
+## USE CASE 1: List All Countries in the World by Population (Descending)
 
 ### CHARACTERISTIC INFORMATION
 
@@ -80,9 +80,7 @@ The report should include the following fields:
 
 ---
 
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
-
-## USE CASE 33: List All Countries in a Continent by Population (Descending)
+## USE CASE 2: List All Countries in a Continent by Population (Descending)
 
 ### CHARACTERISTIC INFORMATION
 
@@ -163,9 +161,8 @@ The report should include the following fields:
 - Requirement 29: Country Report format specification.
 
 ---
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
 
-## USE CASE 34: List All Countries in a Region by Population (Descending)
+## USE CASE 3: List All Countries in a Region by Population (Descending)
 
 ### CHARACTERISTIC INFORMATION
 
@@ -248,95 +245,8 @@ The report must include the following columns:
 - Requirement 29: Country Report format specification.
 
 ---
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
 
-## USE CASE 34: List All Countries in a Region by Population (Descending)
-
-### CHARACTERISTIC INFORMATION
-
-**Goal in Context**  
-As a *data analyst*, I want *to view a list of all countries within a specified region, ordered from most populated to least populated*, so that *I can better understand regional population dynamics.*
-
-**Scope**  
-Regional population reporting system.
-
-**Level**  
-Primary task.
-
-**Preconditions**
-- Country-level population data exists and is categorized by region in the database.
-- The user can select or input a region name.
-- Each country in the database is correctly assigned to a region.
-
-**Success End Condition**  
-A complete, ordered list of countries in the selected region is returned, sorted by population in descending order.
-
-**Failed End Condition**  
-- Region name is invalid.
-- Data is missing or incomplete for countries in the region.
-
-**Primary Actor**  
-Data Analyst.
-
-**Trigger**  
-A request is made to generate a regional country population report.
-
----
-
-### MAIN SUCCESS SCENARIO
-
-1. The analyst selects or enters a region name.
-2. The system checks that the region exists in the database.
-3. The system retrieves population data for all countries within that region.
-4. The system sorts the countries in descending order based on population.
-5. The sorted list is presented to the analyst.
-
----
-
-### EXTENSIONS
-
-- **2a.** If the region name is not valid, the system prompts for correction.
-- **3a.** If some countries have missing population data, they are flagged or excluded.
-- **5a.** The analyst may choose to export the list (e.g., CSV, PDF, Excel).
-
----
-
-### SUB-VARIATIONS
-
-- The analyst may further filter results by continent or economic grouping.
-- The report may include population trends or historical comparisons.
-
----
-
-### OUTPUT FIELDS
-
-The report must include the following columns:
-- Country Code
-- Country Name
-- Continent
-- Region
-- Population
-- Capital City
-
----
-
-### SCHEDULE
-
-**DUE DATE:** Release 1.0 — Regional Country Population Reporting Feature
-
----
-
-## RELATED REQUIREMENTS
-
-- Requirement 3: All the countries in a region organised by largest population to smallest.
-- Requirement 6: The top N populated countries in a region (filtered variation).
-- Requirement 29: Country Report format specification.
-
----
-
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
-
-## USE CASE 35: List Top N Most Populated Countries in the World
+## USE CASE 4: List Top N Most Populated Countries in the World
 
 ### CHARACTERISTIC INFORMATION
 
@@ -422,9 +332,8 @@ The report must include:
 - Requirement 29: Country Report format specification.
 
 ---
-# GROUP 4 — SQL Query Part 1 - Country Population Reports
 
-## USE CASE 36: List Top N Most Populated Countries in a Continent
+## USE CASE 5: List Top N Most Populated Countries in a Continent
 
 ### CHARACTERISTIC INFORMATION
 
@@ -511,11 +420,8 @@ The report must include:
 - Requirement 29: Country Report format specification.
 
 ---
-# # GROUP 4 — SQL Query Part 1 - Country Population Reports
 
----
-
-## USE CASE 66: List Top N Most Populated Countries in a Region
+## USE CASE 6: List Top N Most Populated Countries in a Region
 
 ### CHARACTERISTIC INFORMATION
 
