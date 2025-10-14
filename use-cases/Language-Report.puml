@@ -1,0 +1,12 @@
+@startuml
+title Language Reporting Use Case
+
+actor "Data Analyst" as Analyst
+
+rectangle "Language Reporting System" {
+  usecase "UC32: Generate Language Report\n(by Speakers and % of World Population)" as UC32
+}
+
+Analyst --> UC32
+
+@enduml

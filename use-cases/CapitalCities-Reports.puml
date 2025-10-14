@@ -1,0 +1,24 @@
+@startuml
+title Group 3 — Capital Cities Reports (UC17–UC22)
+
+left to right direction
+actor "Analyst" as Analyst
+
+rectangle "Capital Cities Reporting System" {
+  usecase "UC17: List all capital cities in the world by population" as UC17
+  usecase "UC18: List all capital cities in a continent by population" as UC18
+  usecase "UC19: List all capital cities in a region by population" as UC19
+  usecase "UC20: Top N capital cities in the world" as UC20
+  usecase "UC21: Top N capital cities in a continent" as UC21
+  usecase "UC22: Top N capital cities in a region" as UC22
+}
+
+Analyst --> UC17
+Analyst --> UC18
+Analyst --> UC19
+Analyst --> UC20
+Analyst --> UC21
+Analyst --> UC22
+
+
+@enduml

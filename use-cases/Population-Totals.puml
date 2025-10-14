@@ -1,0 +1,30 @@
+@startuml
+title Group 5 — Basic Population Totals (UC26–UC31)
+
+left to right direction
+actor "Analyst" as Analyst
+
+rectangle "Population Totals" {
+  usecase "UC26: Population of the world" as UC26
+  usecase "UC27: Population of a continent" as UC27
+  usecase "UC28: Population of a region" as UC28
+  usecase "UC29: Population of a country" as UC29
+  usecase "UC30: Population of a district" as UC30
+  usecase "UC31: Population of a city" as UC31
+}
+
+Analyst --> UC26
+Analyst --> UC27
+Analyst --> UC28
+Analyst --> UC29
+Analyst --> UC30
+Analyst --> UC31
+
+' <<includes / extends>>
+UC27 .> UC26 : «include»\n(use world total as reference)
+UC28 .> UC27 : «include»\n(roll up regional → continental)
+UC29 .> UC28 : «include»\n(roll up country → region)
+UC30 .> UC29 : «include»\n(roll up district → country)
+UC31 .> UC30 : «include»\n(validate city within district)
+
+@enduml
