@@ -60,4 +60,5 @@ jobs:
           files: target/site/jacoco/jacoco.xml
           flags: unittests
           fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN=66a2b593-d343-4f94-b441-103302dac579 }}
 
