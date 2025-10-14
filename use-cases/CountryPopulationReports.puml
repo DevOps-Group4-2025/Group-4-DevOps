@@ -1,0 +1,23 @@
+@startuml
+title Country Population Reports
+
+actor "Data Analyst" as Analyst
+
+rectangle "Population Reporting System" {
+  usecase "UC1: List All Countries in the World\nby Population (Descending)" as UC1
+  usecase "UC2: List All Countries in a Continent\nby Population (Descending)" as UC2
+  usecase "UC3: List All Countries in a Region\nby Population (Descending)" as UC3
+  usecase "UC4: List Top N Most Populated Countries\nin the World" as UC4
+  usecase "UC5: List Top N Most Populated Countries\nin a Continent" as UC5
+  usecase "UC6: List Top N Most Populated Countries\nin a Region" as UC6
+}
+
+' Connections
+Analyst --> UC1
+Analyst --> UC2
+Analyst --> UC3
+Analyst --> UC4
+Analyst --> UC5
+Analyst --> UC6
+
+@enduml

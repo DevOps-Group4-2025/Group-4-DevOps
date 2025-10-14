@@ -6,10 +6,6 @@ rectangle "Population Reporting System" {
   usecase "Produce Population Breakdown by Region" as UC24
   usecase "Produce Population Breakdown by Country" as UC25
 
-  usecase "Retrieve population data" as UC_R
-  usecase "Calculate urban vs non-urban %" as UC_C
-  usecase "Generate formatted report" as UC_G
-
 }
 
 Analyst --> UC23

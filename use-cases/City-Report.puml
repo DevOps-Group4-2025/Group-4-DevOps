@@ -1,0 +1,34 @@
+@startuml
+title City Population Reports
+
+actor "Data Analyst" as Analyst
+
+rectangle "City Population Reporting System" {
+  ' Base use cases
+  usecase "UC7: All Cities in the World\nby Population (Descending)" as UC7
+  usecase "UC8: All Cities in a Continent\nby Population (Descending)" as UC8
+  usecase "UC9: All Cities in a Region\nby Population (Descending)" as UC9
+  usecase "UC10: All Cities in a Country\nby Population (Descending)" as UC10
+  usecase "UC11: All Cities in a District\nby Population (Descending)" as UC11
+
+  ' Top N use cases
+  usecase "UC12: Top N Most Populated Cities\nin the World" as UC12
+  usecase "UC13: Top N Most Populated Cities\nin a Continent" as UC13
+  usecase "UC14: Top N Most Populated Cities\nin a Region" as UC14
+  usecase "UC15: Top N Most Populated Cities\nin a Country" as UC15
+  usecase "UC16: Top N Most Populated Cities\nin a District" as UC16
+}
+
+' Actor connections
+Analyst --> UC7
+Analyst --> UC8
+Analyst --> UC9
+Analyst --> UC10
+Analyst --> UC11
+Analyst --> UC12
+Analyst --> UC13
+Analyst --> UC14
+Analyst --> UC15
+Analyst --> UC16
+
+@enduml
