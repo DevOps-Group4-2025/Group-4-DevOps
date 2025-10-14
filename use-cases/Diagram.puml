@@ -7,7 +7,7 @@ usecase "Generate City Report \n[[City-Report.md]]" as UC2
 usecase "Generate Capital City Report" as UC3
 usecase "Generate Population Breakdown Report \n[[Population-Breakdowns.md]]" as UC4
 usecase "Generate Basic Population Report" as UC5
-usecase "Generate Language Report" as UC6
+usecase "Generate Language Report \n[[Language-Report.md]]" as UC6
 
 AN --> UC1
 AN --> UC2
