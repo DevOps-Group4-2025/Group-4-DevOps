@@ -48,3 +48,16 @@ jobs:
       - name: Cleanup
         if: always()
         run: docker compose down
+
+      # Runs tests and produces JaCoCo report (jacoco.xml)
+      - name: Build & Test
+        run: mvn -B -DskipTests=false clean test
+
+      # Upload coverage to Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: target/site/jacoco/jacoco.xml
+          flags: unittests
+          fail_ci_if_error: true
+
