@@ -20,10 +20,6 @@
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
 
-
-
-
-
 ## About the Project
 
 **Group-4 DevOps** is a population insights reporting service for the SET09803 DevOps module.  
