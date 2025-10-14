@@ -42,4 +42,3 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
 
-> **Status:** CI passing on `master` and `develop`. Latest release: `v0.1.0`.
