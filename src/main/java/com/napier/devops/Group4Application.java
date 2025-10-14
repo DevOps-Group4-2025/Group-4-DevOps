@@ -3,7 +3,6 @@ package com.napier.devops;
 
 import com.napier.devops.controller.CountryController;
 import com.napier.devops.model.Country;
-import com.napier.devops.service.PopulationBreakdownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,8 +17,6 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private CountryController countryController;
 
-    @Autowired
-    private PopulationBreakdownService populationBreakdownService;
 
     public static void main(String[] args) {
         SpringApplication.run(Group4Application.class, args);
@@ -34,18 +31,6 @@ public class Group4Application implements CommandLineRunner {
     // Run Use Case 1: All the countries in the world organised by largest to smaller
     System.out.println("Running in containerized mode - automatically executing Use Case 1...");
     displayAllCountriesWorld();
-
-    // Run Use Case: Population Breakdown by Continent
-    System.out.println("\nRunning Use Case: Population Breakdown by Continent (example: Africa)...");
-    displayPopulationBreakdownByContinent("Africa");
-
-    // Run Use Case: Population Breakdown by Country
-    System.out.println("\nRunning Use Case: Population Breakdown by Country (example: Germany)...");
-    displayPopulationBreakdownByCountry("Germany");
-
-    // Run Use Case: Population Breakdown by Region
-    System.out.println("\nRunning Use Case: Population Breakdown by Region (example: Western Europe)...");
-    displayPopulationBreakdownByRegion("Western Europe");
 
     System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
     System.out.println("Application will now exit.");
@@ -94,21 +79,6 @@ public class Group4Application implements CommandLineRunner {
             case 1:
                 displayAllCountriesWorld();
                 break;
-            case 2:
-                System.out.print("Enter continent name: ");
-                String continent = scanner.nextLine();
-                displayPopulationBreakdownByContinent(continent);
-                break;
-            case 3:
-                System.out.print("Enter country name: ");
-                String country = scanner.nextLine();
-                displayPopulationBreakdownByCountry(country);
-                break;
-            case 4:
-                System.out.print("Enter region name: ");
-                String region = scanner.nextLine();
-                displayPopulationBreakdownByRegion(region);
-                break;
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
                 System.exit(0);
@@ -128,38 +98,6 @@ public class Group4Application implements CommandLineRunner {
         displayCountries(countries);
     }
 
-    // Use Case 23: Display Population Breakdown by Continent
-    private void displayPopulationBreakdownByContinent(String continent) {
-        com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByContinent(continent);
-        if (breakdown == null) {
-            System.out.println("No population breakdown found for continent: " + continent);
-        } else {
-            System.out.println("\n=== POPULATION BREAKDOWN FOR CONTINENT: " + continent + " ===");
-            System.out.println(breakdown);
-        }
-    }
-
-    // Use Case 24: Display Population Breakdown by Region
-    private void displayPopulationBreakdownByRegion(String region) {
-        com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByRegion(region);
-        if (breakdown == null) {
-            System.out.println("No population breakdown found for region: " + region);
-        } else {
-            System.out.println("\n=== POPULATION BREAKDOWN FOR REGION: " + region + " ===");
-            System.out.println(breakdown);
-        }
-    }
-
-    // Use Case 25: Display Population Breakdown by Country
-    private void displayPopulationBreakdownByCountry(String country) {
-        com.napier.devops.model.PopulationBreakdown breakdown = populationBreakdownService.getByCountry(country);
-        if (breakdown == null) {
-            System.out.println("No population breakdown found for country: " + country);
-        } else {
-            System.out.println("\n=== POPULATION BREAKDOWN FOR COUNTRY: " + country + " ===");
-            System.out.println(breakdown);
-        }
-    }
 
     // Display Helper Method for Countries
     private void displayCountries(List<Country> countries) {
@@ -178,28 +116,6 @@ public class Group4Application implements CommandLineRunner {
                     country.getContinent(),
                     country.getRegion(),
                     country.getPopulation() != null ? country.getPopulation() : 0L);
-        }
-    }
-
-    // Display Helper Method for Population Breakdowns
-    private void displayPopulationBreakdowns(List<com.napier.devops.model.PopulationBreakdown> breakdowns) {
-        if (breakdowns == null || breakdowns.isEmpty()) {
-            System.out.println("No population breakdowns found.");
-            return;
-        }
-
-        System.out.printf("%-12s %-30s %15s %20s %20s\n", "Type", "Name", "Total Population", "Population in Cities", "Population not in Cities");
-        System.out.println("-".repeat(105));
-
-        for (com.napier.devops.model.PopulationBreakdown breakdown : breakdowns) {
-            System.out.printf("%-12s %-30s %,15d %,20d (%.2f%%) %,20d (%.2f%%)\n",
-                    breakdown.getType(),
-                    breakdown.getName(),
-                    breakdown.getTotalPopulation(),
-                    breakdown.getPopulationInCities(),
-                    breakdown.getInCitiesPercentage(),
-                    breakdown.getPopulationNotInCities(),
-                    breakdown.getNotInCitiesPercentage());
         }
     }
 }
