@@ -1,6 +1,5 @@
 package com.napier.devops;
 
-
 import com.napier.devops.controller.CountryController;
 import com.napier.devops.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,33 +10,56 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The main entry point for the World Population Reporting System.
+ * <p>
+ * This Spring Boot application retrieves and displays population data
+ * for countries, continents, and regions around the world.
+ * </p>
+ *
+ * @author Group 4
+ * @version 1.0
+ */
 @SpringBootApplication
 public class Group4Application implements CommandLineRunner {
 
+    /**
+     * Controller for managing and retrieving country-related data.
+     */
     @Autowired
     private CountryController countryController;
 
-
+    /**
+     * The main method that starts the Spring Boot application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(Group4Application.class, args);
     }
 
+    /**
+     * Runs after the application context has been loaded.
+     * Displays a welcome message and automatically executes Use Case 1.
+     *
+     * @param args command-line arguments
+     * @throws Exception if an error occurs while running the program
+     */
     @Override
     public void run(String... args) throws Exception {
-    displayWelcomeMessage();
+        displayWelcomeMessage();
 
-    // For Docker/containerized environment, automatically run:
+        // For Docker/containerized environment, automatically run Use Case 1
+        System.out.println("Running in containerized mode - automatically executing Use Case 1...");
+        displayAllCountriesWorld();
 
-    // Run Use Case 1: All the countries in the world organised by largest to smaller
-    System.out.println("Running in containerized mode - automatically executing Use Case 1...");
-    displayAllCountriesWorld();
-
-    System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
-    System.out.println("Application will now exit.");
+        System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
+        System.out.println("Application will now exit.");
     }
 
-    // displays a welcome message
-
+    /**
+     * Displays a welcome message to the console.
+     */
     private void displayWelcomeMessage() {
         System.out.println("\n" + "=".repeat(60));
         System.out.println("    WELCOME TO WORLD POPULATION REPORTING SYSTEM BY GROUP 4");
@@ -47,7 +69,15 @@ public class Group4Application implements CommandLineRunner {
         System.out.println("=".repeat(60));
     }
 
-    // future front end implementation
+    /**
+     * Displays the main menu options to the user and captures their selection.
+     * <p>
+     * Currently used for future front-end implementations.
+     * </p>
+     *
+     * @param scanner the Scanner used for reading user input
+     * @return the selected menu option as an integer
+     */
     private int mainMenu(Scanner scanner) {
         while (true) {
             try {
@@ -62,7 +92,6 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("100. Exit application");
 
                 System.out.print("\nEnter your selection: ");
-
                 String input = scanner.nextLine();
                 int inputSelection = Integer.parseInt(input);
 
@@ -73,7 +102,12 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    // future front end implementation
+    /**
+     * Handles the user’s menu selection.
+     *
+     * @param selection the user’s menu choice
+     * @param scanner   the Scanner used for input
+     */
     private void handleMenuSelection(int selection, Scanner scanner) {
         switch (selection) {
             case 1:
@@ -91,15 +125,21 @@ public class Group4Application implements CommandLineRunner {
         scanner.nextLine();
     }
 
-    // Use Case 1: Display All Countries in the World by Population
+    /**
+     * Use Case 1:
+     * Displays all countries in the world ordered by population (largest to smallest).
+     */
     private void displayAllCountriesWorld() {
         System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
         List<Country> countries = countryController.getAllCountriesWorld();
         displayCountries(countries);
     }
 
-
-    // Display Helper Method for Countries
+    /**
+     * Helper method to display a list of countries in a formatted table.
+     *
+     * @param countries a list of {@link Country} objects to display
+     */
     private void displayCountries(List<Country> countries) {
         if (countries.isEmpty()) {
             System.out.println("No countries found.");
