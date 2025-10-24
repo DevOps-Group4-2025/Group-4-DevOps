@@ -2,59 +2,30 @@ package com.napier.devops.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Entity representing a country in the world database.
+ * Maps to the 'country' table and contains comprehensive country information
+ * including geographic, demographic, and political data.
+ */
 @Entity
 @Table(name = "country")
 public class Country {
+
+    /**
+     * Primary key - unique 3-letter country code (ISO 3166-1 alpha-3)
+     * Examples: "USA", "GBR", "DEU"
+     */
     @Id
     @Column(name = "`Code`")
-    String code;
+    protected String code;
 
+    /**
+     * Official name of the country
+     * Examples: "United States", "United Kingdom", "Germany"
+     */
     @Column(name = "`Name`")
-    String name;
+    protected String name;
 
-    @Column(name = "`Continent`")
-    String continent;
-
-    @Column(name = "`Region`")
-    String region;
-
-    @Column(name = "`SurfaceArea`")
-    Float surfaceArea;
-
-    @Column(name = "`IndepYear`")
-    Integer indepYear;
-
-    @Column(name = "`Population`")
-    Long population;
-
-    @Column(name = "`LifeExpectancy`")
-    Float lifeExpectancy;
-
-    @Column(name = "`GNP`")
-    Float gnp;
-
-    @Column(name = "`GNPOld`")
-    Float gnpOld;
-
-    @Column(name = "`LocalName`")
-    String localName;
-
-    @Column(name = "`GovernmentForm`")
-    String governmentForm;
-
-    @Column(name = "`HeadOfState`")
-    String headOfState;
-
-    @Column(name = "`Capital`")
-    Integer capital;
-
-    @Column(name = "`Code2`")
-    String code2;
-
-    public Country() {
-    }
-
-    // Getters and Setters
     public String getCode() {
         return code;
     }
@@ -174,6 +145,116 @@ public class Country {
     public void setCode2(String code2) {
         this.code2 = code2;
     }
+
+    /**
+     * Continent where the country is located
+     * Examples: "North America", "Europe", "Asia"
+     */
+    @Column(name = "`Continent`")
+    protected String continent;
+
+    /**
+     * Geographic region within the continent
+     * Examples: "Caribbean", "Western Europe", "Southeast Asia"
+     */
+    @Column(name = "`Region`")
+    protected String region;
+
+    /**
+     * Total surface area in square kilometers
+     * Includes land and water areas
+     */
+    @Column(name = "`SurfaceArea`")
+    protected Float surfaceArea;
+
+    /**
+     * Year when the country gained independence
+     * Null if the country was never colonized or independence date is unknown
+     */
+    @Column(name = "`IndepYear`")
+    protected Integer indepYear;
+
+    /**
+     * Total population of the country
+     * Represents the most recent population count
+     */
+    @Column(name = "`Population`")
+    protected Long population;
+
+    /**
+     * Average life expectancy in years
+     * Calculated at birth for the current population
+     */
+    @Column(name = "`LifeExpectancy`")
+    protected Float lifeExpectancy;
+
+    /**
+     * Gross National Product in current US dollars
+     * Measures the total value of goods and services produced
+     */
+    @Column(name = "`GNP`")
+    protected Float gnp;
+
+    /**
+     * Previous GNP value for comparison
+     * Used to track economic growth over time
+     */
+    @Column(name = "`GNPOld`")
+    protected Float gnpOld;
+
+    /**
+     * Local name of the country in its native language(s)
+     * Examples: "Deutschland" for Germany, "España" for Spain
+     */
+    @Column(name = "`LocalName`")
+    protected String localName;
+
+    /**
+     * Type of government system
+     * Examples: "Federal Republic", "Constitutional Monarchy", "Parliamentary Democracy"
+     */
+    @Column(name = "`GovernmentForm`")
+    protected String governmentForm;
+
+    /**
+     * Name of the current head of state
+     * Could be president, prime minister, king, queen, etc.
+     */
+    @Column(name = "`HeadOfState`")
+    protected String headOfState;
+
+    /**
+     * ID of the capital city
+     * References the ID field in the city table
+     */
+    @Column(name = "`Capital`")
+    protected Integer capital;
+
+    /**
+     * Alternative 2-letter country code (ISO 3166-1 alpha-2)
+     * Examples: "US", "GB", "DE"
+     */
+    @Column(name = "`Code2`")
+    protected String code2;
+
+
+    /**
+     * Default constructor required by JPA/Hibernate.
+     * Creates a new Country instance with all fields initialized to null.
+     */
+    public Country() {
+    }
+   /* public Weather(String country, String city, String description, double temprature, double wind_M_S, double humidity, String feelsLike) {
+        this.country = country;
+        this.city = city;
+        this.description = description;
+        this.temprature = temprature;
+        this.wind_M_S = wind_M_S;
+        this.humidity = humidity;
+        this.feelsLike = feelsLike;
+    }
+
+    */
 
     @Override
     public String toString() {
