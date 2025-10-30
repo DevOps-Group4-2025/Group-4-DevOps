@@ -21,7 +21,7 @@
 
 ## Reporting Bugs
 
-If you find a bug, please open an issue using our [Bug Report template](link-to-template). Include steps to reproduce, expected behaviour, and screenshots if possible.
+If you find a bug, please open an issue using our [Bug Report template](https://github.com/DevOps-Group4-2025/Group-4-DevOps/issues/new?template=bug_report.md). Include steps to reproduce, expected behaviour, and screenshots if possible.
 
 
 **Status:**  
