@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /tmp
 
-COPY ./target/Group4-0.1.0.2.jar /tmp
+COPY ./target/Group4-0.1.0.3.jar /tmp
 
 LABEL authors="Cotximiahou"
 LABEL version="0.1.0.3"
