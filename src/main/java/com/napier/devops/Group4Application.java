@@ -1,6 +1,6 @@
 package com.napier.devops;
 
-import com.napier.devops.controller.CountryController;
+import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
@@ -26,10 +26,10 @@ import java.util.Scanner;
 public class Group4Application implements CommandLineRunner {
 
     /**
-     * Controller for managing and retrieving country-related data.
+     * Service for managing and retrieving country-related data.
      */
     @Autowired
-    private CountryController countryController;
+    private CountryService countryService;
 
     @Autowired
     private PopulationBreakdownService populationBreakdownService;
@@ -155,7 +155,7 @@ public class Group4Application implements CommandLineRunner {
      */
     private void displayAllCountriesWorld() {
         System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
-        List<Country> countries = countryController.getAllCountriesWorld();
+        List<Country> countries = countryService.getAllCountriesWorld();
         displayCountries(countries);
     }
 
