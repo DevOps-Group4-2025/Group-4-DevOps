@@ -1,6 +1,8 @@
 package com.napier.devops;
 
+import com.napier.devops.controller.CityController;
 import com.napier.devops.controller.CountryController;
+import com.napier.devops.model.City;
 import com.napier.devops.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,6 +32,12 @@ public class Group4Application implements CommandLineRunner {
     private CountryController countryController;
 
     /**
+     * Controller for managing and retrieving city-related data.
+     */
+    @Autowired
+    private CityController cityController;
+
+    /**
      * The main method that starts the Spring Boot application.
      *
      * @param args command-line arguments
@@ -51,7 +59,8 @@ public class Group4Application implements CommandLineRunner {
 
         // For Docker/containerized environment, automatically run Use Case 1
         System.out.println("Running in containerized mode - automatically executing Use Case 1...");
-        displayAllCountriesWorld();
+        //displayAllCountriesWorld();
+        displayCityQueries();
 
         System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
         System.out.println("Application will now exit.");
@@ -157,5 +166,36 @@ public class Group4Application implements CommandLineRunner {
                     country.getRegion(),
                     country.getPopulation() != null ? country.getPopulation() : 0L);
         }
+    }
+
+    private void displayCities(List<City> cities) {
+        if (cities.isEmpty()) {
+            System.out.println("No city found.");
+            return;
+        }
+
+        System.out.printf("%-30s %-15s %-20s %15s\n", "Name", "Country", "District", "Population");
+        System.out.println("-".repeat(85));
+
+        for (City city : cities) {
+            System.out.printf("%-30s %-15s %-20s %,15d\n",
+                    city.getName(),
+                    city.getCountryCode(),
+                    city.getDistrict(),
+                    city.getPopulation() != null ? city.getPopulation() : 0L);
+        }
+    }
+
+    private void displayCityQueries() {
+        displayCities(cityController.getAllCitiesInTheWorld()); //Req 7
+        displayCities(cityController.getAllCitiesInAContinent()); //Req 8
+        displayCities(cityController.getAllCitiesInARegion()); //Req 9
+        displayCities(cityController.getAllCitiesInACountry());  //Req 10
+        displayCities(cityController.getAllCitiesInADistrict()); //Req 11
+        displayCities(cityController.getTopNCitiesInTheWorld()); //Req 12
+        displayCities(cityController.getTopNCitiesInAContinent()); //Req 13
+        displayCities(cityController.getTopNCitiesInARegion()); //Req 14
+        displayCities(cityController.getTopNCitiesInACountry()); //Req 15
+        displayCities(cityController.getTopNCitiesInADistrict()); //Req 16
     }
 }

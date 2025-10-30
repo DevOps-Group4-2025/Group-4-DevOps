@@ -32,7 +32,7 @@ public class City {
      * References the Code field in the country table
      * Examples: "USA", "GBR", "JPN"
      */
-    @Column(name = "CountryCode")
+    @Column(name = "`CountryCode`")
     protected String countryCode;
 
     /**
