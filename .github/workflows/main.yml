@@ -1,12 +1,9 @@
 name: Group 4 DevOps Napier 2025
-
 on:
   push:
     branches: [ master, develop ]
   pull_request:
     branches: [ master, develop ]
-  release:
-    types: [published]  # Triggers release upload
 
 jobs:
   build:
@@ -41,6 +38,7 @@ jobs:
 
       - name: Run docker compose with timeout
         run: |
+          # Set timeout for docker compose
           timeout 120s docker compose up --abort-on-container-exit --timeout 60 || echo "Docker compose completed or timed out"
 
       - name: Show container logs
@@ -50,28 +48,3 @@ jobs:
       - name: Cleanup
         if: always()
         run: docker compose down
-
-  upload_release_jar:
-    name: Upload JAR to Release
-    runs-on: ubuntu-22.04
-    if: github.event_name == 'release'  # Only run on release
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Build with Maven
-        run: mvn -B clean package -DskipTests
-
-      - name: Upload JAR to release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: target/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
