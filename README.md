@@ -19,46 +19,6 @@
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
-
-**Status:**  
-✅ **4 of 32 requirements implemented** — **12.5% complete**
-
-| ID | Requirement | Met | Screenshot |
-|----|--------------|-----|-------------|
-| 1 | All the countries in the world organised by largest population to smallest. | ✅ Yes | ![Req1](images/req1.png) |
-| 2 | All the countries in a continent organised by largest population to smallest. | ✅ Yes | ![Req2](images/req2.png) |
-| 3 | All the countries in a region organised by largest population to smallest. | ✅ Yes | ![Req3](images/req3.png) |
-| 4 | The top N populated countries in the world where N is provided by the user. | ✅ Yes | ![Req4](images/req4.png) |
-| 5 | The top N populated countries in a continent where N is provided by the user. | ✅ Yes | ![Req5](images/req5.png) |
-| 6 | The top N populated countries in a region where N is provided by the user. | ✅ Yes | ![Req6](images/req6.png) |
-| 7 | All the cities in the world organised by largest population to smallest. | ✅ Yes | ![Req7](images/req7.png) |
-| 8 | All the cities in a continent organised by largest population to smallest. | ✅ Yes | ![Req8](images/req8.png) |
-| 9 | All the cities in a region organised by largest population to smallest. | ✅ Yes | ![Req9](images/req9.png) |
-| 10 | All the cities in a country organised by largest population to smallest. | ✅ Yes | ![Req10](images/req10.png) |
-| 11 | All the cities in a district organised by largest population to smallest. | ✅ Yes | ![Req11](images/req11.png) |
-| 12 | The top N populated cities in the world where N is provided by the user. | ✅ Yes | ![Req12](images/req12.png) |
-| 13 | The top N populated cities in a continent where N is provided by the user. | ✅ Yes | ![Req13](images/req13.png) |
-| 14 | The top N populated cities in a region where N is provided by the user. | ✅ Yes | ![Req14](images/req14.png) |
-| 15 | The top N populated cities in a country where N is provided by the user. | ✅ Yes | ![Req15](images/req15.png) |
-| 16 | The top N populated cities in a district where N is provided by the user. | ✅ Yes | ![Req16](images/req16.png) |
-| 17 | All the capital cities in the world organised by largest population to smallest. | ✅ Yes | ![Req17](images/req17.png) |
-| 18 | All the capital cities in a continent organised by largest population to smallest. | ✅ Yes | ![Req18](images/req18.png) |
-| 19 | All the capital cities in a region organised by largest to smallest. | ✅ Yes | ![Req19](images/req19.png) |
-| 20 | The top N populated capital cities in the world where N is provided by the user. | ✅ Yes | ![Req20](images/req20.png) |
-| 21 | The top N populated capital cities in a continent where N is provided by the user. | ✅ Yes | ![Req21](images/req21.png) |
-| 22 | The top N populated capital cities in a region where N is provided by the user. | ✅ Yes | ![Req22](images/req22.png) |
-| 23 | The population of people, people living in cities, and people not living in cities in each continent. | ✅ Yes | ![Req23](images/req23.png) |
-| 24 | The population of people, people living in cities, and people not living in cities in each region. | ✅ Yes | ![Req24](images/req24.png) |
-| 25 | The population of people, people living in cities, and people not living in cities in each country. | ✅ Yes | ![Req25](images/req25.png) |
-| 26–32 | Additional validation, testing, or non-functional requirements (if applicable). | ⚙️ In progress |  |
-
----
-
-> 💡 **Tip:**  
-> Place screenshots in a local folder (e.g., `/images/req1.png`) or link to GitHub-hosted screenshots for visibility in your repository’s README preview.
-
----
-
 ## About the Project
 
 **Group-4 DevOps** is a population insights reporting service for the SET09803 DevOps module.  
