@@ -96,7 +96,17 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("2.  Population breakdown by continent (example: Africa)");
                 System.out.println("3.  Population breakdown by country (example: Germany)");
                 System.out.println("4.  Population breakdown by region (example: Western Europe)");
-
+                System.out.println("\n=== CITY REPORTS ===");
+                System.out.println("7.  Display all cities in the world ordered by population");
+                System.out.println("8.  Display all cities in a given continent (e.g., Asia)");
+                System.out.println("9.  Display all cities in a specific region (e.g., Eastern Asia)");
+                System.out.println("10.  Display all cities in a specific country (e.g., Japan)");
+                System.out.println("11.  Display all cities in a given district (e.g., Shanghai)");
+                System.out.println("12.  Display the top N most populated cities in the world (e.g., 10)");
+                System.out.println("13.  Display the top N most populated cities in a continent (e.g., Asia,10)");
+                System.out.println("14.  Display the top N most populated cities in a region (e.g., Eastern Asia,10)");
+                System.out.println("15.  Display the top N most populated cities in a country (e.g., Japan,10)");
+                System.out.println("16.  Display the top N most populated cities in a district (e.g., Shanghai,10)");
                 System.out.println("\n--- SYSTEM ---");
                 System.out.println("100. Exit application");
 
@@ -122,6 +132,16 @@ public class Group4Application implements CommandLineRunner {
             case 1:
                 displayAllCountriesWorld();
                 break;
+            case 7: {displayCities(cityController.getAllCitiesInTheWorld()); break;}
+            case 8: {displayCities(cityController.getAllCitiesInAContinent("Asia")); break;}
+            case 9: {displayCities(cityController.getAllCitiesInARegion("Eastern Asia")); break;}
+            case 10: {displayCities(cityController.getAllCitiesInACountry("Japan")); break;}
+            case 11: {displayCities(cityController.getAllCitiesInADistrict("Shanghai")); break;}
+            case 12: {displayCities(cityController.getTopNCitiesInTheWorld(10)); break;}
+            case 13: {displayCities(cityController.getTopNCitiesInAContinent("Asia", 10)); break;}
+            case 14: {displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); break;}
+            case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
+            case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
                 System.exit(0);
@@ -168,15 +188,25 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    /**
+     * Displays a formatted list of cities to the console.
+     * Prints a table header and each city's name, country, district, and population.
+     *
+     * @param cities List of City objects to display.
+     */
     private void displayCities(List<City> cities) {
+        // If there are no cities in the list, show a message and exit early.
         if (cities.isEmpty()) {
             System.out.println("No city found.");
             return;
         }
 
+        // Print table headers with formatted column spacing.
+        // %-30s = left-align string in a 30-character field, etc.
         System.out.printf("%-30s %-15s %-20s %15s\n", "Name", "Country", "District", "Population");
         System.out.println("-".repeat(85));
 
+        // Loop through each city in the list and print its details in the same column format.
         for (City city : cities) {
             System.out.printf("%-30s %-15s %-20s %,15d\n",
                     city.getName(),
@@ -186,16 +216,43 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    /**
+     * Displays various city-related query results.
+     * Each query corresponds to a specific project requirement (7–16).
+     * Calls controller methods to retrieve data.
+     */
     private void displayCityQueries() {
-        displayCities(cityController.getAllCitiesInTheWorld()); //Req 7
-        displayCities(cityController.getAllCitiesInAContinent()); //Req 8
-        displayCities(cityController.getAllCitiesInARegion()); //Req 9
-        displayCities(cityController.getAllCitiesInACountry());  //Req 10
-        displayCities(cityController.getAllCitiesInADistrict()); //Req 11
-        displayCities(cityController.getTopNCitiesInTheWorld()); //Req 12
-        displayCities(cityController.getTopNCitiesInAContinent()); //Req 13
-        displayCities(cityController.getTopNCitiesInARegion()); //Req 14
-        displayCities(cityController.getTopNCitiesInACountry()); //Req 15
-        displayCities(cityController.getTopNCitiesInADistrict()); //Req 16
+        System.out.println("\n=== City Queries ===");
+
+        // Requirement 7: Display all cities in the world ordered by population
+        displayCities(cityController.getAllCitiesInTheWorld());
+
+        // Requirement 8: Display all cities in a given continent (e.g., Asia)
+        displayCities(cityController.getAllCitiesInAContinent("Asia"));
+
+        // Requirement 9: Display all cities in a specific region (e.g., Eastern Asia)
+        displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+
+        // Requirement 10: Display all cities in a specific country (e.g., Japan)
+        displayCities(cityController.getAllCitiesInACountry("Japan"));
+
+        // Requirement 11: Display all cities in a given district (e.g., Shanghai)
+        displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+
+        // Requirement 12: Display the top 10 most populated cities in the world
+        displayCities(cityController.getTopNCitiesInTheWorld(10));
+
+        // Requirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)
+        displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+
+        // Requirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)
+        displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+
+        // Requirement 15: Display the top 10 most populated cities in a country (e.g., Japan)
+        displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+
+        // Requirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)
+        displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
     }
+
 }

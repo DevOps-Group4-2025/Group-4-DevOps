@@ -16,39 +16,39 @@ public class CityController {
         return cityService.getAllCitiesInTheWorld();
     }
 
-    public List<City> getAllCitiesInAContinent() {
-        return cityService.getAllCitiesInAContinent();
+    public List<City> getAllCitiesInAContinent(String continent) {
+        return cityService.getAllCitiesInAContinent(continent);
     }
 
-    public List<City> getAllCitiesInARegion() {
-        return cityService.getAllCitiesInARegion();
+    public List<City> getAllCitiesInARegion(String region) {
+        return cityService.getAllCitiesInARegion(region);
     }
 
-    public List<City> getAllCitiesInACountry() {
-        return cityService.getAllCitiesInACountry();
+    public List<City> getAllCitiesInACountry(String country) {
+        return cityService.getAllCitiesInACountry(country);
     }
 
-    public List<City> getAllCitiesInADistrict() {
-        return cityService.getAllCitiesInADistrict();
+    public List<City> getAllCitiesInADistrict(String district) {
+        return cityService.getAllCitiesInADistrict(district);
     }
 
-    public List<City> getTopNCitiesInTheWorld() {
-        return cityService.getTopNCitiesInTheWorld();
+    public List<City> getTopNCitiesInTheWorld(int topN) {
+        return cityService.getTopNCitiesInTheWorld(topN);
     }
 
-    public List<City> getTopNCitiesInAContinent() {
-        return cityService.getTopNCitiesInAContinent();
+    public List<City> getTopNCitiesInAContinent(String continent, int topN) {
+        return cityService.getTopNCitiesInAContinent(continent, topN);
     }
 
-    public List<City> getTopNCitiesInARegion() {
-        return cityService.getTopNCitiesInARegion();
+    public List<City> getTopNCitiesInARegion(String region, int topN) {
+        return cityService.getTopNCitiesInARegion(region, topN);
     }
 
-    public List<City> getTopNCitiesInACountry() {
-        return cityService.getTopNCitiesInACountry();
+    public List<City> getTopNCitiesInACountry(String country, int topN) {
+        return cityService.getTopNCitiesInACountry(country, topN);
     }
 
-    public List<City> getTopNCitiesInADistrict() {
-        return cityService.getTopNCitiesInADistrict();
+    public List<City> getTopNCitiesInADistrict(String district, int topN) {
+        return cityService.getTopNCitiesInADistrict(district, topN);
     }
 }
