@@ -1,7 +1,9 @@
 package com.napier.devops;
 
 import com.napier.devops.controller.CountryController;
+import com.napier.devops.service.PopulationBreakdownService;
 import com.napier.devops.model.Country;
+import com.napier.devops.model.PopulationBreakdown;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,6 +31,12 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private CountryController countryController;
 
+    @Autowired
+    private PopulationBreakdownService populationBreakdownService;
+    
+    @Autowired
+    private com.napier.devops.repository.CityRepository cityRepository;
+
     /**
      * The main method that starts the Spring Boot application.
      *
@@ -52,6 +60,9 @@ public class Group4Application implements CommandLineRunner {
         // For Docker/containerized environment, automatically run Use Case 1
         System.out.println("Running in containerized mode - automatically executing Use Case 1...");
         displayAllCountriesWorld();
+
+    // Also show one example sample for city, continent and region
+    displayExampleSamples();
 
         System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
         System.out.println("Application will now exit.");
@@ -87,6 +98,10 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("2.  Population breakdown by continent (example: Africa)");
                 System.out.println("3.  Population breakdown by country (example: Germany)");
                 System.out.println("4.  Population breakdown by region (example: Western Europe)");
+                System.out.println("\n--- AGGREGATED BREAKDOWNS ---");
+                System.out.println("23. Population breakdowns by continent (all)");
+                System.out.println("24. Population breakdowns by region (all)");
+                System.out.println("25. Population breakdowns by country (all)");
 
                 System.out.println("\n--- SYSTEM ---");
                 System.out.println("100. Exit application");
@@ -116,6 +131,15 @@ public class Group4Application implements CommandLineRunner {
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
                 System.exit(0);
+                break;
+            case 23:
+                displayPopulationBreakdownsByContinentAll();
+                break;
+            case 24:
+                displayPopulationBreakdownsByRegionAll();
+                break;
+            case 25:
+                displayPopulationBreakdownsByCountryAll();
                 break;
             default:
                 System.out.println("Invalid selection. Please try again.");
@@ -157,5 +181,95 @@ public class Group4Application implements CommandLineRunner {
                     country.getRegion(),
                     country.getPopulation() != null ? country.getPopulation() : 0L);
         }
+    }
+
+    /**
+     * Displays a list of population breakdowns in a formatted table.
+     */
+    private void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
+        if (breakdowns == null || breakdowns.isEmpty()) {
+            System.out.println("No population breakdowns found.");
+            return;
+        }
+
+        System.out.printf("%-12s %-30s %15s %20s %20s\n", "Type", "Name", "Total Population", "Population in Cities", "Population not in Cities");
+        System.out.println("-".repeat(105));
+
+    for (PopulationBreakdown b : breakdowns) {
+        System.out.printf("%-12s %-30s %,15d %,20d (%.2f%%) %,20d (%.2f%%)\n",
+            b.type(),
+            b.name(),
+            b.totalPopulation() != null ? b.totalPopulation() : 0L,
+            b.populationInCities() != null ? b.populationInCities() : 0L,
+            b.inCitiesPercentage() != null ? b.inCitiesPercentage() : 0.0,
+            b.populationNotInCities() != null ? b.populationNotInCities() : 0L,
+            b.notInCitiesPercentage() != null ? b.notInCitiesPercentage() : 0.0);
+    }
+    }
+
+    // Use Case 23: Display population breakdowns for all continents
+    private void displayPopulationBreakdownsByContinentAll() {
+        System.out.println("\n=== POPULATION BREAKDOWNS BY CONTINENT ===");
+        List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByContinent();
+        displayPopulationBreakdowns(breakdowns);
+    }
+
+    // Use Case 24: Display population breakdowns for all regions
+    private void displayPopulationBreakdownsByRegionAll() {
+        System.out.println("\n=== POPULATION BREAKDOWNS BY REGION ===");
+        List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByRegion();
+        displayPopulationBreakdowns(breakdowns);
+    }
+
+    // Use Case 25: Display population breakdowns for all countries
+    private void displayPopulationBreakdownsByCountryAll() {
+        System.out.println("\n=== POPULATION BREAKDOWNS BY COUNTRY ===");
+        List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByCountry();
+        displayPopulationBreakdowns(breakdowns);
+    }
+
+    /**
+     * Example display: show one city, one continent, and one region sample outputs.
+     */
+    private void displayExampleSamples() {
+        System.out.println("\n=== EXAMPLE: AGGREGATED CASES (23, 24, 25) ===");
+
+        // Case 23: Population breakdowns by continent (show example row)
+        System.out.println("\n-- Case 23: Population breakdowns by continent (example) --");
+        List<PopulationBreakdown> continents = populationBreakdownService.getAllByContinent();
+        printOneBreakdownExample(continents);
+
+        // Case 24: Population breakdowns by region (show example row)
+        System.out.println("\n-- Case 24: Population breakdowns by region (example) --");
+        List<PopulationBreakdown> regions = populationBreakdownService.getAllByRegion();
+        printOneBreakdownExample(regions);
+
+        // Case 25: Population breakdowns by country (show example row)
+        System.out.println("\n-- Case 25: Population breakdowns by country (example) --");
+        List<PopulationBreakdown> countries = populationBreakdownService.getAllByCountry();
+        printOneBreakdownExample(countries);
+    }
+
+    /**
+     * Print a single example row from the provided breakdown list using the same formatting
+     * as the full table header used in displayPopulationBreakdowns.
+     */
+    private void printOneBreakdownExample(List<PopulationBreakdown> list) {
+        if (list == null || list.isEmpty()) {
+            System.out.println("No data available for this case.");
+            return;
+        }
+
+        PopulationBreakdown b = list.get(0);
+        System.out.printf("%-12s %-30s %15s %20s %20s\n", "Type", "Name", "Total Population", "Population in Cities", "Population not in Cities");
+        System.out.println("-".repeat(105));
+        System.out.printf("%-12s %-30s %,15d %,20d (%.2f%%) %,20d (%.2f%%)\n",
+                b.type(),
+                b.name(),
+                b.totalPopulation() != null ? b.totalPopulation() : 0L,
+                b.populationInCities() != null ? b.populationInCities() : 0L,
+                b.inCitiesPercentage() != null ? b.inCitiesPercentage() : 0.0,
+                b.populationNotInCities() != null ? b.populationNotInCities() : 0L,
+                b.notInCitiesPercentage() != null ? b.notInCitiesPercentage() : 0.0);
     }
 }
