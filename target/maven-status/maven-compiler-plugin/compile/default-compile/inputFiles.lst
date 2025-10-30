@@ -12,7 +12,7 @@
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/LanguageStats.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/PopulationBreakdown.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/PopulationStats.java
-/home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CityRepoitory.java
+/home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CityJdbcRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CityRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CountryLanguageRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CountryRepository.java
