@@ -1,7 +1,6 @@
 package com.napier.devops.service;
 
 import com.napier.devops.model.PopulationBreakdown;
-import com.napier.devops.repository.PopulationBreakdownRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
