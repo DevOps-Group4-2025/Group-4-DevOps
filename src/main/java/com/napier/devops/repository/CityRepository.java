@@ -10,6 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Repository
+/**
+ * Repository for city-related queries.
+ *
+ * <p>Currently provides a helper to retrieve the largest city by population.
+ * It uses JDBC via the configured {@link javax.sql.DataSource}.</p>
+ */
 public class CityRepository {
     private final DataSource dataSource;
 
@@ -18,8 +24,10 @@ public class CityRepository {
     }
 
     /**
-     * Returns the single largest city by population (or null if none).
-     */
+    * Returns the single largest city by population (or null if none).
+    *
+    * @return a {@link com.napier.devops.model.City} representing the largest city, or null when no city rows exist or an error occurs
+    */
     public City getLargestCity() {
         String sql = "SELECT ID, Name, CountryCode, District, Population FROM city ORDER BY Population DESC LIMIT 1";
         try (Connection con = dataSource.getConnection();

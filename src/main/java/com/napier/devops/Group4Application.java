@@ -185,6 +185,8 @@ public class Group4Application implements CommandLineRunner {
 
     /**
      * Displays a list of population breakdowns in a formatted table.
+    *
+    * @param breakdowns list of {@link PopulationBreakdown} to display; may be null or empty
      */
     private void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
         if (breakdowns == null || breakdowns.isEmpty()) {
@@ -229,7 +231,10 @@ public class Group4Application implements CommandLineRunner {
     }
 
     /**
-     * Example display: show one city, one continent, and one region sample outputs.
+     * Example display: print a single example row for each aggregated case (23, 24, 25).
+     *
+     * <p>This method calls the service methods and prints a single formatted row
+     * for each case so users can quickly see an example result without scanning the full list.</p>
      */
     private void displayExampleSamples() {
         System.out.println("\n=== EXAMPLE: AGGREGATED CASES (23, 24, 25) ===");
@@ -252,7 +257,9 @@ public class Group4Application implements CommandLineRunner {
 
     /**
      * Print a single example row from the provided breakdown list using the same formatting
-     * as the full table header used in displayPopulationBreakdowns.
+     * as the full table header used in {@link #displayPopulationBreakdowns(List)}.
+     *
+     * @param list the list of breakdowns to sample (may be null or empty)
      */
     private void printOneBreakdownExample(List<PopulationBreakdown> list) {
         if (list == null || list.isEmpty()) {
