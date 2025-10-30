@@ -19,6 +19,9 @@
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
+## Reporting Bugs
+
+If you find a bug, please open an issue using our [Bug Report template](link-to-template). Include steps to reproduce, expected behaviour, and screenshots if possible.
 
 
 **Status:**  
@@ -82,4 +85,5 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
