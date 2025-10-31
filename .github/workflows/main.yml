@@ -2,11 +2,11 @@ name: Group 4 DevOps Napier 2025
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master, develop, release ]
     tags:
       - 'v*'  # Trigger when you push a tag like v1.0.0
   pull_request:
-    branches: [ master, develop ]
+    branches: [ master, develop, release ]
 
 jobs:
   build:
