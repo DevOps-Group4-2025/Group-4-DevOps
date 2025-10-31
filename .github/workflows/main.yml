@@ -2,11 +2,15 @@ name: Group 4 DevOps Napier 2025
 
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ master, develop, release ]
+    tags:
+      - 'v*'  # Trigger when you push a tag like v1.0.0
   pull_request:
-    branches: [ master, develop ]
-  release:
-    types: [published]  # Triggers the JAR upload on release
+    branches: [ master, develop, release ]
+
+permissions:
+  contents: write
+
 
 jobs:
   build:
@@ -57,10 +61,11 @@ jobs:
         if: always()
         run: docker compose down
 
-  upload_release_jar:
-    name: Upload JAR to Release
+  release:
+    name: Auto Publish Release
+    needs: build
     runs-on: ubuntu-22.04
-    if: github.event_name == 'release'  # Only runs on release
+    if: startsWith(github.ref, 'refs/tags/')  # Only run when a tag is pushed
 
     steps:
       - name: Checkout
@@ -78,9 +83,16 @@ jobs:
       - name: Run Unit Tests
         run: mvn -Dtest=com.napier.devops.Group4Tests test
 
-      - name: Upload JAR to release
+      - name: Create GitHub Release and Upload JAR
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}          # Use the tag name (e.g., v1.0.0)
+          name: Release ${{ github.ref_name }}      # Friendly release name
+          body: |
+            🚀 Automated release for version ${{ github.ref_name }}  
+            Includes the latest JAR build and all passing tests.
+          draft: false
+          prerelease: false
           files: target/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
