@@ -189,10 +189,6 @@ public class Group4Application implements CommandLineRunner {
             case 21:
                 displayTopCapitalCitiesByContinent(scanner);
                 break;
-            case 100:
-                System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
-                System.exit(0);
-                break;
             default:
                 System.out.println("Invalid selection. Please try again.");
                 break;
