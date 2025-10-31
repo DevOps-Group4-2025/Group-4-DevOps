@@ -4,6 +4,8 @@ import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
+import com.napier.devops.controller.CityController;
+import com.napier.devops.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,9 +35,15 @@ public class Group4Application implements CommandLineRunner {
 
     @Autowired
     private PopulationBreakdownService populationBreakdownService;
-    
+
     @Autowired
     private com.napier.devops.repository.CityRepository cityRepository;
+
+    /**
+     * Controller for managing and retrieving city-related data.
+     */
+    @Autowired
+    private CityController cityController;
 
     /**
      * The main method that starts the Spring Boot application.
@@ -61,8 +69,10 @@ public class Group4Application implements CommandLineRunner {
         System.out.println("Running in containerized mode - automatically executing Use Case 1...");
         displayAllCountriesWorld();
 
-    // Also show one example sample for city, continent and region
-    displayExampleSamples();
+        // Also show one example sample for city, continent and region
+        displayExampleSamples();
+
+        displayCityQueries();
 
         System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
         System.out.println("Application will now exit.");
@@ -98,11 +108,21 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("2.  Population breakdown by continent (example: Africa)");
                 System.out.println("3.  Population breakdown by country (example: Germany)");
                 System.out.println("4.  Population breakdown by region (example: Western Europe)");
+                System.out.println("\n=== CITY REPORTS ===");
+                System.out.println("7.  Display all cities in the world ordered by population");
+                System.out.println("8.  Display all cities in a given continent (e.g., Asia)");
+                System.out.println("9.  Display all cities in a specific region (e.g., Eastern Asia)");
+                System.out.println("10.  Display all cities in a specific country (e.g., Japan)");
+                System.out.println("11.  Display all cities in a given district (e.g., Shanghai)");
+                System.out.println("12.  Display the top N most populated cities in the world (e.g., 10)");
+                System.out.println("13.  Display the top N most populated cities in a continent (e.g., Asia,10)");
+                System.out.println("14.  Display the top N most populated cities in a region (e.g., Eastern Asia,10)");
+                System.out.println("15.  Display the top N most populated cities in a country (e.g., Japan,10)");
+                System.out.println("16.  Display the top N most populated cities in a district (e.g., Shanghai,10)");
                 System.out.println("\n--- AGGREGATED BREAKDOWNS ---");
                 System.out.println("23. Population breakdowns by continent (all)");
                 System.out.println("24. Population breakdowns by region (all)");
                 System.out.println("25. Population breakdowns by country (all)");
-
                 System.out.println("\n--- SYSTEM ---");
                 System.out.println("100. Exit application");
 
@@ -128,6 +148,16 @@ public class Group4Application implements CommandLineRunner {
             case 1:
                 displayAllCountriesWorld();
                 break;
+            case 7: {displayCities(cityController.getAllCitiesInTheWorld()); break;}
+            case 8: {displayCities(cityController.getAllCitiesInAContinent("Asia")); break;}
+            case 9: {displayCities(cityController.getAllCitiesInARegion("Eastern Asia")); break;}
+            case 10: {displayCities(cityController.getAllCitiesInACountry("Japan")); break;}
+            case 11: {displayCities(cityController.getAllCitiesInADistrict("Shanghai")); break;}
+            case 12: {displayCities(cityController.getTopNCitiesInTheWorld(10)); break;}
+            case 13: {displayCities(cityController.getTopNCitiesInAContinent("Asia", 10)); break;}
+            case 14: {displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); break;}
+            case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
+            case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
                 System.exit(0);
@@ -182,11 +212,10 @@ public class Group4Application implements CommandLineRunner {
                     country.getPopulation() != null ? country.getPopulation() : 0L);
         }
     }
-
     /**
      * Displays a list of population breakdowns in a formatted table.
-    *
-    * @param breakdowns list of {@link PopulationBreakdown} to display; may be null or empty
+     *
+     * @param breakdowns list of {@link PopulationBreakdown} to display; may be null or empty
      */
     private void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
         if (breakdowns == null || breakdowns.isEmpty()) {
@@ -197,16 +226,16 @@ public class Group4Application implements CommandLineRunner {
         System.out.printf("%-12s %-30s %15s %20s %20s\n", "Type", "Name", "Total Population", "Population in Cities", "Population not in Cities");
         System.out.println("-".repeat(105));
 
-    for (PopulationBreakdown b : breakdowns) {
-        System.out.printf("%-12s %-30s %,15d %,20d (%.2f%%) %,20d (%.2f%%)\n",
-            b.type(),
-            b.name(),
-            b.totalPopulation() != null ? b.totalPopulation() : 0L,
-            b.populationInCities() != null ? b.populationInCities() : 0L,
-            b.inCitiesPercentage() != null ? b.inCitiesPercentage() : 0.0,
-            b.populationNotInCities() != null ? b.populationNotInCities() : 0L,
-            b.notInCitiesPercentage() != null ? b.notInCitiesPercentage() : 0.0);
-    }
+        for (PopulationBreakdown b : breakdowns) {
+            System.out.printf("%-12s %-30s %,15d %,20d (%.2f%%) %,20d (%.2f%%)\n",
+                    b.type(),
+                    b.name(),
+                    b.totalPopulation() != null ? b.totalPopulation() : 0L,
+                    b.populationInCities() != null ? b.populationInCities() : 0L,
+                    b.inCitiesPercentage() != null ? b.inCitiesPercentage() : 0.0,
+                    b.populationNotInCities() != null ? b.populationNotInCities() : 0L,
+                    b.notInCitiesPercentage() != null ? b.notInCitiesPercentage() : 0.0);
+        }
     }
 
     // Use Case 23: Display population breakdowns for all continents
@@ -278,5 +307,72 @@ public class Group4Application implements CommandLineRunner {
                 b.inCitiesPercentage() != null ? b.inCitiesPercentage() : 0.0,
                 b.populationNotInCities() != null ? b.populationNotInCities() : 0L,
                 b.notInCitiesPercentage() != null ? b.notInCitiesPercentage() : 0.0);
+    }
+
+    /**
+     * Displays a formatted list of cities to the console.
+     * Prints a table header and each city's name, country, district, and population.
+     *
+     * @param cities List of City objects to display.
+     */
+    private void displayCities(List<City> cities) {
+        // If there are no cities in the list, show a message and exit early.
+        if (cities.isEmpty()) {
+            System.out.println("No city found.");
+            return;
+        }
+
+        // Print table headers with formatted column spacing.
+        // %-30s = left-align string in a 30-character field, etc.
+        System.out.printf("%-30s %-15s %-20s %15s\n", "Name", "Country", "District", "Population");
+        System.out.println("-".repeat(85));
+
+        // Loop through each city in the list and print its details in the same column format.
+        for (City city : cities) {
+            System.out.printf("%-30s %-15s %-20s %,15d\n",
+                    city.getName(),
+                    city.getCountryCode(),
+                    city.getDistrict(),
+                    city.getPopulation() != null ? city.getPopulation() : 0L);
+        }
+    }
+
+    /**
+     * Displays various city-related query results.
+     * Each query corresponds to a specific project requirement (7–16).
+     * Calls controller methods to retrieve data.
+     */
+    private void displayCityQueries() {
+        System.out.println("\n=== City Queries ===");
+
+        System.out.println("Requirement 7: Display all cities in the world ordered by population");
+        displayCities(cityController.getAllCitiesInTheWorld());
+
+        System.out.println("Requirement 8: Display all cities in a given continent (e.g., Asia)");
+        displayCities(cityController.getAllCitiesInAContinent("Asia"));
+
+        System.out.println("Requirement 9: Display all cities in a specific region (e.g., Eastern Asia)");
+        displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+
+        System.out.println("Requirement 10: Display all cities in a specific country (e.g., Japan)");
+        displayCities(cityController.getAllCitiesInACountry("Japan"));
+
+        System.out.println("Requirement 11: Display all cities in a given district (e.g., Shanghai)");
+        displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+
+        System.out.println("Requirement 12: Display the top 10 most populated cities in the world");
+        displayCities(cityController.getTopNCitiesInTheWorld(10));
+
+        System.out.println("Requirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)");
+        displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+
+        System.out.println("Requirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)");
+        displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+
+        System.out.println("Requirement 15: Display the top 10 most populated cities in a country (e.g., Japan)");
+        displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+
+        System.out.println("Requirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)");
+        displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
     }
 }
