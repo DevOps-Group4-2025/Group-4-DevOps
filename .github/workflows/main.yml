@@ -8,6 +8,10 @@ on:
   pull_request:
     branches: [ master, develop, release ]
 
+permissions:
+  contents: write
+
+
 jobs:
   build:
     name: Group 4 DevOps Build
