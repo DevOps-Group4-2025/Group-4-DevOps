@@ -224,34 +224,34 @@ public class Group4Application implements CommandLineRunner {
     private void displayCityQueries() {
         System.out.println("\n=== City Queries ===");
 
-        // Requirement 7: Display all cities in the world ordered by population
+        System.out.println("Requirement 7: Display all cities in the world ordered by population");
         displayCities(cityController.getAllCitiesInTheWorld());
 
-        // Requirement 8: Display all cities in a given continent (e.g., Asia)
+        System.out.println("Requirement 8: Display all cities in a given continent (e.g., Asia)");
         displayCities(cityController.getAllCitiesInAContinent("Asia"));
 
-        // Requirement 9: Display all cities in a specific region (e.g., Eastern Asia)
+        System.out.println("Requirement 9: Display all cities in a specific region (e.g., Eastern Asia)");
         displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
 
-        // Requirement 10: Display all cities in a specific country (e.g., Japan)
+        System.out.println("Requirement 10: Display all cities in a specific country (e.g., Japan)");
         displayCities(cityController.getAllCitiesInACountry("Japan"));
 
-        // Requirement 11: Display all cities in a given district (e.g., Shanghai)
+        System.out.println("Requirement 11: Display all cities in a given district (e.g., Shanghai)");
         displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
 
-        // Requirement 12: Display the top 10 most populated cities in the world
+        System.out.println("Requirement 12: Display the top 10 most populated cities in the world");
         displayCities(cityController.getTopNCitiesInTheWorld(10));
 
-        // Requirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)
+        System.out.println("Requirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)");
         displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
 
-        // Requirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)
+        System.out.println("Requirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)");
         displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
 
-        // Requirement 15: Display the top 10 most populated cities in a country (e.g., Japan)
+        System.out.println("Requirement 15: Display the top 10 most populated cities in a country (e.g., Japan)");
         displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
 
-        // Requirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)
+        System.out.println("Requirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)");
         displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
     }
 
