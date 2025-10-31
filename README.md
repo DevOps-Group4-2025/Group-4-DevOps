@@ -60,7 +60,7 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | 29 | The population of a country. | ⚙️ In Progress |  |
 | 30 | The population of a district. | ⚙️ In Progress |  |
 | 31 | The population of a city. | ⚙️ In Progress |  |
-| 31 | Languages report. | ⚙️ In Progress |  |
+| 32 | Languages reports. | ⚙️ In Progress |  |
 
 ## About the Project
 
@@ -84,6 +84,7 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
 
 
