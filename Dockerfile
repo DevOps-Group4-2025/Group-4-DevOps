@@ -10,4 +10,4 @@ LABEL description="World Population Reporting System - Spring Boot"
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "Group4-0.1.0.3.jar"]
+ENTRYPOINT ["java", "-jar", "Group4-0.1.0.4.jar"]
