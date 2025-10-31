@@ -26,6 +26,83 @@ public class Country {
     @Column(name = "`Name`")
     protected String name;
 
+    /**
+     * Continent where the country is located
+     * Examples: "North America", "Europe", "Asia"
+     */
+    @Column(name = "`Continent`")
+    protected String continent;
+
+    /**
+     * Geographic region within the continent
+     * Examples: "Caribbean", "Western Europe", "Southeast Asia"
+     */
+    @Column(name = "`Region`")
+    protected String region;
+
+    /**
+     * Total surface area in square kilometers
+     * Includes land and water areas
+     */
+    @Column(name = "`SurfaceArea`")
+    protected Float surfaceArea;
+
+    /**
+     * Year when the country gained independence
+     * Null if the country was never colonized or independence date is unknown
+     */
+    @Column(name = "`IndepYear`")
+    protected Integer indepYear;
+
+    /**
+     * Total population of the country
+     * Represents the most recent population count
+     */
+    @Column(name = "`Population`")
+    protected Long population;
+
+    /**
+     * Average life expectancy in years
+     * Calculated at birth for the current population
+     */
+    @Column(name = "`LifeExpectancy`")
+    protected Float lifeExpectancy;
+
+    /**
+     * Gross National Product in current US dollars
+     * Measures the total value of goods and services produced
+     */
+    @Column(name = "`GNP`")
+    protected Float gnp;
+
+    /**
+     * Previous GNP value for comparison
+     * Used to track economic growth over time
+     */
+    @Column(name = "`GNPOld`")
+    protected Float gnpOld;
+
+    /**
+     * Local name of the country in its native language(s)
+     * Examples: "Deutschland" for Germany, "España" for Spain
+     */
+    @Column(name = "`LocalName`")
+    protected String localName;
+
+    /**
+     * Type of government system
+     * Examples: "Federal Republic", "Constitutional Monarchy", "Parliamentary Democracy"
+     */
+    @Column(name = "`GovernmentForm`")
+    protected String governmentForm;
+
+    /**
+     * Name of the current head of state
+     * Could be president, prime minister, king, queen, etc.
+     */
+    @Column(name = "`HeadOfState`")
+    protected String headOfState;
+
     public String getCode() {
         return code;
     }
@@ -130,105 +207,17 @@ public class Country {
         this.headOfState = headOfState;
     }
 
-    public Integer getCapital() {
+    public Long getCapital() {
         return capital;
     }
 
-    public void setCapital(Integer capital) {
+    public void setCapital(Long capital) {
         this.capital = capital;
     }
 
-    public String getCode2() {
-        return code2;
-    }
-
-    public void setCode2(String code2) {
-        this.code2 = code2;
-    }
-
-    /**
-     * Continent where the country is located
-     * Examples: "North America", "Europe", "Asia"
-     */
-    @Column(name = "`Continent`")
-    protected String continent;
-
-    /**
-     * Geographic region within the continent
-     * Examples: "Caribbean", "Western Europe", "Southeast Asia"
-     */
-    @Column(name = "`Region`")
-    protected String region;
-
-    /**
-     * Total surface area in square kilometers
-     * Includes land and water areas
-     */
-    @Column(name = "`SurfaceArea`")
-    protected Float surfaceArea;
-
-    /**
-     * Year when the country gained independence
-     * Null if the country was never colonized or independence date is unknown
-     */
-    @Column(name = "`IndepYear`")
-    protected Integer indepYear;
-
-    /**
-     * Total population of the country
-     * Represents the most recent population count
-     */
-    @Column(name = "`Population`")
-    protected Long population;
-
-    /**
-     * Average life expectancy in years
-     * Calculated at birth for the current population
-     */
-    @Column(name = "`LifeExpectancy`")
-    protected Float lifeExpectancy;
-
-    /**
-     * Gross National Product in current US dollars
-     * Measures the total value of goods and services produced
-     */
-    @Column(name = "`GNP`")
-    protected Float gnp;
-
-    /**
-     * Previous GNP value for comparison
-     * Used to track economic growth over time
-     */
-    @Column(name = "`GNPOld`")
-    protected Float gnpOld;
-
-    /**
-     * Local name of the country in its native language(s)
-     * Examples: "Deutschland" for Germany, "España" for Spain
-     */
-    @Column(name = "`LocalName`")
-    protected String localName;
-
-    /**
-     * Type of government system
-     * Examples: "Federal Republic", "Constitutional Monarchy", "Parliamentary Democracy"
-     */
-    @Column(name = "`GovernmentForm`")
-    protected String governmentForm;
-
-    /**
-     * Name of the current head of state
-     * Could be president, prime minister, king, queen, etc.
-     */
-    @Column(name = "`HeadOfState`")
-    protected String headOfState;
-
-    /**
-     * ID of the capital city
-     * References the ID field in the city table
-     */
     @Column(name = "`Capital`")
-    protected Integer capital;
+    protected Long capital;
+
 
     /**
      * Alternative 2-letter country code (ISO 3166-1 alpha-2)
@@ -237,6 +226,13 @@ public class Country {
     @Column(name = "`Code2`")
     protected String code2;
 
+    public String getCode2() {
+        return code2;
+    }
+
+    public void setCode2(String code2) {
+        this.code2 = code2;
+    }
 
     /**
      * Default constructor required by JPA/Hibernate.

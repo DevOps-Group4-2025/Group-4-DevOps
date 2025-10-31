@@ -1,16 +1,18 @@
 package com.napier.devops;
 
-import com.napier.devops.service.CountryService;
-import com.napier.devops.service.PopulationBreakdownService;
+import com.napier.devops.model.CapitalCity;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
 import com.napier.devops.controller.CityController;
 import com.napier.devops.model.City;
+import com.napier.devops.service.CapitalCityService;
+import com.napier.devops.service.CountryService;
+import com.napier.devops.service.PopulationBreakdownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,7 +39,7 @@ public class Group4Application implements CommandLineRunner {
     private PopulationBreakdownService populationBreakdownService;
 
     @Autowired
-    private com.napier.devops.repository.CityRepository cityRepository;
+    private CapitalCityService capitalCityService;
 
     /**
      * Controller for managing and retrieving city-related data.
@@ -63,19 +65,32 @@ public class Group4Application implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
+        boolean interactiveMenu = Arrays.asList(args).contains("--interactive")
+                || Boolean.parseBoolean(System.getenv().getOrDefault("INTERACTIVE_MENU", "false"));
+
         displayWelcomeMessage();
 
-        // For Docker/containerized environment, automatically run Use Case 1
-        System.out.println("Running in containerized mode - automatically executing Use Case 1...");
-        displayAllCountriesWorld();
+        if (interactiveMenu) {
+            System.out.println("Interactive mode enabled. Launching main menu...");
+            try (Scanner scanner = new Scanner(System.in)) {
+                while (true) {
+                    int selection = mainMenu(scanner);
+                    handleMenuSelection(selection, scanner);
+                }
+            }
+        } else {
+            // For Docker/containerized environment, automatically run Use Case 1
+            System.out.println("Running in containerized mode - automatically executing Use Case 1...");
+            displayAllCountriesWorld();
 
         // Also show one example sample for city, continent and region
         displayExampleSamples();
 
         displayCityQueries();
 
-        System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
-        System.out.println("Application will now exit.");
+            System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
+            System.out.println("Application will now exit.");
+        }
     }
 
     /**
@@ -171,6 +186,9 @@ public class Group4Application implements CommandLineRunner {
             case 25:
                 displayPopulationBreakdownsByCountryAll();
                 break;
+            case 21:
+                displayTopCapitalCitiesByContinent(scanner);
+                break;
             default:
                 System.out.println("Invalid selection. Please try again.");
                 break;
@@ -187,6 +205,41 @@ public class Group4Application implements CommandLineRunner {
         System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
         List<Country> countries = countryService.getAllCountriesWorld();
         displayCountries(countries);
+    }
+
+    private void displayTopCapitalCitiesByContinent(Scanner scanner) {
+        try {
+            System.out.print("Enter continent: ");
+            String continent = scanner.nextLine();
+
+            System.out.print("Enter the number of capital cities to display (N): ");
+            String limitInput = scanner.nextLine();
+            int limit = Integer.parseInt(limitInput);
+
+            List<CapitalCity> capitals = capitalCityService.getTopCapitalCitiesInContinent(continent, limit);
+            displayCapitalCities(capitals);
+        } catch (NumberFormatException e) {
+            System.out.println("INVALID INPUT - N must be a valid number.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
+
+    private void displayCapitalCities(List<CapitalCity> capitals) {
+        if (capitals == null || capitals.isEmpty()) {
+            System.out.println("No capital cities found for the selected criteria.");
+            return;
+        }
+
+        System.out.printf("%-30s %-30s %15s%n", "Capital City", "Country", "Population");
+        System.out.println("-".repeat(80));
+
+        for (CapitalCity capitalCity : capitals) {
+            System.out.printf("%-30s %-30s %,15d%n",
+                    capitalCity.getCityName(),
+                    capitalCity.getCountryName(),
+                    capitalCity.getPopulation() != null ? capitalCity.getPopulation() : 0);
+        }
     }
 
     /**
