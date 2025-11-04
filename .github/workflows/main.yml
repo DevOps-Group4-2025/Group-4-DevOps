@@ -43,14 +43,21 @@ jobs:
       - name: Run Unit Tests
         run: mvn -Dtest=com.napier.devops.Group4ApplicationUnitTest test
 
+      - name: Generate Coverage Badge
+        run: |
+          python3 generate_coverage_badge.py
+
+      - name: Commit Coverage Badge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/coverage-badge.svg
+          git commit -m "Update coverage badge" || echo "No changes to commit"
+          git push
+
+
       - name: Package JAR
         run: mvn -B package
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: target/site/jacoco/jacoco.xml
-          fail_ci_if_error: true
 
       - name: Debug file structure after build
         run: ls -la target/
