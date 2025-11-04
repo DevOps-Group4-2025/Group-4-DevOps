@@ -41,7 +41,7 @@ jobs:
         run: mvn -B clean compile
 
       - name: Run Unit Tests
-        run: mvn -Dtest=com.napier.devops.Group4Tests test
+        run: mvn -Dtest=com.napier.devops.Group4ApplicationUnitTest test
 
       - name: Package JAR
         run: mvn -B package
