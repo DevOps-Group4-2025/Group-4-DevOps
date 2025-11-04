@@ -3,6 +3,8 @@ name: Group 4 DevOps Napier 2025
 on:
   push:
     branches: [ master, develop, release ]
+    paths-ignore:
+      - 'images/coverage-badge.svg'  # <- ignore changes to the badge
     tags:
       - 'v*'  # Trigger when you push a tag like v1.0.0
   pull_request:
@@ -48,7 +50,7 @@ jobs:
           python3 generate_coverage_badge.py
 
       - name: Commit Coverage Badge
-        if: github.actor != 'github-actions[bot]'
+        if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/master'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
