@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  tests:
+    image: maven:3.9-eclipse-temurin-17
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - maven-repo:/root/.m2
+    command: mvn -q -Dspring.profiles.active=test test
+
+volumes:
+  maven-repo:
+    driver: local
+
+
