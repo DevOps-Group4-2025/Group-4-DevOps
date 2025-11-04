@@ -43,6 +43,12 @@ jobs:
       - name: Run Unit Tests
         run: mvn -Dtest=com.napier.devops.Group4ApplicationUnitTest test
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
       - name: Generate Coverage Badge
         run: |
           python3 generate_coverage_badge.py
