@@ -48,6 +48,7 @@ jobs:
           python3 generate_coverage_badge.py
 
       - name: Commit Coverage Badge
+        if: github.actor != 'github-actions[bot]'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
