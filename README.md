@@ -21,7 +21,8 @@
 
 ## Code cove
 
-![Coverage](https://github.com/DevOps-Group4-2025/Group-4-DevOps/raw/master/images/coverage-badge.svg)
+![Coverage](https://raw.githubusercontent.com/DevOps-Group4-2025/Group-4-DevOps/master/images/coverage-badge.svg)
+
 
 
 
@@ -90,6 +91,7 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
 
 
