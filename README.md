@@ -21,7 +21,7 @@
 
 ## Code cove
 
-[![code coverage](https://codecov.io/gh/DevOps‑Group4‑2025/Group‑4‑DevOps/branch/master/graph/badge.svg)](https://codecov.io/gh/DevOps‑Group4‑2025/Group‑4‑DevOps)
+![Coverage](images/coverage-badge.svg)
 
 
 ## Reporting Bugs
