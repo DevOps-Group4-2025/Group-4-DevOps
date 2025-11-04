@@ -19,6 +19,11 @@
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
+## Code cove
+
+[![code coverage](https://codecov.io/gh/DevOps‑Group4‑2025/Group‑4‑DevOps/branch/master/graph/badge.svg)](https://codecov.io/gh/DevOps‑Group4‑2025/Group‑4‑DevOps)
+
+
 ## Reporting Bugs
 
 If you find a bug, please open an issue using our [Bug Report template](https://github.com/DevOps-Group4-2025/Group-4-DevOps/issues/new?template=bug_report.md). Include steps to reproduce, expected behaviour, and screenshots if possible.

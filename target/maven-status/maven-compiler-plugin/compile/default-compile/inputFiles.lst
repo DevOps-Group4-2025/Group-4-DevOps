@@ -12,10 +12,13 @@
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/LanguageStats.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/PopulationBreakdown.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/model/PopulationStats.java
+/home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CapitalCityRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CityRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CountryLanguageRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/CountryRepository.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/PopulationBreakdownProjection.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/repository/PopulationBreakdownRepository.java
+/home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/service/CapitalCityService.java
+/home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/service/CityService.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/service/CountryService.java
 /home/luk24miz/IdeaProjects/Full-Group-4-DevOps/src/main/java/com/napier/devops/service/PopulationBreakdownService.java
