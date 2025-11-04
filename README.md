@@ -10,6 +10,10 @@
 
 [![Releases](https://img.shields.io/github/release/DevOps-Group4-2025/Group-4-DevOps/all.svg?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases)
 
+## Code coverage
+
+![Coverage](https://raw.githubusercontent.com/DevOps-Group4-2025/Group-4-DevOps/master/images/coverage-badge.svg)
+
 **Develop branch:**  
 
 [![Develop build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=develop&label=develop%20build&logo=github&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Adevelop)
@@ -19,9 +23,7 @@
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
 
-## Code cove
 
-![Coverage](https://raw.githubusercontent.com/DevOps-Group4-2025/Group-4-DevOps/master/images/coverage-badge.svg)
 
 
 

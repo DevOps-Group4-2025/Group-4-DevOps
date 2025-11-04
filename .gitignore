@@ -1,3 +1,6 @@
 target/
 target/
 .vscode/
+/.idea/dataSources.xml
+/Group4.iml
+/.idea/modules.xml
