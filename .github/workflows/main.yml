@@ -52,7 +52,8 @@ jobs:
         with:
            files: target/site/jacoco/jacoco.xml
            flags: spring-tests
-
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Generate Coverage Badge
         run: |
