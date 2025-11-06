@@ -84,7 +84,7 @@ jobs:
 
       - name: Copy output from container
         run: |
-          docker compose ps -q devops-app   # get container ID if needed
+          docker compose ps -q group4-app   # get container ID if needed
           docker cp $(docker compose ps -q group4-app ):/app/output ./output
 
       - name: Upload output logs
