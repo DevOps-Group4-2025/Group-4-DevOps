@@ -29,6 +29,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Create output folder
+        run: mkdir -p output
+
       - name: Cache Maven dependencies
         uses: actions/cache@v3
         with:
@@ -78,6 +81,21 @@ jobs:
       - name: Run docker compose with timeout
         run: |
           timeout 120s docker compose up --abort-on-container-exit --timeout 60 || echo "Docker compose completed or timed out"
+
+      - name: Upload output logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: use-case-outputs
+          path: output/
+
+      - name: Commit logs back to repo
+        if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/master'
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add output/
+          git commit -m "Add latest use case logs" || echo "No changes to commit"
+          git push
 
       - name: Show container logs
         if: always()

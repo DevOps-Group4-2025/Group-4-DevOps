@@ -47,6 +47,37 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private CityController cityController;
 
+
+
+    private static void runUseCase(String fileName, Runnable action) {
+        java.io.File dir = new java.io.File("output");
+        if (!dir.exists() && !dir.mkdirs()) {
+            System.err.println("Warning: could not create output directory " + dir.getAbsolutePath());
+        }
+
+        try (java.io.PrintStream fileOut = new java.io.PrintStream(new java.io.FileOutputStream("output/" + fileName))) {
+            java.io.PrintStream console = System.out;
+
+            java.io.PrintStream dual = new java.io.PrintStream(new java.io.OutputStream() {
+                @Override
+                public void write(int b) {
+                    console.write(b);
+                    fileOut.write(b);
+                }
+            });
+
+            System.setOut(dual);
+            action.run();
+            System.setOut(console);
+
+        } catch (Exception e) {
+            System.err.println("Error writing output for " + fileName + ": " + e.getMessage());
+            e.printStackTrace(System.err);
+        }
+    }
+
+
+
     /**
      * The main method that starts the Spring Boot application.
      *
@@ -82,54 +113,81 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("Running in containerized mode - automatically executing all use cases...");
 
                 // === COUNTRY REPORTS ===
-                System.out.println("\n=== USE CASE 1: All countries in the world ===");
-                displayAllCountriesWorld();
+                runUseCase("usecase1.log", () -> {
+                    System.out.println("\n=== USE CASE 1: All countries in the world ===");
+                    displayAllCountriesWorld();
+                });
 
                 // === CITY REPORTS (7–16) ===
-                System.out.println("\n=== USE CASE 7–16: City Reports ===");
-                System.out.println("\nRequirement 7: Display all cities in the world ordered by population");
-                displayCities(cityController.getAllCitiesInTheWorld());
+                runUseCase("usecase7.log", () -> {
+                    System.out.println("\nRequirement 7: All cities in the world ordered by population");
+                    displayCities(cityController.getAllCitiesInTheWorld());
+                });
 
-                System.out.println("\nRequirement 8: Display all cities in a given continent (e.g., Asia)");
-                displayCities(cityController.getAllCitiesInAContinent("Asia"));
+                runUseCase("usecase8.log", () -> {
+                    System.out.println("\nRequirement 8: All cities in a given continent (Asia)");
+                    displayCities(cityController.getAllCitiesInAContinent("Asia"));
+                });
 
-                System.out.println("\nRequirement 9: Display all cities in a specific region (e.g., Eastern Asia)");
-                displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+                runUseCase("usecase9.log", () -> {
+                    System.out.println("\nRequirement 9: All cities in region Eastern Asia");
+                    displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+                });
 
-                System.out.println("\nRequirement 10: Display all cities in a specific country (e.g., Japan)");
-                displayCities(cityController.getAllCitiesInACountry("Japan"));
+                runUseCase("usecase10.log", () -> {
+                    System.out.println("\nRequirement 10: All cities in country Japan");
+                    displayCities(cityController.getAllCitiesInACountry("Japan"));
+                });
 
-                System.out.println("\nRequirement 11: Display all cities in a given district (e.g., Shanghai)");
-                displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+                runUseCase("usecase11.log", () -> {
+                    System.out.println("\nRequirement 11: All cities in district Shanghai");
+                    displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+                });
 
-                System.out.println("\nRequirement 12: Display the top 10 most populated cities in the world");
-                displayCities(cityController.getTopNCitiesInTheWorld(10));
+                runUseCase("usecase12.log", () -> {
+                    System.out.println("\nRequirement 12: Top 10 most populated cities in the world");
+                    displayCities(cityController.getTopNCitiesInTheWorld(10));
+                });
 
-                System.out.println("\nRequirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)");
-                displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+                runUseCase("usecase13.log", () -> {
+                    System.out.println("\nRequirement 13: Top 10 cities in continent Asia");
+                    displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+                });
 
-                System.out.println("\nRequirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)");
-                displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+                runUseCase("usecase14.log", () -> {
+                    System.out.println("\nRequirement 14: Top 10 cities in region Eastern Asia");
+                    displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+                });
 
-                System.out.println("\nRequirement 15: Display the top 10 most populated cities in a country (e.g., Japan)");
-                displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+                runUseCase("usecase15.log", () -> {
+                    System.out.println("\nRequirement 15: Top 10 cities in country Japan");
+                    displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+                });
 
-                System.out.println("\nRequirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)");
-                displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
+                runUseCase("usecase16.log", () -> {
+                    System.out.println("\nRequirement 16: Top 10 cities in district Shanghai");
+                    displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
+                });
 
-                // === POPULATION BREAKDOWNS (23–25) ===
-                System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
-                displayPopulationBreakdownsByContinentAll();
+                // === POPULATION BREAKDOWNS ===
+                runUseCase("usecase23.log", () -> {
+                    System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
+                    displayPopulationBreakdownsByContinentAll();
+                });
 
-                System.out.println("\n=== USE CASE 24: Population breakdowns by region ===");
-                displayPopulationBreakdownsByRegionAll();
+                runUseCase("usecase24.log", () -> {
+                    System.out.println("\n=== USE CASE 24: Population breakdowns by region ===");
+                    displayPopulationBreakdownsByRegionAll();
+                });
 
-                System.out.println("\n=== USE CASE 25: Population breakdowns by country ===");
-                displayPopulationBreakdownsByCountryAll();
+                runUseCase("usecase25.log", () -> {
+                    System.out.println("\n=== USE CASE 25: Population breakdowns by country ===");
+                    displayPopulationBreakdownsByCountryAll();
+                });
 
-                System.out.println("\nAll use cases (1, 7–16, 23–25) executed successfully!");
-                System.out.println("Application will now exit.");
+                System.out.println("\nAll use cases executed successfully!");
             }
+
 
         }
 
