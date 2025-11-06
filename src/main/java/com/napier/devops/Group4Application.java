@@ -78,20 +78,60 @@ public class Group4Application implements CommandLineRunner {
                     handleMenuSelection(selection, scanner);
                 }
             }
-        } else {
-            // For Docker/containerized environment, automatically run Use Case 1
-            System.out.println("Running in containerized mode - automatically executing Use Case 1...");
-            displayAllCountriesWorld();
+        }else {
+                System.out.println("Running in containerized mode - automatically executing all use cases...");
 
-        // Also show one example sample for city, continent and region
-        displayExampleSamples();
+                // === COUNTRY REPORTS ===
+                System.out.println("\n=== USE CASE 1: All countries in the world ===");
+                displayAllCountriesWorld();
 
-        displayCityQueries();
+                // === CITY REPORTS (7–16) ===
+                System.out.println("\n=== USE CASE 7–16: City Reports ===");
+                System.out.println("\nRequirement 7: Display all cities in the world ordered by population");
+                displayCities(cityController.getAllCitiesInTheWorld());
 
-            System.out.println("\nUse Case 1, continent, country, and region breakdowns completed successfully!");
-            System.out.println("Application will now exit.");
+                System.out.println("\nRequirement 8: Display all cities in a given continent (e.g., Asia)");
+                displayCities(cityController.getAllCitiesInAContinent("Asia"));
+
+                System.out.println("\nRequirement 9: Display all cities in a specific region (e.g., Eastern Asia)");
+                displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+
+                System.out.println("\nRequirement 10: Display all cities in a specific country (e.g., Japan)");
+                displayCities(cityController.getAllCitiesInACountry("Japan"));
+
+                System.out.println("\nRequirement 11: Display all cities in a given district (e.g., Shanghai)");
+                displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+
+                System.out.println("\nRequirement 12: Display the top 10 most populated cities in the world");
+                displayCities(cityController.getTopNCitiesInTheWorld(10));
+
+                System.out.println("\nRequirement 13: Display the top 10 most populated cities in a continent (e.g., Asia)");
+                displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+
+                System.out.println("\nRequirement 14: Display the top 10 most populated cities in a region (e.g., Eastern Asia)");
+                displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+
+                System.out.println("\nRequirement 15: Display the top 10 most populated cities in a country (e.g., Japan)");
+                displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+
+                System.out.println("\nRequirement 16: Display the top 10 most populated cities in a district (e.g., Shanghai)");
+                displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
+
+                // === POPULATION BREAKDOWNS (23–25) ===
+                System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
+                displayPopulationBreakdownsByContinentAll();
+
+                System.out.println("\n=== USE CASE 24: Population breakdowns by region ===");
+                displayPopulationBreakdownsByRegionAll();
+
+                System.out.println("\n=== USE CASE 25: Population breakdowns by country ===");
+                displayPopulationBreakdownsByCountryAll();
+
+                System.out.println("\nAll use cases (1, 7–16, 23–25) executed successfully!");
+                System.out.println("Application will now exit.");
+            }
+
         }
-    }
 
     /**
      * Displays a welcome message to the console.
