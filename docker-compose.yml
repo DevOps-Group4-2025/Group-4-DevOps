@@ -42,6 +42,8 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    volumes:
+      - ./output:/app/output   # <--- map container output to host
     networks:
       - group4-network
     restart: unless-stopped
