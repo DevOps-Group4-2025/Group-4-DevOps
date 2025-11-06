@@ -41,7 +41,7 @@ jobs:
       - name: Debug repo structure
         run: ls -la
 
-      - name: Compile with Mavena
+      - name: Compile with Maven
         run: mvn -B clean compile
 
       - name: Run Unit Tests
