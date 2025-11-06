@@ -84,8 +84,8 @@ jobs:
 
       - name: Copy output from container
         run: |
-          docker compose ps -q group4-app   # get container ID if needed
-          docker cp $(docker compose ps -q group4-app ):/app/output ./output
+          docker compose ps -q app   # get container ID if needed
+          docker cp $(docker compose ps -q app ):/app/output ./output
 
       - name: Upload output logs
         uses: actions/upload-artifact@v4
