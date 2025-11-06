@@ -12,13 +12,17 @@
 
 ## Code coverage
 
+## Coverage Badges
+
+[![Spring Test Coverage](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps/branch/master/graph/badge.svg?flag=spring-tests)](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps)
+
 ![Coverage](https://raw.githubusercontent.com/DevOps-Group4-2025/Group-4-DevOps/master/images/coverage-badge.svg)
 
 **Develop branch:**  
 
 [![Develop build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=develop&label=develop%20build&logo=github&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Adevelop)
 
-**Milestone**
+**Milestone**
 
 ![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 ![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)

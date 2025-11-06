@@ -39,15 +39,23 @@ jobs:
       - name: Debug repo structure
         run: ls -la
 
-      - name: Compile with Maven
+      - name: Compile with Mavena
         run: mvn -B clean compile
 
       - name: Run Unit Tests
         run: mvn clean test jacoco:report
 
+      - name: Upload Spring Test Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+           files: target/site/jacoco/jacoco.xml
+           flags: spring-tests
+
+
       - name: Generate Coverage Badge
         run: |
           python3 generate_coverage_badge.py
+          
 
       - name: Commit Coverage Badge
         if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/master'
