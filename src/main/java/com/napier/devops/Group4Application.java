@@ -173,10 +173,6 @@ public class Group4Application implements CommandLineRunner {
             case 14: {displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); break;}
             case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
             case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
-            case 100:
-                System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
-                System.exit(0);
-                break;
             case 23:
                 displayPopulationBreakdownsByContinentAll();
                 break;
@@ -188,6 +184,10 @@ public class Group4Application implements CommandLineRunner {
                 break;
             case 21:
                 displayTopCapitalCitiesByContinent(scanner);
+                break;
+            case 100:
+                System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
+                System.exit(0);
                 break;
             default:
                 System.out.println("Invalid selection. Please try again.");
