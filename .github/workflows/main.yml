@@ -43,7 +43,7 @@ jobs:
         run: mvn -B clean compile
 
       - name: Run Unit Tests
-        run: mvn -Dtest=com.napier.devops.Group4ApplicationUnitTest test
+        run: mvn -Dtest=com.napier.devops.TestApplication test jacoco:report
 
       - name: Generate Coverage Badge
         run: |
