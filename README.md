@@ -44,7 +44,7 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | ID | Requirement | Met | Screenshot                  | Log File |
 |----|--------------|-----|-----------------------------|-----------|
 | 1 | All the countries in the world organised by largest population to smallest. | ✅ Yes | ![Req1](images/req1.png)    | [usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase1.log) |
-| 2 | All the countries in a continent organised by largest population to smallest. | ✅ Yes | ![Req1](images/req2.png)    |[usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log) |  
+| 2 | All the countries in a continent organised by largest population to smallest. | ✅ Yes | ![Req1](images/req2.png)    |[usecase2.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log) |  
 | 3 | All the countries in a region organised by largest population to smallest. | ⚙️ In Progress |                             | 🚫 Not generated |
 | 4 | The top N populated countries in the world where N is provided by the user. | ⚙️ In Progress |                             | 🚫 Not generated |
 | 5 | The top N populated countries in a continent where N is provided by the user. | ⚙️ In Progress |                             | 🚫 Not generated |
