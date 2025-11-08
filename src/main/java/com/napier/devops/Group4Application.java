@@ -8,10 +8,12 @@ import com.napier.devops.model.City;
 import com.napier.devops.service.CapitalCityService;
 import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
+import com.napier.devops.util.AppParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -46,6 +48,9 @@ public class Group4Application implements CommandLineRunner {
      */
     @Autowired
     private CityController cityController;
+
+    @Autowired
+    private AppParameters appParameters;
 
 
 
@@ -120,59 +125,59 @@ public class Group4Application implements CommandLineRunner {
 
                 runUseCase("usecase2.log", () -> {
                     System.out.println("\n=== USE CASE 2: All countries in a continent (Asia) ===");
-                    displayAllCountriesInContinent("Asia");
+                    displayAllCountriesInContinent(appParameters.getUseCase2Continent());
                 });
 
 
                 // === CITY REPORTS (7–16) ===
                 runUseCase("usecase7.log", () -> {
-                    System.out.println("\nRequirement 7: All cities in the world ordered by population");
+                    System.out.println("\nUSE CASE 7: All cities in the world ordered by population");
                     displayCities(cityController.getAllCitiesInTheWorld());
                 });
 
                 runUseCase("usecase8.log", () -> {
-                    System.out.println("\nRequirement 8: All cities in a given continent (Asia)");
-                    displayCities(cityController.getAllCitiesInAContinent("Asia"));
+                    System.out.println("\nUSE CASE 8: All cities in a given continent (" + appParameters.getUseCase8Continent() + ")");
+                    displayCities(cityController.getAllCitiesInAContinent(appParameters.getUseCase8Continent()));
                 });
 
                 runUseCase("usecase9.log", () -> {
-                    System.out.println("\nRequirement 9: All cities in region Eastern Asia");
-                    displayCities(cityController.getAllCitiesInARegion("Eastern Asia"));
+                    System.out.println("\nUSE CASE 9: All cities in region " + appParameters.getUseCase9Region());
+                    displayCities(cityController.getAllCitiesInARegion(appParameters.getUseCase9Region()));
                 });
 
                 runUseCase("usecase10.log", () -> {
-                    System.out.println("\nRequirement 10: All cities in country Japan");
-                    displayCities(cityController.getAllCitiesInACountry("Japan"));
+                    System.out.println("\nUSE CASE 10: All cities in country " + appParameters.getUseCase10Country());
+                    displayCities(cityController.getAllCitiesInACountry(appParameters.getUseCase10Country()));
                 });
 
                 runUseCase("usecase11.log", () -> {
-                    System.out.println("\nRequirement 11: All cities in district Shanghai");
-                    displayCities(cityController.getAllCitiesInADistrict("Shanghai"));
+                    System.out.println("\nUSE CASE 11: All cities in district " + appParameters.getUseCase11District());
+                    displayCities(cityController.getAllCitiesInADistrict(appParameters.getUseCase11District()));
                 });
 
                 runUseCase("usecase12.log", () -> {
-                    System.out.println("\nRequirement 12: Top 10 most populated cities in the world");
-                    displayCities(cityController.getTopNCitiesInTheWorld(10));
+                    System.out.println("\nUSE CASE 12: Top " + appParameters.getUseCase12Limit() + " most populated cities in the world");
+                    displayCities(cityController.getTopNCitiesInTheWorld(appParameters.getUseCase12Limit()));
                 });
 
                 runUseCase("usecase13.log", () -> {
-                    System.out.println("\nRequirement 13: Top 10 cities in continent Asia");
-                    displayCities(cityController.getTopNCitiesInAContinent("Asia", 10));
+                    System.out.println("\nUSE CASE 13: Top " + appParameters.getUseCase13Limit() + " cities in continent " + appParameters.getUseCase13Continent());
+                    displayCities(cityController.getTopNCitiesInAContinent(appParameters.getUseCase13Continent(), appParameters.getUseCase13Limit()));
                 });
 
                 runUseCase("usecase14.log", () -> {
-                    System.out.println("\nRequirement 14: Top 10 cities in region Eastern Asia");
-                    displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10));
+                    System.out.println("\nUSE CASE 14: Top 10 cities in region Eastern Asia"); // TODO: Externalize params
+                    displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); // TODO: Externalize params
                 });
 
                 runUseCase("usecase15.log", () -> {
-                    System.out.println("\nRequirement 15: Top 10 cities in country Japan");
-                    displayCities(cityController.getTopNCitiesInACountry("Japan", 10));
+                    System.out.println("\nUSE CASE 15: Top 10 cities in country Japan"); // TODO: Externalize params
+                    displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); // TODO: Externalize params
                 });
 
                 runUseCase("usecase16.log", () -> {
-                    System.out.println("\nRequirement 16: Top 10 cities in district Shanghai");
-                    displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10));
+                    System.out.println("\nUSE CASE 16: Top 10 cities in district Shanghai"); // TODO: Externalize params
+                    displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); // TODO: Externalize params
                 });
 
                 // === POPULATION BREAKDOWNS ===
