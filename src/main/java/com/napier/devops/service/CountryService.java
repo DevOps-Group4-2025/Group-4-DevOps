@@ -17,4 +17,14 @@ public class CountryService {
     public List<Country> getAllCountriesWorld() {
         return countryRepository.getAllCountriesWorld();
     }
+
+
+    /**
+     * Retrieves all countries in a given continent, ordered by population.
+     * @param continent The name of the continent.
+     * @return A list of countries in the specified continent.
+     */
+    public List<Country> getAllCountriesInContinent(String continent) {
+        return countryRepository.findByContinentOrderByPopulationDesc(continent);
+    }
 }

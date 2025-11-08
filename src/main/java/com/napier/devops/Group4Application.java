@@ -118,6 +118,12 @@ public class Group4Application implements CommandLineRunner {
                     displayAllCountriesWorld();
                 });
 
+                runUseCase("usecase2.log", () -> {
+                    System.out.println("\n=== USE CASE 2: All countries in a continent (Asia) ===");
+                    displayAllCountriesInContinent("Asia");
+                });
+
+
                 // === CITY REPORTS (7–16) ===
                 runUseCase("usecase7.log", () -> {
                     System.out.println("\nRequirement 7: All cities in the world ordered by population");
@@ -261,6 +267,9 @@ public class Group4Application implements CommandLineRunner {
             case 1:
                 displayAllCountriesWorld();
                 break;
+            case 2:
+                displayAllCountriesInContinent("Asia"); // Or prompt user for continent
+                break;
             case 7: {displayCities(cityController.getAllCitiesInTheWorld()); break;}
             case 8: {displayCities(cityController.getAllCitiesInAContinent("Asia")); break;}
             case 9: {displayCities(cityController.getAllCitiesInARegion("Eastern Asia")); break;}
@@ -302,6 +311,12 @@ public class Group4Application implements CommandLineRunner {
     private void displayAllCountriesWorld() {
         System.out.println("\n=== ALL COUNTRIES IN THE WORLD (BY POPULATION) ===");
         List<Country> countries = countryService.getAllCountriesWorld();
+        displayCountries(countries);
+    }
+
+    private void displayAllCountriesInContinent(String continent) {
+        System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", continent.toUpperCase());
+        List<Country> countries = countryService.getAllCountriesInContinent(continent);
         displayCountries(countries);
     }
 
