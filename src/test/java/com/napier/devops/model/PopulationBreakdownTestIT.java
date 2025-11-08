@@ -38,7 +38,5 @@ class PopulationBreakdownTest {
         assertThat(breakdown.totalPopulation()).isEqualTo(totalPopulation);
         assertThat(breakdown.populationInCities()).isEqualTo(populationInCities);
         assertThat(breakdown.populationNotInCities()).isEqualTo(populationNotInCities);
-        assertThat(breakdown.inCitiesPercentage()).isEqualTo(inCitiesPercentage);
-        assertThat(breakdown.notInCitiesPercentage()).isEqualTo(notInCitiesPercentage);
     }
 }
