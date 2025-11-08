@@ -1,5 +1,7 @@
 package com.napier.devops.model;
 
+import java.math.BigDecimal;
+
 /**
  * Represents an aggregated population breakdown for a specific scope.
  * <p>
@@ -24,4 +26,16 @@ public record PopulationBreakdown(
         Double inCitiesPercentage,
         Double notInCitiesPercentage
 ) {
+
+    public PopulationBreakdown(String type2, String name2, long totalPopulation2, long populationInCities2,
+            long populationNotInCities2, BigDecimal inCitiesPercentage2, BigDecimal notInCitiesPercentage2) {
+        this(type2,
+             name2,
+             totalPopulation2,
+             populationInCities2,
+             populationNotInCities2,
+             inCitiesPercentage2 != null ? inCitiesPercentage2.doubleValue() : null,
+             notInCitiesPercentage2 != null ? notInCitiesPercentage2.doubleValue() : null
+        );
+    }
 }

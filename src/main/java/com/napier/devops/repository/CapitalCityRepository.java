@@ -1,5 +1,6 @@
 package com.napier.devops.repository;
 
+import com.napier.devops.model.CapitalCity;
 import com.napier.devops.model.Country;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,6 +28,8 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
     List<com.napier.devops.model.CapitalCity> findTopCapitalCitiesByContinent(
             @Param("continent") String continent,
             Pageable pageable);
+
+    List<CapitalCity> findCapitalCitiesByContinentOrderByPopulationDesc(String string);
 }
 
 
