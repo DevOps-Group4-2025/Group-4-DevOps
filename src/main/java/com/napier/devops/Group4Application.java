@@ -8,7 +8,7 @@ import com.napier.devops.model.City;
 import com.napier.devops.service.CapitalCityService;
 import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
-import com.napier.devops.AppParameters;
+import com.napier.devops.util.AppParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

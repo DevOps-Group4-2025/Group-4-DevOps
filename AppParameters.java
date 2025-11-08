@@ -1,4 +1,4 @@
-package com.napier.devops;
+package com.napier.devops.util;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * This allows changing report parameters without modifying the source code.
  */
 @Component
-@PropertySource("classpath:parameters.properties")
+@PropertySource(value = "classpath:parameters.properties", ignoreResourceNotFound = true)
 @Getter
 public class AppParameters {
 
