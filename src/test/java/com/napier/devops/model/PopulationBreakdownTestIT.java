@@ -10,6 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class PopulationBreakdownTest {
 
+    /**
+     * 
+     */
     @Test
     void populationBreakdownRecordCanBeCreatedAndAccessed() {
         // Given
