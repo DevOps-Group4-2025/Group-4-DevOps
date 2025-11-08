@@ -1,4 +1,4 @@
-package com.napier.devops.util;
+package com.napier.devops;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
