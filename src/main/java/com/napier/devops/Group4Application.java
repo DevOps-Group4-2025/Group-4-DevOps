@@ -54,6 +54,33 @@ public class Group4Application implements CommandLineRunner {
 
 
 
+
+    /**
+     * Executes a use case and writes its output to both the console and a log file.
+     * <p>
+     * This method ensures that the output directory exists, creates or overwrites
+     * the log file specified by {@code fileName}, and prints both to the console
+     * and to the file simultaneously. Additionally, a timestamp is added at the
+     * top of each report to indicate when it was generated.
+     * </p>
+     *
+     * <p>Example usage:</p>
+     * <pre>{@code
+     * runUseCase("usecase1.log", () -> displayAllCountriesWorld());
+     * }</pre>
+     *
+     * @param fileName the name of the file to write the report to (e.g., "usecase1.log")
+     * @param action   a {@link Runnable} representing the use case logic to execute
+     *
+     * <p>Behavior:</p>
+     * <ul>
+     *   <li>If the output directory "output" does not exist, it will attempt to create it.</li>
+     *   <li>Prints the current date and time at the beginning of the report.</li>
+     *   <li>Redirects {@link System#out} to a dual stream that prints to both console and file.</li>
+     *   <li>Restores {@link System#out} after execution is complete.</li>
+     *   <li>Catches and logs any exceptions during file writing without terminating the program.</li>
+     * </ul>
+     */
     private static void runUseCase(String fileName, Runnable action) {
         java.io.File dir = new java.io.File("output");
         if (!dir.exists() && !dir.mkdirs()) {
@@ -72,7 +99,16 @@ public class Group4Application implements CommandLineRunner {
             });
 
             System.setOut(dual);
+
+            // Add a timestamp at the start of the report
+            java.time.LocalDateTime now = java.time.LocalDateTime.now();
+            java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            System.out.println("Report generated on: " + now.format(formatter) + "\n");
+
+            // Execute the use case action
             action.run();
+
+            // Restore original System.out
             System.setOut(console);
 
         } catch (Exception e) {
@@ -80,7 +116,6 @@ public class Group4Application implements CommandLineRunner {
             e.printStackTrace(System.err);
         }
     }
-
 
 
     /**
