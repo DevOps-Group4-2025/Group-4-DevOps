@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest(classes = TestApplication.class)
 @ActiveProfiles("test")
@@ -32,13 +33,13 @@ class CapitalCityServiceTest {
 
     @BeforeEach
     void setUp() {
-        countryRepository.deleteAll();
         cityRepository.deleteAll();
+        countryRepository.deleteAll();
 
-        City tokyo = buildCity(1L, "Tokyo", "JPN", "Tokyo", 9000000);
-        City seoul = buildCity(2L, "Seoul", "KOR", "Seoul", 9800000);
-        City bangkok = buildCity(3L, "Bangkok", "THA", "Bangkok", 7800000);
-        City madrid = buildCity(4L, "Madrid", "ESP", "Madrid", 3200000);
+        City tokyo = buildCity(1L, "Tokyo", "JPN", "Tokyo", 9_000_000);
+        City seoul = buildCity(2L, "Seoul", "KOR", "Seoul", 9_800_000);
+        City bangkok = buildCity(3L, "Bangkok", "THA", "Bangkok", 7_800_000);
+        City madrid = buildCity(4L, "Madrid", "ESP", "Madrid", 3_200_000);
 
         cityRepository.saveAll(List.of(tokyo, seoul, bangkok, madrid));
 
@@ -50,33 +51,44 @@ class CapitalCityServiceTest {
         ));
     }
 
+    // ------------------------------------------------------------
+    // SUCCESS CASES
+    // ------------------------------------------------------------
+
     @Test
     void getTopCapitalCitiesInContinent_returnsOrderedSubset() {
         List<CapitalCity> results = capitalCityService.getTopCapitalCitiesInContinent("Asia", 2);
 
-        assertThat(results)
-                .hasSize(2)
-                .extracting(CapitalCity::getCityName)
-                .containsExactly("Seoul", "Tokyo");
-
-        assertThat(results)
-                .extracting(CapitalCity::getCountryName)
-                .containsExactly("South Korea", "Japan");
+        assertAll("Top 2 capital cities in Asia",
+                () -> assertThat(results).hasSize(2),
+                () -> assertThat(results).extracting(CapitalCity::getCityName)
+                        .containsExactly("Seoul", "Tokyo"),
+                () -> assertThat(results).extracting(CapitalCity::getCountryName)
+                        .containsExactly("South Korea", "Japan")
+        );
     }
 
+    // ------------------------------------------------------------
+    // FAILURE CASES
+    // ------------------------------------------------------------
+
     @Test
-    void getTopCapitalCitiesInContinent_rejectsInvalidLimit() {
+    void getTopCapitalCitiesInContinent_throwsExceptionForZeroLimit() {
         assertThatThrownBy(() -> capitalCityService.getTopCapitalCitiesInContinent("Asia", 0))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("limit");
     }
 
     @Test
-    void getTopCapitalCitiesInContinent_rejectsBlankContinent() {
+    void getTopCapitalCitiesInContinent_throwsExceptionForBlankContinent() {
         assertThatThrownBy(() -> capitalCityService.getTopCapitalCitiesInContinent("  ", 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("continent");
     }
+
+    // ------------------------------------------------------------
+    // HELPERS
+    // ------------------------------------------------------------
 
     private City buildCity(Long id, String name, String countryCode, String district, int population) {
         City city = new City();
@@ -91,14 +103,12 @@ class CapitalCityServiceTest {
     private Country buildCountry(String code, String name, String continent, String region, Long capitalId) {
         Country country = new Country();
         country.setCode(code);
+        country.setCode2(code.substring(0, 2));
         country.setName(name);
         country.setContinent(continent);
         country.setRegion(region);
-        country.setPopulation(1_000_000L);
+        country.setPopulation(1_000_000L); // dummy value
         country.setCapital(capitalId);
-        country.setCode2(code.substring(0, 2));
         return country;
     }
 }
-
-
