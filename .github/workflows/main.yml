@@ -80,7 +80,7 @@ jobs:
 
       - name: Run docker compose with timeout
         run: |
-          timeout 1200s docker compose up --abort-on-container-exit --timeout 666 || echo "Docker compose completed or timed out"
+          timeout 120s docker compose up --abort-on-container-exit --timeout 120 || echo "Docker compose completed or timed out"
 
       - name: Upload output logs
         uses: actions/upload-artifact@v4
