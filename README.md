@@ -41,17 +41,17 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 **Status:**  
 ✅ **16 of 32 requirements implemented — 50% complete**
 
-| ID | Requirement | Met | Screenshot | Log File |
-|----|--------------|-----|-------------|-----------|
-| 1  | All the countries in the world organised by largest population to smallest. | ✅ Yes | ![Req1](images/req1.png) | [usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase1.log) |
-| 2  | All the countries in a continent organised by largest population to smallest. | ✅ Yes | ![Req2](images/req2.png) | [usecase2.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log) |
-| 3  | All the countries in a region organised by largest population to smallest. | ⚙️ In Progress | | 🚫 Not generated |
-| 4  | The top N populated countries in the world where N is provided by the user. | ⚙️ In Progress | | 🚫 Not generated |
-| 5  | The top N populated countries in a continent where N is provided by the user. | ⚙️ In Progress | | 🚫 Not generated |
-| 6  | The top N populated countries in a region where N is provided by the user. | ⚙️ In Progress | | 🚫 Not generated |
-| 7  | All the cities in the world organised by largest population to smallest. | ✅ Yes | ![Req7](images/Req-7.png) | [usecase7.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase7.log) |
-| 8  | All the cities in a continent organised by largest population to smallest. | ✅ Yes | ![Req8](images/Req-8.png) | [usecase8.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase8.log) |
-| 9  | All the cities in a region organised by largest population to smallest. | ✅ Yes | ![Req9](images/Req-9.png) | [usecase9.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase9.log) |
+| ID | Requirement | Met | Screenshot                  | Log File |
+|----|--------------|-----|-----------------------------|-----------|
+| 1  | All the countries in the world organised by largest population to smallest. | ✅ Yes | ![Req1](images/req1.png)    | [usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase1.log) |
+| 2  | All the countries in a continent organised by largest population to smallest. | ✅ Yes | ![Req2](images/req2.png)    | [usecase2.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log) |
+| 3  | All the countries in a region organised by largest population to smallest. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 4  | The top N populated countries in the world where N is provided by the user. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 5  | The top N populated countries in a continent where N is provided by the user. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 6  | The top N populated countries in a region where N is provided by the user. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 7  | All the cities in the world organised by largest population to smallest. | ✅ Yes | ![Req7](images/Req-7.png)   | [usecase7.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase7.log) |
+| 8  | All the cities in a continent organised by largest population to smallest. | ✅ Yes | ![Req8](images/Req-8.png)   | [usecase8.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase8.log) |
+| 9  | All the cities in a region organised by largest population to smallest. | ✅ Yes | ![Req9](images/Req-9.png)   | [usecase9.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase9.log) |
 | 10 | All the cities in a country organised by largest population to smallest. | ✅ Yes | ![Req10](images/Req-10.png) | [usecase10.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase10.log) |
 | 11 | All the cities in a district organised by largest population to smallest. | ✅ Yes | ![Req11](images/Req-11.png) | [usecase11.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase11.log) |
 | 12 | The top N populated cities in the world where N is provided by the user. | ✅ Yes | ![Req12](images/Req-12.png) | [usecase12.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase12.log) |
@@ -59,22 +59,22 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | 14 | The top N populated cities in a region where N is provided by the user. | ✅ Yes | ![Req14](images/Req-14.png) | [usecase14.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase14.log) |
 | 15 | The top N populated cities in a country where N is provided by the user. | ✅ Yes | ![Req15](images/Req-15.png) | [usecase15.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase15.log) |
 | 16 | The top N populated cities in a district where N is provided by the user. | ✅ Yes | ![Req16](images/Req-16.png) | [usecase16.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase16.log) |
-| 17 | List all capital cities in the world by population. | ✅ Yes | ![Req17](images/req17.png) | [usecase17.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase17.log) |
-| 18 | List all capital cities in a continent by population. | ⚙️ In Progress | | 🚫 Not generated |
-| 19 | List all capital cities in a region by population. | ⚙️ In Progress | | 🚫 Not generated |
-| 20 | Top N capital cities in the world by population. | ⚙️ In Progress | | 🚫 Not generated |
-| 21 | Top N capital cities in a continent by population. | ⚙️ In Progress | | 🚫 Not generated |
-| 22 | Top N capital cities in a region by population. | ⚙️ In Progress | | 🚫 Not generated |
-| 23 | The population of people, people living in cities, and people not living in cities in each continent. | ✅ Yes | ![Req23](images/req23.png) | [usecase23.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase23.log) |
-| 24 | The population of people, people living in cities, and people not living in cities in each region. | ✅ Yes | ![Req24](images/req24.png) | [usecase24.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase24.log) |
-| 25 | The population of people, people living in cities, and people not living in cities in each country. | ✅ Yes | ![Req25](images/req25.png) | [usecase25.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase25.log) |
-| 26 | The population of the world. | ⚙️ In Progress | | 🚫 Not generated |
-| 27 | The population of a continent. | ⚙️ In Progress | | 🚫 Not generated |
-| 28 | The population of a region. | ⚙️ In Progress | | 🚫 Not generated |
-| 29 | The population of a country. | ⚙️ In Progress | | 🚫 Not generated |
-| 30 | The population of a district. | ⚙️ In Progress | | 🚫 Not generated |
-| 31 | The population of a city. | ⚙️ In Progress | | 🚫 Not generated |
-| 32 | Languages reports. | ⚙️ In Progress | | 🚫 Not generated |
+| 17 | List all capital cities in the world by population. | ✅ Yes | ![Req17](images/Req-17.png) | [usecase17.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase17.log) |
+| 18 | List all capital cities in a continent by population. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 19 | List all capital cities in a region by population. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 20 | Top N capital cities in the world by population. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 21 | Top N capital cities in a continent by population. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 22 | Top N capital cities in a region by population. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 23 | The population of people, people living in cities, and people not living in cities in each continent. | ✅ Yes | ![Req23](images/req23.png)  | [usecase23.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase23.log) |
+| 24 | The population of people, people living in cities, and people not living in cities in each region. | ✅ Yes | ![Req24](images/req24.png)  | [usecase24.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase24.log) |
+| 25 | The population of people, people living in cities, and people not living in cities in each country. | ✅ Yes | ![Req25](images/req25.png)  | [usecase25.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase25.log) |
+| 26 | The population of the world. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 27 | The population of a continent. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 28 | The population of a region. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 29 | The population of a country. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 30 | The population of a district. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 31 | The population of a city. | ⚙️ In Progress |                             | 🚫 Not generated |
+| 32 | Languages reports. | ⚙️ In Progress |                             | 🚫 Not generated |
 
 
 ## About the Project
