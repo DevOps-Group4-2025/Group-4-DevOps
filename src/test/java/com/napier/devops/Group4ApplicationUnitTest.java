@@ -3,8 +3,6 @@ package com.napier.devops;
 import com.napier.devops.Group4Application;
 import com.napier.devops.controller.CityController;
 import com.napier.devops.model.Country;
-import com.napier.devops.model.PopulationBreakdown;
-import com.napier.devops.model.City;
 import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
 import org.junit.jupiter.api.Test;
