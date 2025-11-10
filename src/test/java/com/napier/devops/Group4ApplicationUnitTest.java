@@ -1,21 +1,18 @@
 package com.napier.devops;
 
-import com.napier.devops.Group4Application;
 import com.napier.devops.controller.CityController;
 import com.napier.devops.model.Country;
-import com.napier.devops.model.PopulationBreakdown;
-import com.napier.devops.model.City;
 import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
+import com.napier.devops.service.CapitalCityService;
+import com.napier.devops.util.AppParameters;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Unit test for {@link Group4Application} that runs the main runner methods
@@ -32,16 +29,20 @@ public class Group4ApplicationUnitTest {
 
     @Test
     void runInvokesServicesAndControllers() throws Exception {
-        // Arrange: create mocks and stub returns
+        // Arrange: create mocks
         CountryService countryService = mock(CountryService.class);
         PopulationBreakdownService pbService = mock(PopulationBreakdownService.class);
         CityController cityController = mock(CityController.class);
+        CapitalCityService capitalCityService = mock(CapitalCityService.class);  // ✅ Added
+        AppParameters appParameters = mock(AppParameters.class);                 // ✅ Added
 
+        // Sample data
         Country sample = new Country();
         sample.setCode("TST");
         sample.setName("Testland");
         sample.setPopulation(12345L);
 
+        // Stub service methods
         when(countryService.getAllCountriesWorld()).thenReturn(List.of(sample));
         when(pbService.getAllByContinent()).thenReturn(Collections.emptyList());
         when(pbService.getAllByRegion()).thenReturn(Collections.emptyList());
@@ -58,20 +59,31 @@ public class Group4ApplicationUnitTest {
         when(cityController.getTopNCitiesInACountry("Japan", 10)).thenReturn(Collections.emptyList());
         when(cityController.getTopNCitiesInADistrict("Shanghai", 10)).thenReturn(Collections.emptyList());
 
+        // ✅ Capital city service stubs
+        when(capitalCityService.getAllCapitalCitiesByPopulation()).thenReturn(Collections.emptyList());
+
+        // ✅ App parameters stubs
+        when(appParameters.getUseCase2Continent()).thenReturn("Asia");
+        when(appParameters.getUseCase8Continent()).thenReturn("Asia");
+        when(appParameters.getUseCase9Region()).thenReturn("Eastern Asia");
+
         // Create app instance and inject mocks
         Group4Application app = new Group4Application();
         setField(app, "countryService", countryService);
         setField(app, "populationBreakdownService", pbService);
         setField(app, "cityController", cityController);
+        setField(app, "capitalCityService", capitalCityService);  // ✅ Added
+        setField(app, "appParameters", appParameters);            // ✅ Added
 
-        // Act: run the application runner (will call our methods)
+        // Act: run the application (executes all use cases)
         app.run();
 
-        // Assert: verify key interactions happened
+        // Assert: verify expected interactions
         verify(countryService).getAllCountriesWorld();
         verify(pbService).getAllByContinent();
         verify(pbService).getAllByRegion();
         verify(pbService).getAllByCountry();
         verify(cityController).getAllCitiesInTheWorld();
+        verify(capitalCityService).getAllCapitalCitiesByPopulation(); // ✅ New check
     }
 }
