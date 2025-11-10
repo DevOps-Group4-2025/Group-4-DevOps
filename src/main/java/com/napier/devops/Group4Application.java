@@ -215,6 +215,11 @@ public class Group4Application implements CommandLineRunner {
                     displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); // TODO: Externalize params
                 });
 
+                runUseCase("usecase17.log", () -> {
+                    System.out.println("\nUSE CASE 17: All capital cities in the world by population");
+                    displayAllCapitalCitiesWorld();
+                });
+
                 // === POPULATION BREAKDOWNS ===
                 runUseCase("usecase23.log", () -> {
                     System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
@@ -278,6 +283,7 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("14.  Display the top N most populated cities in a region (e.g., Eastern Asia,10)");
                 System.out.println("15.  Display the top N most populated cities in a country (e.g., Japan,10)");
                 System.out.println("16.  Display the top N most populated cities in a district (e.g., Shanghai,10)");
+                System.out.println("17.  All capital cities in the world by population");
                 System.out.println("\n--- AGGREGATED BREAKDOWNS ---");
                 System.out.println("23. Population breakdowns by continent (all)");
                 System.out.println("24. Population breakdowns by region (all)");
@@ -320,6 +326,7 @@ public class Group4Application implements CommandLineRunner {
             case 14: {displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); break;}
             case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
             case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
+            case 17: {displayAllCapitalCitiesWorld(); break;}
             case 23:
                 displayPopulationBreakdownsByContinentAll();
                 break;
@@ -358,6 +365,12 @@ public class Group4Application implements CommandLineRunner {
         System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", continent.toUpperCase());
         List<Country> countries = countryService.getAllCountriesInContinent(continent);
         displayCountries(countries);
+    }
+
+    private void displayAllCapitalCitiesWorld() {
+        System.out.println("\n=== ALL CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
+        List<CapitalCity> capitalCities = capitalCityService.getAllCapitalCitiesByPopulation();
+        displayCapitalCities(capitalCities);
     }
 
     private void displayTopCapitalCitiesByContinent(Scanner scanner) {

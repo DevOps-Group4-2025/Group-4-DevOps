@@ -30,6 +30,18 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
             Pageable pageable);
 
     List<CapitalCity> findCapitalCitiesByContinentOrderByPopulationDesc(String string);
+
+    @Query("""
+            SELECT new com.napier.devops.model.CapitalCity(
+                city.name,
+                country.name,
+                city.population
+            )
+            FROM Country country
+            JOIN City city ON city.id = country.capital
+            ORDER BY city.population DESC
+            """)
+    List<CapitalCity> findAllCapitalCitiesByPopulationDesc();
 }
 
 

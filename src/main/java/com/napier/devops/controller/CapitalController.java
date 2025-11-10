@@ -28,4 +28,10 @@ public class CapitalController {
         List<CapitalCity> results = capitalCityService.getTopCapitalCitiesInContinent(continent, limit);
         return ResponseEntity.ok(results);
     }
+
+    @GetMapping("/world")
+    public ResponseEntity<List<CapitalCity>> getAllCapitalCities() {
+        List<CapitalCity> results = capitalCityService.getAllCapitalCitiesByPopulation();
+        return ResponseEntity.ok(results);
+    }
 }

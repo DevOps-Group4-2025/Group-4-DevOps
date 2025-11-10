@@ -42,6 +42,10 @@ public class CapitalCityService {
                 PageRequest.of(0, limit)
         );
     }
+
+    public List<CapitalCity> getAllCapitalCitiesByPopulation() {
+        return capitalCityRepository.findAllCapitalCitiesByPopulationDesc();
+    }
 }
 
 
