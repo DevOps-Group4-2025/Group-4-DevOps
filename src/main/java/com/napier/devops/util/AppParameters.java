@@ -35,7 +35,48 @@ public class AppParameters {
     @Value("${use_case_13.continent}")
     private String useCase13Continent;
 
-    @Value("${use_case_13.limit}")
-    private int useCase13Limit;
+        @Value("${use_case_13.limit}")
 
-}
+        private int useCase13Limit;
+
+    
+
+        @Value("${use_case_14.region}")
+
+        private String useCase14Region;
+
+    
+
+        @Value("${use_case_14.limit}")
+
+        private int useCase14Limit;
+
+    
+
+        @Value("${use_case_15.country}")
+
+        private String useCase15Country;
+
+    
+
+        @Value("${use_case_15.limit}")
+
+        private int useCase15Limit;
+
+    
+
+        @Value("${use_case_16.district}")
+
+        private String useCase16District;
+
+    
+
+        @Value("${use_case_16.limit}")
+
+        private int useCase16Limit;
+
+    
+
+    }
+
+    

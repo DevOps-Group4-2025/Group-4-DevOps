@@ -201,20 +201,21 @@ public class Group4Application implements CommandLineRunner {
                 });
 
                 runUseCase("usecase14.log", () -> {
-                    System.out.println("\nUSE CASE 14: Top 10 cities in region Eastern Asia"); // TODO: Externalize params
-                    displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); // TODO: Externalize params
+                    System.out.println("\nUSE CASE 14: Top " + appParameters.getUseCase14Limit() + " cities in region " + appParameters.getUseCase14Region());
+                    displayCities(cityController.getTopNCitiesInARegion(appParameters.getUseCase14Region(), appParameters.getUseCase14Limit()));
                 });
 
                 runUseCase("usecase15.log", () -> {
-                    System.out.println("\nUSE CASE 15: Top 10 cities in country Japan"); // TODO: Externalize params
-                    displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); // TODO: Externalize params
+                    System.out.println("\nUSE CASE 15: Top " + appParameters.getUseCase15Limit() + " cities in country " + appParameters.getUseCase15Country());
+                    displayCities(cityController.getTopNCitiesInACountry(appParameters.getUseCase15Country(), appParameters.getUseCase15Limit()));
                 });
 
                 runUseCase("usecase16.log", () -> {
-                    System.out.println("\nUSE CASE 16: Top 10 cities in district Shanghai"); // TODO: Externalize params
-                    displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); // TODO: Externalize params
+                    System.out.println("\nUSE CASE 16: Top " + appParameters.getUseCase16Limit() + " cities in district " + appParameters.getUseCase16District());
+                    displayCities(cityController.getTopNCitiesInADistrict(appParameters.getUseCase16District(), appParameters.getUseCase16Limit()));
                 });
 
+                // === CAPITAL CITIES REPORTS (17-22)===
                 runUseCase("usecase17.log", () -> {
                     System.out.println("\nUSE CASE 17: All capital cities in the world by population");
                     displayAllCapitalCitiesWorld();
