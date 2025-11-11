@@ -9,7 +9,8 @@
 [![License](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
 
 [![Latest Tag](https://img.shields.io/github/v/tag/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
-[![Latest Release](https://img.shields.io/github/v/release/DevOps-Group4-2025/Group-4-DevOps?label=Release&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/DevOps-Group4-2025/Group-4-DevOps?label=Release&style=flat-square&cacheSeconds=60)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
+
 
 
 ## Coverage Badge from codecov
