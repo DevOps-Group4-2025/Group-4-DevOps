@@ -1,3 +1,5 @@
+Report generated on: 2025-11-11 22:01:34
+
 
 USE CASE 7: All cities in the world ordered by population
 Hibernate: 
@@ -2309,12 +2311,14 @@ Langfang                       CHN             Hebei                        148,
 Kuching                        MYS             Sarawak                      148,059
 Hitachinaka                    JPN             Tokyo-to                     148,006
 al-Manama                      BHR             al-Manama                    148,000
+2025-11-11T22:02:46.848Z  INFO 1 --- [Group4] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 Reading                        GBR             England                      148,000
 Kumo                           NGA             Bauchi & Gombe               148,000
 Stara Zagora                   BGR             Haskovo                      147,939
 Valencia                       PHL             Northern Mindanao            147,924
 Vaughan                        CAN             Ontario                      147,889
 Niiza                          JPN             Saitama                      147,744
+2025-11-11T22:02:47.313Z  INFO 1 --- [Group4] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 Nagareyama                     JPN             Chiba                        147,738
 Shomolu                        NGA             Lagos                        147,700
 Formosa                        ARG             Formosa                      147,636
@@ -2342,6 +2346,7 @@ Hampton                        USA             Virginia                     146,
 Ciudad Valles                  MEX             San Luis Potosí              146,411
 Circik                         UZB             Toskent                      146,400
 West Bromwich                  GBR             England                      146,386
+2025-11-11T22:02:47.570Z  INFO 1 --- [Group4] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
 Pokhara                        NPL             Western                      146,318
 Zhoukou                        CHN             Henan                        146,288
 Hapur                          IND             Uttar Pradesh                146,262
@@ -2350,6 +2355,26 @@ Suining                        CHN             Sichuan                      146,
 Sobral                         BRA             Ceará                        146,005
 Osmaniye                       TUR             Osmaniye                     146,003
 Iruma                          JPN             Saitama                      145,922
+Hibernate: 
+    /* SELECT
+        new com.napier.devops.model.CapitalCity(city.name, country.name, city.population) 
+    FROM
+        Country country 
+    JOIN
+        City city 
+            ON city.id = country.capital 
+    ORDER BY
+        city.population DESC */ select
+            c2_0.`Name`,
+            c1_0.`Name`,
+            c2_0.`Population` 
+        from
+            country c1_0 
+        join
+            city c2_0 
+                on c2_0.`ID`=c1_0.`Capital` 
+        order by
+            c2_0.`Population` desc
 Sousse                         TUN             Sousse                       145,900
 Lalitapur                      NPL             Central                      145,847
 Las Heras                      ARG             Mendoza                      145,823
