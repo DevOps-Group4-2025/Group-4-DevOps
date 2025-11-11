@@ -13,7 +13,7 @@
 
     <groupId>com.napier.devops</groupId>
     <artifactId>Group4</artifactId>
-    <version>0.1.0.6</version>
+    <version>0.1.0.7</version>
     <name>Group4</name>
     <description>World Population Reporting System - Spring Boot Application</description>
 
