@@ -10,6 +10,8 @@
 
 [![Latest Release](https://img.shields.io/github/v/release/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
 
+[![Latest Tag](https://img.shields.io/github/v/tag/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
+
 ## Coverage Badge from codecov
 
 [![Spring Test Coverage](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps/branch/master/graph/badge.svg?flag=spring-tests)](https://codecov.io/gh/DevOps-Group4-2025/Group-4-DevOps)
