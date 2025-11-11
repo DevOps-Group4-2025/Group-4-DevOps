@@ -124,6 +124,9 @@ jobs:
       - name: Build & Package
         run: mvn -B clean package
 
+      - name: Compile with Maven
+        run: mvn -B clean compile
+
       - name: Run Unit Tests
         run: mvn clean test jacoco:report
 
