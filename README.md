@@ -35,6 +35,7 @@
 
 
 
+
 ## Reporting Bugs
 
 If you find a bug, please open an issue using our [Bug Report template](https://github.com/DevOps-Group4-2025/Group-4-DevOps/issues/new?template=bug_report.md). Include steps to reproduce, expected behaviour, and screenshots if possible.
@@ -101,6 +102,7 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
 
 
