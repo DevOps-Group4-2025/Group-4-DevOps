@@ -6,9 +6,11 @@
 
 [![Master build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=master&label=master%20build&logo=github&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Amaster)
 
-[![LICENSE](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps.svg?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
 
-[![Releases](https://img.shields.io/github/release/DevOps-Group4-2025/Group-4-DevOps/all.svg?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases)
+
+[![Latest Release](https://img.shields.io/github/v/release/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
+
 
 
 ## Coverage Badge from codecov
@@ -99,6 +101,7 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
 
 
