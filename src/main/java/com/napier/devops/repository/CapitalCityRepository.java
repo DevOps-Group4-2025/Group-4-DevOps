@@ -31,6 +31,7 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
 
     List<CapitalCity> findCapitalCitiesByContinentOrderByPopulationDesc(String string);
 
+    // USE CASE 17: List All Capital Cities in the World by Population
     @Query("""
             SELECT new com.napier.devops.model.CapitalCity(
                 city.name,
@@ -43,6 +44,7 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
             """)
     List<CapitalCity> findAllCapitalCitiesByPopulationDesc();
 
+    // USE CASE 18: List All Capital Cities in a Continent by Population
     @Query("""
     SELECT new com.napier.devops.model.CapitalCity(
         city.name,
@@ -56,6 +58,17 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
 """)
     List<CapitalCity> findCapitalCitiesInContinentByPopulationDesc(@Param("continent") String continent);
 
+    // USE CASE 19: List All Capital Cities in a Region by Population
+    @Query("""
+    SELECT new com.napier.devops.model.CapitalCity(
+        c.name, co.name, c.population
+    )
+    FROM Country co
+    JOIN City c ON c.id = co.capital
+    WHERE LOWER(co.region) = LOWER(:region)
+    ORDER BY c.population DESC
+""")
+    List<CapitalCity> findCapitalCitiesInRegionByPopulationDesc(@Param("region") String region);
 }
 
 

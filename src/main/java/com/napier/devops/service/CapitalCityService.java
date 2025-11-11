@@ -42,13 +42,17 @@ public class CapitalCityService {
                 PageRequest.of(0, limit)
         );
     }
-
+    // USE CASE 17: List All Capital Cities in the World by Population
     public List<CapitalCity> getAllCapitalCitiesByPopulation() {
         return capitalCityRepository.findAllCapitalCitiesByPopulationDesc();
     }
-
+    // USE CASE 18: List All Capital Cities in a Continent by Population
     public List<CapitalCity> getCapitalCitiesInContinentByPopulation(String continent) {
         return capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc(continent);
+    }
+    // USE CASE 19: List All Capital Cities in a Region by Population
+    public List<CapitalCity> getCapitalCitiesInRegionByPopulation(String region) {
+        return capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc(region);
     }
 
 }
