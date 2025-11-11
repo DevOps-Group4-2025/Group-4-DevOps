@@ -13,7 +13,6 @@ on:
 permissions:
   contents: write
 
-
 jobs:
   build:
     name: Group 4 DevOps Build
@@ -38,8 +37,6 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Debug repo structure
         run: ls -la
@@ -53,15 +50,13 @@ jobs:
       - name: Upload Spring Test Coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-           files: target/site/jacoco/jacoco.xml
-           flags: spring-tests
+          files: target/site/jacoco/jacoco.xml
+          flags: spring-tests
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Generate Coverage Badge
-        run: |
-          python3 generate_coverage_badge.py
-          
+        run: python3 generate_coverage_badge.py
 
       - name: Commit Coverage Badge
         if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/master'
@@ -77,6 +72,13 @@ jobs:
 
       - name: Debug file structure after build
         run: ls -la target/
+
+      # ⬇️ Upload the generated JAR for use in the release job
+      - name: Upload packaged JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-jar
+          path: target/*.jar
 
       - name: Run docker compose with timeout
         run: |
@@ -121,14 +123,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build & Package
-        run: mvn -B clean package
+      # ⬇️ Download the JAR built in the previous job
+      - name: Download packaged JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: app-jar
+          path: target/
 
-      - name: Compile with Maven
-        run: mvn -B clean compile
-
-      - name: Run Unit Tests
-        run: mvn clean test jacoco:report
+      - name: Debug JAR files
+        run: ls -la target/
 
       - name: Create GitHub Release and Upload JAR
         uses: softprops/action-gh-release@v2
