@@ -1,5 +1,6 @@
 package com.napier.devops;
 
+import com.napier.devops.controller.CapitalController;
 import com.napier.devops.model.CapitalCity;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
@@ -52,7 +53,8 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private AppParameters appParameters;
 
-
+    @Autowired
+    private CapitalController capitalController;
 
 
     /**
@@ -221,7 +223,15 @@ public class Group4Application implements CommandLineRunner {
                     displayAllCapitalCitiesWorld();
                 });
 
-                // === POPULATION BREAKDOWNS ===
+            runUseCase("usecase18.log", () -> {
+                System.out.println("\nUSE CASE 18: All capital cities in a continent by population");
+                String continent = "Asia";
+                displayCapitalCities(
+                        capitalController.getCapitalCitiesInContinent(continent).getBody()
+                );
+                });
+
+            // === POPULATION BREAKDOWNS ===
                 runUseCase("usecase23.log", () -> {
                     System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
                     displayPopulationBreakdownsByContinentAll();
@@ -285,6 +295,7 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("15.  Display the top N most populated cities in a country (e.g., Japan,10)");
                 System.out.println("16.  Display the top N most populated cities in a district (e.g., Shanghai,10)");
                 System.out.println("17.  All capital cities in the world by population");
+                System.out.println("18.  All capital cities in a continent by population (e.g., Asia)");
                 System.out.println("\n--- AGGREGATED BREAKDOWNS ---");
                 System.out.println("23. Population breakdowns by continent (all)");
                 System.out.println("24. Population breakdowns by region (all)");
@@ -328,6 +339,10 @@ public class Group4Application implements CommandLineRunner {
             case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
             case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
             case 17: {displayAllCapitalCitiesWorld(); break;}
+            case 18: {
+                displayAllCapitalCitiesContinent("Asia");
+                break;
+            }
             case 23:
                 displayPopulationBreakdownsByContinentAll();
                 break;
@@ -368,9 +383,16 @@ public class Group4Application implements CommandLineRunner {
         displayCountries(countries);
     }
 
+    // 17
     private void displayAllCapitalCitiesWorld() {
         System.out.println("\n=== ALL CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         List<CapitalCity> capitalCities = capitalCityService.getAllCapitalCitiesByPopulation();
+        displayCapitalCities(capitalCities);
+    }
+    // 18
+    private void displayAllCapitalCitiesContinent(String continent) {
+        System.out.println("\n=== ALL CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
+        List<CapitalCity> capitalCities = capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
         displayCapitalCities(capitalCities);
     }
 

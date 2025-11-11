@@ -42,6 +42,20 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
             ORDER BY city.population DESC
             """)
     List<CapitalCity> findAllCapitalCitiesByPopulationDesc();
+
+    @Query("""
+    SELECT new com.napier.devops.model.CapitalCity(
+        city.name,
+        country.name,
+        city.population
+    )
+    FROM Country country
+    JOIN City city ON city.id = country.capital
+    WHERE LOWER(country.continent) = LOWER(:continent)
+    ORDER BY city.population DESC
+""")
+    List<CapitalCity> findCapitalCitiesInContinentByPopulationDesc(@Param("continent") String continent);
+
 }
 
 

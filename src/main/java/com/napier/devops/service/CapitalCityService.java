@@ -46,6 +46,11 @@ public class CapitalCityService {
     public List<CapitalCity> getAllCapitalCitiesByPopulation() {
         return capitalCityRepository.findAllCapitalCitiesByPopulationDesc();
     }
+
+    public List<CapitalCity> getCapitalCitiesInContinentByPopulation(String continent) {
+        return capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc(continent);
+    }
+
 }
 
 

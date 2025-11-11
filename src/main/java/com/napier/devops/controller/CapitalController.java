@@ -29,9 +29,25 @@ public class CapitalController {
         return ResponseEntity.ok(results);
     }
 
+    /**
+     * ## USE CASE 17: List All Capital Cities in the World by Population
+     **/
     @GetMapping("/world")
     public ResponseEntity<List<CapitalCity>> getAllCapitalCities() {
         List<CapitalCity> results = capitalCityService.getAllCapitalCitiesByPopulation();
+        return ResponseEntity.ok(results);
+    }
+
+    // GET /api/capitals/continent?continent=Asia
+    @GetMapping("/continent")
+    public ResponseEntity<List<CapitalCity>> getCapitalCitiesInContinent(
+            @RequestParam String continent
+    ) {
+        if (continent == null || continent.isBlank()) {
+            return ResponseEntity.badRequest().build();
+        }
+        List<CapitalCity> results =
+                capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
         return ResponseEntity.ok(results);
     }
 }
