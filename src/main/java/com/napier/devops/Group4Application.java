@@ -215,41 +215,34 @@ public class Group4Application implements CommandLineRunner {
                 });
                 runUseCase("usecase18.log", () -> {
                 System.out.println("\nUSE CASE 18: All capital cities in a continent by population");
-                String continent = "Asia";
                 displayCapitalCities(
-                        capitalController.getCapitalCitiesInContinent(continent).getBody()
+                        capitalController.getCapitalCitiesInContinent(appParameters.getUseCase18Continent()).getBody()
                 );
                 });
                 runUseCase("usecase19.log", () -> {
                 System.out.println("\nUSE CASE 19: All capital cities in a region by population");
-                String region = "Caribbean"; // or prompt user input
-                displayAllCapitalCitiesRegion(region);
+                displayAllCapitalCitiesRegion(appParameters.getUseCase19Region());
                 });
-            // USE CASE 19
-            runUseCase("usecase19.log", () -> {
-                System.out.println("\nUSE CASE 19: All capital cities in a region by population");
-                String region = "Caribbean"; // or prompt user input
-                displayAllCapitalCitiesRegion(region);
-            });
             // USE CASE 20
             runUseCase("usecase20.log", () -> {
                 System.out.println("\nUSE CASE 20: Top N capital cities in the world by population");
-                int limit = 10;
-                displayTopCapitalCitiesWorld(limit);
+                displayTopCapitalCitiesWorld(appParameters.getUseCase20Limit());
             });
             // USE CASE 21
             runUseCase("usecase21.log", () -> {
                 System.out.println("\nUSE CASE 21: Top N capital cities in a continent by population");
-                String continent = "Asia";
-                int limit = 10;
-                displayTopCapitalCitiesContinent(continent, limit);
+                displayTopCapitalCitiesContinent(
+                        appParameters.getUseCase21Continent(),
+                        appParameters.getUseCase21Limit()
+                );
             });
             // USE CASE 22
             runUseCase("usecase22.log", () -> {
                 System.out.println("\nUSE CASE 22: Top N capital cities in a region by population");
-                String region = "Caribbean";
-                int limit = 10;
-                displayTopCapitalCitiesRegion(region, limit);
+                displayTopCapitalCitiesRegion(
+                        appParameters.getUseCase22Region(),
+                        appParameters.getUseCase22Limit()
+                );
             });
 
             // === POPULATION BREAKDOWNS ===
