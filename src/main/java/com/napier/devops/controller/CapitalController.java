@@ -20,14 +20,6 @@ public class CapitalController {
         this.capitalCityService = capitalCityService;
     }
 
-    @GetMapping("/top")
-    public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesInContinent(
-            @RequestParam String continent,
-            @RequestParam(name = "limit", defaultValue = "10") int limit
-    ) {
-        List<CapitalCity> results = capitalCityService.getTopCapitalCitiesInContinent(continent, limit);
-        return ResponseEntity.ok(results);
-    }
 
 
     // USE CASE 17: List All Capital Cities in the World by Population
@@ -55,6 +47,28 @@ public class CapitalController {
         return ResponseEntity.ok(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
     }
 
+    // 20: GET /api/capitals/world/top?limit=10
+    @GetMapping("/world/top")
+    public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesWorld(@RequestParam int limit) {
+        return ResponseEntity.ok(capitalCityService.getTopCapitalCitiesWorld(limit));
+    }
+
+    // 21: GET /api/capitals/continent/top?continent=Asia&limit=10
+    @GetMapping("/top")
+    public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesInContinent(
+            @RequestParam String continent,
+            @RequestParam(name = "limit", defaultValue = "10") int limit
+    ) {
+        List<CapitalCity> results = capitalCityService.getTopCapitalCitiesInContinent(continent, limit);
+        return ResponseEntity.ok(results);
+    }
+    // 22: GET /api/capitals/region/top?region=Caribbean&limit=10
+    @GetMapping("/region/top")
+    public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesRegion(
+            @RequestParam String region,
+            @RequestParam(defaultValue = "10") int limit) {
+        return ResponseEntity.ok(capitalCityService.getTopCapitalCitiesInRegion(region, limit));
+    }
 }
 
 

@@ -29,7 +29,7 @@ public class CapitalCityService {
      * @return ordered list of capital cities
      * @throws IllegalArgumentException when the continent is blank or limit invalid
      */
-    public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
+        public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
         if (!StringUtils.hasText(continent)) {
             throw new IllegalArgumentException("continent must not be blank");
         }
@@ -54,7 +54,16 @@ public class CapitalCityService {
     public List<CapitalCity> getCapitalCitiesInRegionByPopulation(String region) {
         return capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc(region);
     }
+    // 20
+    public List<CapitalCity> getTopCapitalCitiesWorld(int limit) {
+        return capitalCityRepository.findTopCapitalCitiesWorld(org.springframework.data.domain.PageRequest.of(0, limit));
+    }
 
+    // 22
+    public List<CapitalCity> getTopCapitalCitiesInRegion(String region, int limit) {
+        return capitalCityRepository.findTopCapitalCitiesByRegion(
+                region, org.springframework.data.domain.PageRequest.of(0, limit));
+    }
 }
 
 
