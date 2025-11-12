@@ -56,5 +56,3 @@ The reports support quick analysis of **urbanisation**, **regional planning**, a
 | UC29 | Population of each **country** | ✅ Yes | ![Req-29](images/req-29.png) | [usecase29.log](output/usecase29.log) |
 | UC30 | Population of each **district** | ✅ Yes | ![Req-30](images/req-30.png) | [usecase30.log](output/usecase30.log) |
 | UC31 | Population of each **city** | ✅ Yes | ![Req-31](images/req-31.png) | [usecase31.log](output/usecase31.log) |
-
-
