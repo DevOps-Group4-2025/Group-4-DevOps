@@ -29,7 +29,7 @@ public class CapitalCityService {
      * @return ordered list of capital cities
      * @throws IllegalArgumentException when the continent is blank or limit invalid
      */
-    public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
+        public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
         if (!StringUtils.hasText(continent)) {
             throw new IllegalArgumentException("continent must not be blank");
         }
@@ -42,9 +42,27 @@ public class CapitalCityService {
                 PageRequest.of(0, limit)
         );
     }
-
+    // USE CASE 17: List All Capital Cities in the World by Population
     public List<CapitalCity> getAllCapitalCitiesByPopulation() {
         return capitalCityRepository.findAllCapitalCitiesByPopulationDesc();
+    }
+    // USE CASE 18: List All Capital Cities in a Continent by Population
+    public List<CapitalCity> getCapitalCitiesInContinentByPopulation(String continent) {
+        return capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc(continent);
+    }
+    // USE CASE 19: List All Capital Cities in a Region by Population
+    public List<CapitalCity> getCapitalCitiesInRegionByPopulation(String region) {
+        return capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc(region);
+    }
+    // 20
+    public List<CapitalCity> getTopCapitalCitiesWorld(int limit) {
+        return capitalCityRepository.findTopCapitalCitiesWorld(org.springframework.data.domain.PageRequest.of(0, limit));
+    }
+
+    // 22
+    public List<CapitalCity> getTopCapitalCitiesInRegion(String region, int limit) {
+        return capitalCityRepository.findTopCapitalCitiesByRegion(
+                region, org.springframework.data.domain.PageRequest.of(0, limit));
     }
 }
 

@@ -1,5 +1,6 @@
 package com.napier.devops;
 
+import com.napier.devops.controller.CapitalController;
 import com.napier.devops.model.CapitalCity;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
@@ -52,7 +53,8 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private AppParameters appParameters;
 
-
+    @Autowired
+    private CapitalController capitalController;
 
 
     /**
@@ -220,8 +222,46 @@ public class Group4Application implements CommandLineRunner {
                     System.out.println("\nUSE CASE 17: All capital cities in the world by population");
                     displayAllCapitalCitiesWorld();
                 });
+                runUseCase("usecase18.log", () -> {
+                System.out.println("\nUSE CASE 18: All capital cities in a continent by population");
+                String continent = "Asia";
+                displayCapitalCities(
+                        capitalController.getCapitalCitiesInContinent(continent).getBody()
+                );
+                });
+                runUseCase("usecase19.log", () -> {
+                System.out.println("\nUSE CASE 19: All capital cities in a region by population");
+                String region = "Caribbean"; // or prompt user input
+                displayAllCapitalCitiesRegion(region);
+                });
+            // USE CASE 19
+            runUseCase("usecase19.log", () -> {
+                System.out.println("\nUSE CASE 19: All capital cities in a region by population");
+                String region = "Caribbean"; // or prompt user input
+                displayAllCapitalCitiesRegion(region);
+            });
+            // USE CASE 20
+            runUseCase("usecase20.log", () -> {
+                System.out.println("\nUSE CASE 20: Top N capital cities in the world by population");
+                int limit = 10;
+                displayTopCapitalCitiesWorld(limit);
+            });
+            // USE CASE 21
+            runUseCase("usecase21.log", () -> {
+                System.out.println("\nUSE CASE 21: Top N capital cities in a continent by population");
+                String continent = "Asia";
+                int limit = 10;
+                displayTopCapitalCitiesContinent(continent, limit);
+            });
+            // USE CASE 22
+            runUseCase("usecase22.log", () -> {
+                System.out.println("\nUSE CASE 22: Top N capital cities in a region by population");
+                String region = "Caribbean";
+                int limit = 10;
+                displayTopCapitalCitiesRegion(region, limit);
+            });
 
-                // === POPULATION BREAKDOWNS ===
+            // === POPULATION BREAKDOWNS ===
                 runUseCase("usecase23.log", () -> {
                     System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
                     displayPopulationBreakdownsByContinentAll();
@@ -284,7 +324,6 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("14.  Display the top N most populated cities in a region (e.g., Eastern Asia,10)");
                 System.out.println("15.  Display the top N most populated cities in a country (e.g., Japan,10)");
                 System.out.println("16.  Display the top N most populated cities in a district (e.g., Shanghai,10)");
-                System.out.println("17.  All capital cities in the world by population");
                 System.out.println("\n--- AGGREGATED BREAKDOWNS ---");
                 System.out.println("23. Population breakdowns by continent (all)");
                 System.out.println("24. Population breakdowns by region (all)");
@@ -328,6 +367,11 @@ public class Group4Application implements CommandLineRunner {
             case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
             case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
             case 17: {displayAllCapitalCitiesWorld(); break;}
+            case 18: {displayAllCapitalCitiesContinent("Asia"); break;}
+            case 19: {displayAllCapitalCitiesRegion("Western Europe"); break; }
+            case 20: {displayTopCapitalCitiesWorld(10);break; }
+            case 21: {displayTopCapitalCitiesContinent("Asia", 10); break; }
+            case 22: {displayTopCapitalCitiesRegion("Caribbean", 10); break; }
             case 23:
                 displayPopulationBreakdownsByContinentAll();
                 break;
@@ -336,9 +380,6 @@ public class Group4Application implements CommandLineRunner {
                 break;
             case 25:
                 displayPopulationBreakdownsByCountryAll();
-                break;
-            case 21:
-                displayTopCapitalCitiesByContinent(scanner);
                 break;
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
@@ -368,10 +409,37 @@ public class Group4Application implements CommandLineRunner {
         displayCountries(countries);
     }
 
+    // USE CASE 17: List All Capital Cities in the World by Population
     private void displayAllCapitalCitiesWorld() {
         System.out.println("\n=== ALL CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         List<CapitalCity> capitalCities = capitalCityService.getAllCapitalCitiesByPopulation();
         displayCapitalCities(capitalCities);
+    }
+    // USE CASE 18: List All Capital Cities in a Continent by Population
+    private void displayAllCapitalCitiesContinent(String continent) {
+        System.out.println("\n=== ALL CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
+        List<CapitalCity> capitalCities = capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
+        displayCapitalCities(capitalCities);
+    }
+    // USE CASE 19: List All Capital Cities in a Region by Population
+    private void displayAllCapitalCitiesRegion(String region) {
+        System.out.println("\n=== ALL CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
+        displayCapitalCities(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
+    }
+    // 20
+    private void displayTopCapitalCitiesWorld(int limit) {
+        System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
+        displayCapitalCities(capitalCityService.getTopCapitalCitiesWorld(limit));
+    }
+    // 21
+    private void displayTopCapitalCitiesContinent(String continent, int limit) {
+        System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
+        displayCapitalCities(capitalCityService.getTopCapitalCitiesInContinent(continent, limit));
+    }
+    // 22
+    private void displayTopCapitalCitiesRegion(String region, int limit) {
+        System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
+        displayCapitalCities(capitalCityService.getTopCapitalCitiesInRegion(region, limit));
     }
 
     private void displayTopCapitalCitiesByContinent(Scanner scanner) {
