@@ -48,17 +48,13 @@ The reports support quick analysis of **urbanisation**, **regional planning**, a
 
 ## ✅ Project Deliverables (UC26–UC31 Evidence)
 
-| ID | Requirement | Met | Screenshot | Log File |
-|----|--------------|-----|-------------|-----------|
-| UC26 | Population of the **world** | ✅ Yes | ![UC26](images/usecase26.png) | [usecase26.log](output/usecase26.log) |
-| UC27 | Population of each **continent** | ✅ Yes | ![UC27](images/usecase27.png) | [usecase27.log](output/usecase27.log) |
-| UC28 | Population of each **region** | ✅ Yes | ![UC28](images/usecase28.png) | [usecase28.log](output/usecase28.log) |
-| UC29 | Population of each **country** | ✅ Yes | ![UC29](images/usecase29.png) | [usecase29.log](output/usecase29.log) |
-| UC30 | Population of each **district** | ✅ Yes | ![UC30](images/usecase30.png) | [usecase30.log](output/usecase30.log) |
-| UC31 | Population of each **city** | ✅ Yes | ![UC31](images/usecase31.png) | [usecase31.log](output/usecase31.log) |
+| ID | Requirement | Met | Screenshot                   | Log File |
+|----|--------------|-----|------------------------------|-----------|
+| UC26 | Population of the **world** | ✅ Yes | ![Req-26](images/req-26.png) | [usecase26.log](output/usecase26.log) |
+| UC27 | Population of each **continent** | ✅ Yes | ![Req-27](images/req-27.png) | [usecase27.log](output/usecase27.log) |
+| UC28 | Population of each **region** | ✅ Yes | ![Req-28](images/req-28.png) | [usecase28.log](output/usecase28.log) |
+| UC29 | Population of each **country** | ✅ Yes | ![Req-29](images/req-29.png) | [usecase29.log](output/usecase29.log) |
+| UC30 | Population of each **district** | ✅ Yes | ![Req-30](images/req-30.png) | [usecase30.log](output/usecase30.log) |
+| UC31 | Population of each **city** | ✅ Yes | ![Req-31](images/req-31.png) | [usecase31.log](output/usecase31.log) |
 
-> **Contributor:** Gp22-code (Godspower Williams)  
-> **Note:** All UC26–UC31 deliverables have been implemented, verified, and tested successfully.  
-> Each `.log` file is stored in `/output/`, and screenshots are available in `/images/`.  
-> Console tables were printed and logs generated automatically during runtime via the `Group4Application` execution.
 
