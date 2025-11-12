@@ -24,12 +24,13 @@ public class CapitalCityService {
      * Returns the top {@code limit} capital cities within the supplied continent
      * ordered by population descending.
      *
-     * @param continent the continent to filter on (case insensitive)
+     * @param continent the continent to filter on (case-insensitive)
      * @param limit     number of results to return (must be positive)
      * @return ordered list of capital cities
      * @throws IllegalArgumentException when the continent is blank or limit invalid
      */
-        public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
+    // USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
+    public List<CapitalCity> getTopCapitalCitiesInContinent(String continent, int limit) {
         if (!StringUtils.hasText(continent)) {
             throw new IllegalArgumentException("continent must not be blank");
         }
@@ -54,12 +55,12 @@ public class CapitalCityService {
     public List<CapitalCity> getCapitalCitiesInRegionByPopulation(String region) {
         return capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc(region);
     }
-    // 20
+    // USE CASE 20: Produce a Report on Top N Capital Cities in the World
     public List<CapitalCity> getTopCapitalCitiesWorld(int limit) {
         return capitalCityRepository.findTopCapitalCitiesWorld(org.springframework.data.domain.PageRequest.of(0, limit));
     }
 
-    // 22
+    // USE CASE 22: Produce a Report on Top N Capital Cities in a Region
     public List<CapitalCity> getTopCapitalCitiesInRegion(String region, int limit) {
         return capitalCityRepository.findTopCapitalCitiesByRegion(
                 region, org.springframework.data.domain.PageRequest.of(0, limit));

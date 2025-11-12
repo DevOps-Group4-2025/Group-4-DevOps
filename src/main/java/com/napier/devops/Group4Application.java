@@ -171,47 +171,38 @@ public class Group4Application implements CommandLineRunner {
                     System.out.println("\nUSE CASE 7: All cities in the world ordered by population");
                     displayCities(cityController.getAllCitiesInTheWorld());
                 });
-
                 runUseCase("usecase8.log", () -> {
                     System.out.println("\nUSE CASE 8: All cities in a given continent (" + appParameters.getUseCase8Continent() + ")");
                     displayCities(cityController.getAllCitiesInAContinent(appParameters.getUseCase8Continent()));
                 });
-
                 runUseCase("usecase9.log", () -> {
                     System.out.println("\nUSE CASE 9: All cities in region " + appParameters.getUseCase9Region());
                     displayCities(cityController.getAllCitiesInARegion(appParameters.getUseCase9Region()));
                 });
-
                 runUseCase("usecase10.log", () -> {
                     System.out.println("\nUSE CASE 10: All cities in country " + appParameters.getUseCase10Country());
                     displayCities(cityController.getAllCitiesInACountry(appParameters.getUseCase10Country()));
                 });
-
                 runUseCase("usecase11.log", () -> {
                     System.out.println("\nUSE CASE 11: All cities in district " + appParameters.getUseCase11District());
                     displayCities(cityController.getAllCitiesInADistrict(appParameters.getUseCase11District()));
                 });
-
                 runUseCase("usecase12.log", () -> {
                     System.out.println("\nUSE CASE 12: Top " + appParameters.getUseCase12Limit() + " most populated cities in the world");
                     displayCities(cityController.getTopNCitiesInTheWorld(appParameters.getUseCase12Limit()));
                 });
-
                 runUseCase("usecase13.log", () -> {
                     System.out.println("\nUSE CASE 13: Top " + appParameters.getUseCase13Limit() + " cities in continent " + appParameters.getUseCase13Continent());
                     displayCities(cityController.getTopNCitiesInAContinent(appParameters.getUseCase13Continent(), appParameters.getUseCase13Limit()));
                 });
-
                 runUseCase("usecase14.log", () -> {
                     System.out.println("\nUSE CASE 14: Top " + appParameters.getUseCase14Limit() + " cities in region " + appParameters.getUseCase14Region());
                     displayCities(cityController.getTopNCitiesInARegion(appParameters.getUseCase14Region(), appParameters.getUseCase14Limit()));
                 });
-
                 runUseCase("usecase15.log", () -> {
                     System.out.println("\nUSE CASE 15: Top " + appParameters.getUseCase15Limit() + " cities in country " + appParameters.getUseCase15Country());
                     displayCities(cityController.getTopNCitiesInACountry(appParameters.getUseCase15Country(), appParameters.getUseCase15Limit()));
                 });
-
                 runUseCase("usecase16.log", () -> {
                     System.out.println("\nUSE CASE 16: Top " + appParameters.getUseCase16Limit() + " cities in district " + appParameters.getUseCase16District());
                     displayCities(cityController.getTopNCitiesInADistrict(appParameters.getUseCase16District(), appParameters.getUseCase16Limit()));
@@ -426,17 +417,17 @@ public class Group4Application implements CommandLineRunner {
         System.out.println("\n=== ALL CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
     }
-    // 20
+    // USE CASE 20: Produce a Report on Top N Capital Cities in the World
     private void displayTopCapitalCitiesWorld(int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesWorld(limit));
     }
-    // 21
+    // USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
     private void displayTopCapitalCitiesContinent(String continent, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesInContinent(continent, limit));
     }
-    // 22
+    // USE CASE 22: Produce a Report on Top N Capital Cities in a Region
     private void displayTopCapitalCitiesRegion(String region, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesInRegion(region, limit));
