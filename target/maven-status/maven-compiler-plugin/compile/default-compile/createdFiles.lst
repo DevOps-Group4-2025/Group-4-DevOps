@@ -1,1 +1,13 @@
-com/napier/devops/Group4Application.class
+com\napier\devops\Group4Application.class
+com\napier\devops\service\CountryService.class
+com\napier\devops\util\UseCaseWriter.class
+com\napier\devops\model\Country.class
+com\napier\devops\dto\LabeledPopulationRow.class
+com\napier\devops\repository\PopulationTotalRepository.class
+com\napier\devops\report\ReportService.class
+com\napier\devops\controller\CountryController.class
+com\napier\devops\report\ReportController.class
+com\napier\devops\report\ReportWriter.class
+com\napier\devops\repository\CountryRepository.class
+com\napier\devops\dto\ContinentPopulationRow.class
+com\napier\devops\service\PopulationTotalService.class
