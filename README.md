@@ -4,9 +4,9 @@
 
 **Master branch:**  
 
-[![Master build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=master&label=master%20build&logo=github&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Amaster)
+[![Master build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=master&label=master%20build&logo=github&style=flat-square&cacheSeconds=60)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Amaster)
 
-[![License](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps?style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/DevOps-Group4-2025/Group-4-DevOps?style=flat-square&cacheSeconds=60)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/LICENSE)
 
 [![Latest Release](https://img.shields.io/github/v/release/DevOps-Group4-2025/Group-4-DevOps?label=Release&style=flat-square&cacheSeconds=60)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/releases/latest)
 
@@ -20,17 +20,12 @@
 
 **Develop branch:**  
 
-[![Develop build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=develop&label=develop%20build&logo=github&style=flat-square)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Adevelop)
+[![Develop build](https://img.shields.io/github/actions/workflow/status/DevOps-Group4-2025/Group-4-DevOps/main.yml?branch=develop&label=develop%20build&logo=github&style=flat-square&cacheSeconds=60)](https://github.com/DevOps-Group4-2025/Group-4-DevOps/actions/workflows/main.yml?query=branch%3Adevelop)
 
 **Milestone**
-![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed)
-![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress)
 
-
-
-
-
-
+![CR1 closed](https://img.shields.io/github/milestones/progress/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20closed&cacheSeconds=60)
+![CR1 progress](https://img.shields.io/github/milestones/progress-percent/DevOps-Group4-2025/Group-4-DevOps/1?label=CR1%20progress&cacheSeconds=60)
 
 
 ## Reporting Bugs
@@ -99,6 +94,7 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
 
 
 
