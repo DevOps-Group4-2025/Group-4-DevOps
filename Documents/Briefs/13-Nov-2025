@@ -1,0 +1,52 @@
+# DevOps – Group 4
+## Meeting Minutes – 13 Nov 2025
+
+### Attendees
+- Miguel Gonzalez Sanchez  
+- Adam Ruth  
+- Ifthikar Aboobakker  
+- Umit Sogut  
+- (Absent: Jemima Kane)  
+- Godspower Williams – Not actively contributing to the main branch but continuing to work independently
+
+---
+
+### Key Points
+
+#### Project Progress & Assignments
+- The team discussed **remaining use cases** and confirmed new task ownership:  
+  - **Umit Sogut:**  
+    - (26) Population of the world  
+    - (27) Population of a continent  
+    - (28) Population of a region  
+    - (29) Population of a country  
+    - (30) Population of a district  
+    - (31) Population of a city  
+  - **Adam Ruth:**  
+    - (32) Languages reports  
+    - Improve overall **test coverage** across the project.  
+  - **Ifthikar Aboobakker:**  
+    - (3) All countries in a region ordered by population  
+    - (4) Top N populated countries in the world  
+    - (5) Top N populated countries in a continent  
+    - (6) Top N populated countries in a region  
+  - **Miguel Gonzalez Sanchez:**  
+    - Focus on managing **commits and merges**.  
+    - Will take over **code test coverage duties** from Adam starting next Tuesday.  
+
+- The team noted that **Godspower Williams** is still working on his own branch, which is currently over **220 commits behind** the main repository, making merging impractical.  
+- The team agreed to continue supporting him by sharing updated examples and guidance.
+
+#### General Notes
+- The team is on **good track** for the project timeline.  
+- Collaboration and communication continue to be effective, with each member aware of their next tasks.  
+- Jemima was absent from the meeting.
+
+---
+
+### Action Items
+- **Umit:** Complete assigned population-related use cases.  
+- **Adam:** Finalize language report and enhance test coverage.  
+- **Ifthikar:** Implement and test regional and top-N use cases.  
+- **Miguel:** Manage commits, coordinate merges, and prepare to handle coverage from next Tuesday.  
+- **Team:** Continue collaboration and keep communication open to resolve blockers early.
