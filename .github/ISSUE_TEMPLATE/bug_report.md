@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: "[BUG]"
+labels: bug
+assignees: ''
+
+---
+
 name: Bug Report
 about: Create a report to help us improve the World Population Reporting System.
 title: "[BUG] - A brief, descriptive title"
@@ -29,7 +38,7 @@ Please paste the **full console output** showing the error message and stack tra
 **Environment (please complete the following information):**
  - **OS**: [e.g. Windows 11, Ubuntu 22.04]
  - **Java Version**: [Run `java --version` e.g., Temurin 17.0.5]
- - **Docker Version** (if used): [Run `docker --version` e.g., Docker 20.10.21]
+ - **Docker Version** (if used): [Run `docker --version` e.g., Docker 21.10.21]
  - **Application Version / Git Commit**: [e.g., v0.1.0.9 or Git commit hash `a1b2c3d`]
 
 **Additional context**
