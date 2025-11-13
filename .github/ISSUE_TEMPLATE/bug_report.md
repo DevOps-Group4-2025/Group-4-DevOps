@@ -11,13 +11,13 @@ assignees: ''
 A clear and concise description of what the bug is. For example, "Use Case 18 crashes when entering a continent with a space in its name."
 
 **To Reproduce**
-Please provide the exact steps to reproduce the behavior:
+Please provide the exact steps to reproduce the behaviour:
 1. **Execution Mode**: (e.g., Interactive via `java -jar`, Interactive via Docker, Non-interactive/Automated)
 2. **Menu Option / Use Case**: (e.g., `18. All capital cities in a continent`)
 3. **Input Provided**: (e.g., Continent: `North America`, Limit N: `5`)
 4. **Observed Result**: (e.g., "The application threw a `NullPointerException`")
 
-**Expected behavior**
+**Expected behaviour**
 A clear and concise description of what you expected to happen. For example, "I expected to see a formatted table of the capital cities in North America."
 
 **Logs & Screenshots**
