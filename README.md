@@ -34,7 +34,7 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 
 
 **Status:**  
-✅ **16 of 32 requirements implemented — 50% complete**
+✅ **21 of 32 requirements implemented — 65% complete**
 
 **Status:**  
 ✅ **22 of 32 requirements implemented — 69% complete**
@@ -97,6 +97,9 @@ It turns the classic **MySQL “world”** database into clear, reproducible rep
 
 ### Why it matters
 The reports support quick analysis of **urbanisation**, **regional planning**, and **language reach**, giving stakeholders a consistent, auditable way to query global population data.
+
+
+
 
 
 

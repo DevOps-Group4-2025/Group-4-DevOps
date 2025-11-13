@@ -32,6 +32,8 @@ import java.util.Scanner;
 @SpringBootApplication
 public class Group4Application implements CommandLineRunner {
 
+    private boolean running = true;
+
     /**
      * Service for managing and retrieving country-related data.
      */
@@ -83,7 +85,7 @@ public class Group4Application implements CommandLineRunner {
      *   <li>Catches and logs any exceptions during file writing without terminating the program.</li>
      * </ul>
      */
-    private static void runUseCase(String fileName, Runnable action) {
+    public static void runUseCase(String fileName, Runnable action) {
         java.io.File dir = new java.io.File("output");
         if (!dir.exists() && !dir.mkdirs()) {
             System.err.println("Warning: could not create output directory " + dir.getAbsolutePath());
@@ -146,9 +148,9 @@ public class Group4Application implements CommandLineRunner {
         if (interactiveMenu) {
             System.out.println("Interactive mode enabled. Launching main menu...");
             try (Scanner scanner = new Scanner(System.in)) {
-                while (true) {
+                while (this.running) {
                     int selection = mainMenu(scanner);
-                    handleMenuSelection(selection, scanner);
+                    handleMenuSelection(selection, scanner, this);
                 }
             }
         }else {
@@ -332,42 +334,116 @@ public class Group4Application implements CommandLineRunner {
      * @param selection the user’s menu choice
      * @param scanner   the Scanner used for input
      */
-    private void handleMenuSelection(int selection, Scanner scanner) {
+    private void handleMenuSelection(int selection, Scanner scanner, Group4Application app) {
         switch (selection) {
             case 1:
-                displayAllCountriesWorld();
+                runUseCase("interactive-usecase1.log", this::displayAllCountriesWorld);
                 break;
             case 2:
-                displayAllCountriesInContinent("Asia"); // Or prompt user for continent
+                System.out.print("Enter continent name: ");
+                String continent = scanner.nextLine();
+                runUseCase("interactive-usecase2.log", () -> displayAllCountriesInContinent(continent));
                 break;
-            case 7: {displayCities(cityController.getAllCitiesInTheWorld()); break;}
-            case 8: {displayCities(cityController.getAllCitiesInAContinent("Asia")); break;}
-            case 9: {displayCities(cityController.getAllCitiesInARegion("Eastern Asia")); break;}
-            case 10: {displayCities(cityController.getAllCitiesInACountry("Japan")); break;}
-            case 11: {displayCities(cityController.getAllCitiesInADistrict("Shanghai")); break;}
-            case 12: {displayCities(cityController.getTopNCitiesInTheWorld(10)); break;}
-            case 13: {displayCities(cityController.getTopNCitiesInAContinent("Asia", 10)); break;}
-            case 14: {displayCities(cityController.getTopNCitiesInARegion("Eastern Asia", 10)); break;}
-            case 15: {displayCities(cityController.getTopNCitiesInACountry("Japan", 10)); break;}
-            case 16: {displayCities(cityController.getTopNCitiesInADistrict("Shanghai", 10)); break;}
-            case 17: {displayAllCapitalCitiesWorld(); break;}
-            case 18: {displayAllCapitalCitiesContinent("Asia"); break;}
-            case 19: {displayAllCapitalCitiesRegion("Western Europe"); break; }
-            case 20: {displayTopCapitalCitiesWorld(10);break; }
-            case 21: {displayTopCapitalCitiesContinent("Asia", 10); break; }
-            case 22: {displayTopCapitalCitiesRegion("Caribbean", 10); break; }
+            case 7:
+                runUseCase("interactive-usecase7.log", () -> displayCities(cityController.getAllCitiesInTheWorld()));
+                break;
+            case 8:
+                System.out.print("Enter continent name: ");
+                String continent8 = scanner.nextLine();
+                runUseCase("interactive-usecase8.log", () -> displayCities(cityController.getAllCitiesInAContinent(continent8)));
+                break;
+            case 9:
+                System.out.print("Enter region name: ");
+                String region9 = scanner.nextLine();
+                runUseCase("interactive-usecase9.log", () -> displayCities(cityController.getAllCitiesInARegion(region9)));
+                break;
+            case 10:
+                System.out.print("Enter country name: ");
+                String country10 = scanner.nextLine();
+                runUseCase("interactive-usecase10.log", () -> displayCities(cityController.getAllCitiesInACountry(country10)));
+                break;
+            case 11:
+                System.out.print("Enter district name: ");
+                String district11 = scanner.nextLine();
+                runUseCase("interactive-usecase11.log", () -> displayCities(cityController.getAllCitiesInADistrict(district11)));
+                break;
+            case 12:
+                System.out.print("Enter limit (N): ");
+                int limit12 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase12.log", () -> displayCities(cityController.getTopNCitiesInTheWorld(limit12)));
+                break;
+            case 13:
+                System.out.print("Enter continent name: ");
+                String continent13 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit13 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase13.log", () -> displayCities(cityController.getTopNCitiesInAContinent(continent13, limit13)));
+                break;
+            case 14:
+                System.out.print("Enter region name: ");
+                String region14 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit14 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase14.log", () -> displayCities(cityController.getTopNCitiesInARegion(region14, limit14)));
+                break;
+            case 15:
+                System.out.print("Enter country name: ");
+                String country15 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit15 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase15.log", () -> displayCities(cityController.getTopNCitiesInACountry(country15, limit15)));
+                break;
+            case 16:
+                System.out.print("Enter district name: ");
+                String district16 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit16 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase16.log", () -> displayCities(cityController.getTopNCitiesInADistrict(district16, limit16)));
+                break;
+            case 17:
+                runUseCase("interactive-usecase17.log", this::displayAllCapitalCitiesWorld);
+                break;
+            case 18:
+                System.out.print("Enter continent name: ");
+                String continent18 = scanner.nextLine();
+                runUseCase("interactive-usecase18.log", () -> displayAllCapitalCitiesContinent(continent18));
+                break;
+            case 19:
+                System.out.print("Enter region name: ");
+                String region19 = scanner.nextLine();
+                runUseCase("interactive-usecase19.log", () -> displayAllCapitalCitiesRegion(region19));
+                break;
+            case 20:
+                System.out.print("Enter limit (N): ");
+                int limit20 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase20.log", () -> displayTopCapitalCitiesWorld(limit20));
+                break;
+            case 21:
+                System.out.print("Enter continent name: ");
+                String continent21 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit21 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase21.log", () -> displayTopCapitalCitiesContinent(continent21, limit21));
+                break;
+            case 22:
+                System.out.print("Enter region name: ");
+                String region22 = scanner.nextLine();
+                System.out.print("Enter limit (N): ");
+                int limit22 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase22.log", () -> displayTopCapitalCitiesRegion(region22, limit22));
+                break;
             case 23:
-                displayPopulationBreakdownsByContinentAll();
+                runUseCase("interactive-usecase23.log", this::displayPopulationBreakdownsByContinentAll);
                 break;
             case 24:
-                displayPopulationBreakdownsByRegionAll();
+                runUseCase("interactive-usecase24.log", this::displayPopulationBreakdownsByRegionAll);
                 break;
             case 25:
-                displayPopulationBreakdownsByCountryAll();
+                runUseCase("interactive-usecase25.log", this::displayPopulationBreakdownsByCountryAll);
                 break;
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
-                System.exit(0);
+                app.running = false; // Set running to false to exit the loop gracefully
                 break;
             default:
                 System.out.println("Invalid selection. Please try again.");
@@ -375,7 +451,9 @@ public class Group4Application implements CommandLineRunner {
         }
         System.out.println("\nPress Enter to continue...");
         scanner.nextLine();
+        if (!app.running) scanner.close(); // Close scanner if exiting
     }
+
 
     /**
      * Use Case 1:
@@ -444,7 +522,7 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    private void displayCapitalCities(List<CapitalCity> capitals) {
+    void displayCapitalCities(List<CapitalCity> capitals) {
         if (capitals == null || capitals.isEmpty()) {
             System.out.println("No capital cities found for the selected criteria.");
             return;
@@ -466,7 +544,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param countries a list of {@link Country} objects to display
      */
-    private void displayCountries(List<Country> countries) {
+    void displayCountries(List<Country> countries) {
         if (countries.isEmpty()) {
             System.out.println("No countries found.");
             return;
@@ -489,7 +567,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param breakdowns list of {@link PopulationBreakdown} to display; may be null or empty
      */
-    private void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
+    void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
         if (breakdowns == null || breakdowns.isEmpty()) {
             System.out.println("No population breakdowns found.");
             return;
@@ -538,7 +616,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param cities List of City objects to display.
      */
-    private void displayCities(List<City> cities) {
+    void displayCities(List<City> cities) {
         // If there are no cities in the list, show a message and exit early.
         if (cities.isEmpty()) {
             System.out.println("No city found.");

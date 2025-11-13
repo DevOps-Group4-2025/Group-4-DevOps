@@ -241,6 +241,25 @@ public class Country {
     public Country() {
     }
    /* public Weather(String country, String city, String description, double temprature, double wind_M_S, double humidity, String feelsLike) {
+
+    /**
+     * Constructor for creating a Country instance with essential fields.
+     *
+     * @param code The country code.
+     * @param name The name of the country.
+     * @param continent The continent.
+     * @param region The region.
+     * @param population The total population.
+     */
+    public Country(String code, String name, String continent, String region, Long population) {
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.population = population;
+    }
+
+    /* public Weather(String country, String city, String description, double temprature, double wind_M_S, double humidity, String feelsLike) {
         this.country = country;
         this.city = city;
         this.description = description;
