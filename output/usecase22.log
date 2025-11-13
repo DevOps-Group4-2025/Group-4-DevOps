@@ -1,44 +1,4 @@
-Report generated on: 2025-11-13 18:23:51
+Report generated on: 2025-11-13 20:53:08
 
 
 USE CASE 22: Top N capital cities in a region by population
-
-=== TOP 10 CAPITAL CITIES IN CARIBBEAN (BY POPULATION) ===
-Hibernate: 
-    /* SELECT
-        new com.napier.devops.model.CapitalCity(c.name, co.name, c.population) 
-    FROM
-        Country co 
-    JOIN
-        City c 
-            ON c.id = co.capital 
-    WHERE
-        LOWER(co.region) = LOWER(:region) 
-    ORDER BY
-        c.population DESC */ select
-            c2_0.`Name`,
-            c1_0.`Name`,
-            c2_0.`Population` 
-        from
-            country c1_0 
-        join
-            city c2_0 
-                on c2_0.`ID`=c1_0.`Capital` 
-        where
-            lower(c1_0.`Region`)=lower(?) 
-        order by
-            c2_0.`Population` desc 
-        limit
-            ?
-Capital City                   Country                             Population
---------------------------------------------------------------------------------
-La Habana                      Cuba                                 2,256,000
-Santo Domingo de Guzmán        Dominican Republic                   1,609,966
-Port-au-Prince                 Haiti                                  884,472
-San Juan                       Puerto Rico                            434,374
-Nassau                         Bahamas                                172,000
-Kingston                       Jamaica                                103,962
-Fort-de-France                 Martinique                              94,050
-Port-of-Spain                  Trinidad and Tobago                     43,396
-Oranjestad                     Aruba                                   29,034
-Saint John´s                   Antigua and Barbuda                     24,000
