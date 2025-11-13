@@ -36,17 +36,20 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 **Status:**  
 ✅ **16 of 32 requirements implemented — 50% complete**
 
-| ID | Requirement                                                                                           | Met            | Screenshot                 | Log File                                                                                               |
-|----|-------------------------------------------------------------------------------------------------------|----------------|----------------------------|--------------------------------------------------------------------------------------------------------|
-| 1  | All the countries in the world organised by largest population to smallest.                           | ✅ Yes          | ![Req1](images/req1.png)   | [usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase1.log)   |
-| 2  | All the countries in a continent organised by largest population to smallest.                         | ✅ Yes          | ![Req2](images/req2.png)   | [usecase2.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log)   |
-| 3  | All the countries in a region organised by largest population to smallest.                            | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 4  | The top N populated countries in the world where N is provided by the user.                           | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 5  | The top N populated countries in a continent where N is provided by the user.                         | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 6  | The top N populated countries in a region where N is provided by the user.                            | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 7  | All the cities in the world organised by largest population to smallest.                              | ✅ Yes          | ![Req7](images/Req-7.png)  | [usecase7.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase7.log)   |
-| 8  | All the cities in a continent organised by largest population to smallest.                            | ✅ Yes          | ![Req8](images/Req-8.png)  | [usecase8.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase8.log)   |
-| 9  | All the cities in a region organised by largest population to smallest.                               | ✅ Yes          | ![Req9](images/Req-9.png)  | [usecase9.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase9.log)   |
+**Status:**  
+✅ **22 of 32 requirements implemented — 69% complete**
+
+| ID | Requirement                                                                                           | Met            | Screenshot     | Log File             |
+|----|-------------------------------------------------------------------------------------------------------|----------------|----------------|----------------------|
+| 1  | All the countries in the world organised by largest population to smallest.                           | ✅ Yes          | ![Req1](images/req1.png) | [usecase1.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase1.log) |
+| 2  | All the countries in a continent organised by largest population to smallest.                         | ✅ Yes          | ![Req2](images/req2.png) | [usecase2.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase2.log) |
+| 3  | All the countries in a region organised by largest population to smallest.                            | ⚙️ In Progress |                | 🚫 Not generated     |
+| 4  | The top N populated countries in the world where N is provided by the user.                           | ⚙️ In Progress |                | 🚫 Not generated     |
+| 5  | The top N populated countries in a continent where N is provided by the user.                         | ⚙️ In Progress |                | 🚫 Not generated     |
+| 6  | The top N populated countries in a region where N is provided by the user.                            | ⚙️ In Progress |                | 🚫 Not generated     |
+| 7  | All the cities in the world organised by largest population to smallest.                              | ✅ Yes          | ![Req7](images/Req-7.png) | [usecase7.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase7.log) |
+| 8  | All the cities in a continent organised by largest population to smallest.                            | ✅ Yes          | ![Req8](images/Req-8.png) | [usecase8.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase8.log) |
+| 9  | All the cities in a region organised by largest population to smallest.                               | ✅ Yes          | ![Req9](images/Req-9.png) | [usecase9.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase9.log) |
 | 10 | All the cities in a country organised by largest population to smallest.                              | ✅ Yes          | ![Req10](images/Req-10.png) | [usecase10.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase10.log) |
 | 11 | All the cities in a district organised by largest population to smallest.                             | ✅ Yes          | ![Req11](images/Req-11.png) | [usecase11.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase11.log) |
 | 12 | The top N populated cities in the world where N is provided by the user.                              | ✅ Yes          | ![Req12](images/Req-12.png) | [usecase12.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase12.log) |
@@ -63,13 +66,13 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | 23 | The population of people, people living in cities, and people not living in cities in each continent. | ✅ Yes          | ![Req23](images/req23.png) | [usecase23.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase23.log) |
 | 24 | The population of people, people living in cities, and people not living in cities in each region.    | ✅ Yes          | ![Req24](images/req24.png) | [usecase24.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase24.log) |
 | 25 | The population of people, people living in cities, and people not living in cities in each country.   | ✅ Yes          | ![Req25](images/req25.png) | [usecase25.log](https://github.com/DevOps-Group4-2025/Group-4-DevOps/blob/master/output/usecase25.log) |
-| 26 | The population of the world.                                                                          | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 27 | The population of a continent.                                                                        | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 28 | The population of a region.                                                                           | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 29 | The population of a country.                                                                          | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 30 | The population of a district.                                                                         | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 31 | The population of a city.                                                                             | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
-| 32 | Languages reports.                                                                                    | ⚙️ In Progress |                            | 🚫 Not generated                                                                                       |
+| 26 | The population of the world.                                                                          | ✅ Yes          | ![Req-26](images/Req-26.png) | [usecase26.log](output/usecase26.log) |
+| 27 | The population of a continent.                                                                        | ✅ Yes          | ![Req-27](images/Req-27.png) | [usecase27.log](output/usecase27.log) |
+| 28 | The population of a region.                                                                           | ✅ Yes          | ![Req-28](images/Req-28.png) | [usecase28.log](output/usecase28.log) |
+| 29 | The population of a country.                                                                          | ✅ Yes          | ![Req-29](images/Req-29.png) | [usecase29.log](output/usecase29.log) |
+| 30 | The population of a district.                                                                         | ✅ Yes          | ![Req-30](images/Req-30.png) | [usecase30.log](output/usecase30.log) |
+| 31 | The population of a city.                                                                             | ✅ Yes          | ![Req-31](images/Req-31.png) | [usecase31.log](output/usecase31.log) |
+| 32 | Languages reports.                                                                                    | ⚙️ In Progress |                | 🚫 Not generated     |
 
 
 ## About the Project

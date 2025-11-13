@@ -1,5 +1,31 @@
-Report generated on: 2025-11-11T09:50:57.827208700
+Report generated on: 2025-11-13 21:23:46
 
-=== USE CASE 26: World population total ===
 
-World total: 6,078,749,450
+=== USE CASE 26: Total population of the world ===
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        order by
+            c1_0.`Population` desc
+Total population of the world: 6,078,749,450

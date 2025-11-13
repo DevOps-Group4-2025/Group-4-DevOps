@@ -1,58 +1,26 @@
-Report generated on: 2025-11-11T09:50:58.183751200
+Report generated on: 2025-11-13 21:23:47
 
-=== USE CASE 30: Population by district ===
 
-=== DISTRICT TOTALS (DESC) — TOP 50 ===
-District                  Population
--------------------------------------
-São Paulo                 26,316,966
-Maharashtra               23,659,433
-England                   19,978,543
-Punjab                    19,708,438
-California                16,716,706
-Distrito Federal          15,635,629
-Liaoning                  15,079,174
-Uttar Pradesh             14,291,064
-West Bengali              12,121,743
-Shandong                  12,114,416
-Rio de Janeiro            11,958,471
-Heilongjiang              11,628,057
-Tokyo-to                  11,043,967
-Sindh                     11,020,081
-Buenos Aires              10,530,136
-Andhra Pradesh            10,290,295
-México                    10,181,634
-Seoul                      9,981,619
-Tamil Nadu                 9,872,164
-National Capital Reg       9,848,641
-Jiangsu                    9,719,860
-Shanghai                   9,696,300
-Jakarta Raya               9,604,900
-Guangdong                  9,510,263
-Texas                      9,208,281
-Istanbul                   8,999,026
-New York                   8,958,085
-Nordrhein-Westfalen        8,937,547
-Moscow (City)              8,596,300
-Hubei                      8,547,585
-Gujarat                    8,425,343
-Teheran                    8,353,464
-West Java                  8,038,286
-Jilin                      7,826,824
-Osaka                      7,824,087
-Kanagawa                   7,707,240
-Delhi                      7,602,327
-Peking                     7,569,168
-Sichuan                    7,456,867
-Minas Gerais               7,150,060
-Gauteng                    6,965,169
-Henan                      6,899,010
-Kairo                      6,789,479
-Ontario                    6,583,612
-Kyonggi                    6,489,573
-Lima                       6,464,693
-Hebei                      6,458,553
-Karnataka                  6,416,461
-Chongqing                  6,351,600
-Bangkok                    6,320,174
-
+=== USE CASE 30: Total population of a district ===
+District: Shanghai
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        City c 
+    WHERE
+        c.district = :district 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`ID`,
+            c1_0.`CountryCode`,
+            c1_0.`District`,
+            c1_0.`Name`,
+            c1_0.`Population` 
+        from
+            city c1_0 
+        where
+            c1_0.`District`=? 
+        order by
+            c1_0.`Population` desc
+Total population of district Shanghai: 9,696,300
