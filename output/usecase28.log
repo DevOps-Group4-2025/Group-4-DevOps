@@ -1,33 +1,32 @@
-Report generated on: 2025-11-11T09:50:58.096718200
+Report generated on: 2025-11-13 21:23:46
 
-=== USE CASE 28: Population by region ===
 
-=== REGION TOTALS (DESC) ===
-Region                    Population
--------------------------------------
-Eastern Asia           1,507,328,000
-Southern and Central Asia   1,490,776,000
-Southeast Asia           518,541,000
-South America            345,780,000
-North America            309,632,000
-Eastern Europe           307,026,000
-Eastern Africa           246,999,000
-Western Africa           221,672,000
-Middle East              188,380,700
-Western Europe           183,247,600
-Northern Africa          173,266,000
-Southern Europe          144,674,200
-Central America          135,221,000
-Central Africa            95,652,000
-British Islands           63,398,500
-Southern Africa           46,886,000
-Caribbean                 38,140,000
-Nordic Countries          24,166,400
-Australia and New Zealand      22,753,100
-Baltic Countries           7,561,900
-Melanesia                  6,472,000
-Polynesia                    633,050
-Micronesia                   543,000
-Micronesia/Caribbean               0
-Antarctica                         0
-
+=== USE CASE 28: Total population of a region ===
+Region: Eastern Asia
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        order by
+            c1_0.`Population` desc
+Total population of region Eastern Asia: 1,507,328,000

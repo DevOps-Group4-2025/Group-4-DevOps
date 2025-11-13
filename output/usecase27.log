@@ -1,15 +1,36 @@
-Report generated on: 2025-11-11T09:50:58.065361100
+Report generated on: 2025-11-13 21:23:46
 
-=== USE CASE 27: Population by continent ===
 
-=== CONTINENT TOTALS (DESC) ===
-Continent                 Population
--------------------------------------
-Asia                   3,705,025,700
-Africa                   784,475,000
-Europe                   730,074,600
-North America            482,993,000
-South America            345,780,000
-Oceania                   30,401,150
-Antarctica                         0
-
+=== USE CASE 27: Total population of a continent ===
+Continent: Asia
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    WHERE
+        c.continent = :continent 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        where
+            c1_0.`Continent`=? 
+        order by
+            c1_0.`Population` desc
+Total population of continent Asia: 3,705,025,700
