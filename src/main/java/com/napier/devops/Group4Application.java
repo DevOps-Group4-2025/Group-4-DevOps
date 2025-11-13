@@ -83,7 +83,7 @@ public class Group4Application implements CommandLineRunner {
      *   <li>Catches and logs any exceptions during file writing without terminating the program.</li>
      * </ul>
      */
-    private static void runUseCase(String fileName, Runnable action) {
+    public static void runUseCase(String fileName, Runnable action) {
         java.io.File dir = new java.io.File("output");
         if (!dir.exists() && !dir.mkdirs()) {
             System.err.println("Warning: could not create output directory " + dir.getAbsolutePath());
