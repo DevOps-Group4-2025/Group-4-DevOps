@@ -116,26 +116,23 @@ public class Group4ApplicationTest {
      * Tests the interactive menu flow, simulating a user selecting an option and then exiting.
      */
     @Test
-    void testRunInteractiveMode() {
+    void testRunInteractiveMode() throws Exception {
         // Arrange: Simulate user typing "1" (for use case 1) and then "100" (to exit)
         provideInput("1\n\n100\n");
         when(countryService.getAllCountriesWorld()).thenReturn(Collections.singletonList(
                 new Country("USA", "United States", "North America", "North America", 330000000L)
         ));
 
-        // Act & Assert: Run the application and expect it to exit cleanly
-        try {
-            group4Application.run("--interactive");
-        } catch (Exception e) {
-            // The System.exit(0) call in the app throws an exception in tests, which we can catch.
-            // We verify that the output contains expected results from the selected menu option.
-            String output = outContent.toString();
-            assertTrue(output.contains("WELCOME TO WORLD POPULATION REPORTING SYSTEM"));
-            assertTrue(output.contains("Interactive mode enabled"));
-            assertTrue(output.contains("ALL COUNTRIES IN THE WORLD"));
-            assertTrue(output.contains("United States"));
-            assertTrue(output.contains("Thank you for using the World Population Reporting System. Goodbye!"));
-        }
+        // Act: Run the application, which should now exit the loop gracefully instead of crashing.
+        group4Application.run("--interactive");
+
+        // Assert: Verify the output contains the expected messages from the interactive session.
+        String output = outContent.toString();
+        assertTrue(output.contains("WELCOME TO WORLD POPULATION REPORTING SYSTEM"));
+        assertTrue(output.contains("Interactive mode enabled"));
+        assertTrue(output.contains("ALL COUNTRIES IN THE WORLD"));
+        assertTrue(output.contains("United States"));
+        assertTrue(output.contains("Thank you for using the World Population Reporting System. Goodbye!"));
     }
 
     /**

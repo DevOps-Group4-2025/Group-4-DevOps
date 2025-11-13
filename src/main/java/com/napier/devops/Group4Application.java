@@ -32,6 +32,8 @@ import java.util.Scanner;
 @SpringBootApplication
 public class Group4Application implements CommandLineRunner {
 
+    private boolean running = true;
+
     /**
      * Service for managing and retrieving country-related data.
      */
@@ -146,9 +148,9 @@ public class Group4Application implements CommandLineRunner {
         if (interactiveMenu) {
             System.out.println("Interactive mode enabled. Launching main menu...");
             try (Scanner scanner = new Scanner(System.in)) {
-                while (true) {
+                while (this.running) {
                     int selection = mainMenu(scanner);
-                    handleMenuSelection(selection, scanner);
+                    handleMenuSelection(selection, scanner, this);
                 }
             }
         }else {
@@ -332,7 +334,7 @@ public class Group4Application implements CommandLineRunner {
      * @param selection the user’s menu choice
      * @param scanner   the Scanner used for input
      */
-    private void handleMenuSelection(int selection, Scanner scanner) {
+    private void handleMenuSelection(int selection, Scanner scanner, Group4Application app) {
         switch (selection) {
             case 1:
                 runUseCase("interactive-usecase1.log", this::displayAllCountriesWorld);
@@ -441,7 +443,7 @@ public class Group4Application implements CommandLineRunner {
                 break;
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
-                System.exit(0);
+                app.running = false; // Set running to false to exit the loop gracefully
                 break;
             default:
                 System.out.println("Invalid selection. Please try again.");
@@ -449,7 +451,9 @@ public class Group4Application implements CommandLineRunner {
         }
         System.out.println("\nPress Enter to continue...");
         scanner.nextLine();
+        if (!app.running) scanner.close(); // Close scanner if exiting
     }
+
 
     /**
      * Use Case 1:
