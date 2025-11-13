@@ -117,8 +117,9 @@ public class Group4ApplicationTest {
      */
     @Test
     void testRunInteractiveMode() throws Exception {
-        // Arrange: Simulate user typing "1" (for use case 1) and then "100" (to exit)
-        provideInput("1\n\n100\n");
+        // Arrange: Simulate user typing "1", pressing Enter, then "100", and pressing Enter again.
+        // The extra newline at the end is crucial to satisfy the final "Press Enter to continue..." prompt.
+        provideInput("1\n\n100\n\n");
         when(countryService.getAllCountriesWorld()).thenReturn(Collections.singletonList(
                 new Country("USA", "United States", "North America", "North America", 330000000L)
         ));
