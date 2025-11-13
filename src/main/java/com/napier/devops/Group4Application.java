@@ -518,7 +518,7 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    private void displayCapitalCities(List<CapitalCity> capitals) {
+    void displayCapitalCities(List<CapitalCity> capitals) {
         if (capitals == null || capitals.isEmpty()) {
             System.out.println("No capital cities found for the selected criteria.");
             return;
@@ -540,7 +540,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param countries a list of {@link Country} objects to display
      */
-    private void displayCountries(List<Country> countries) {
+    void displayCountries(List<Country> countries) {
         if (countries.isEmpty()) {
             System.out.println("No countries found.");
             return;
@@ -563,7 +563,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param breakdowns list of {@link PopulationBreakdown} to display; may be null or empty
      */
-    private void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
+    void displayPopulationBreakdowns(List<PopulationBreakdown> breakdowns) {
         if (breakdowns == null || breakdowns.isEmpty()) {
             System.out.println("No population breakdowns found.");
             return;
@@ -612,7 +612,7 @@ public class Group4Application implements CommandLineRunner {
      *
      * @param cities List of City objects to display.
      */
-    private void displayCities(List<City> cities) {
+    void displayCities(List<City> cities) {
         // If there are no cities in the list, show a message and exit early.
         if (cities.isEmpty()) {
             System.out.println("No city found.");
