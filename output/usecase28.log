@@ -1,32 +1,18 @@
-Report generated on: 2025-11-13 21:23:46
+Report generated on: 2025-11-13 23:39:53
 
 
-=== USE CASE 28: Total population of a region ===
-Region: Eastern Asia
+USE CASE 28: The population of a region.
 Hibernate: 
     /* SELECT
-        c 
+        SUM(co.population) AS RegionPopulation 
     FROM
-        Country c 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
+        Country co 
+    WHERE
+        co.region = :region */ select
+            sum(c1_0.`Population`) 
         from
             country c1_0 
-        order by
-            c1_0.`Population` desc
-Total population of region Eastern Asia: 1,507,328,000
+        where
+            c1_0.`Region`=?
+
+The population of Caribbean : 38140000
