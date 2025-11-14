@@ -166,7 +166,29 @@ public class Group4Application implements CommandLineRunner {
                     System.out.println("\n=== USE CASE 2: All countries in a continent (Asia) ===");
                     displayAllCountriesInContinent(appParameters.getUseCase2Continent());
                 });
+                // USE CASE 3
+                runUseCase("usecase3.log", () -> {
+                System.out.println("\nUSE CASE 3: List All Countries in a Region by Population (Descending)");
+                displayAllCountriesRegion("Caribbean");
+                });
 
+                // USE CASE 4
+                runUseCase("usecase4.log", () -> {
+                System.out.println("\nUSE CASE 4: List Top N Most Populated Countries in the World");
+                displayTopCountriesWorld(10);
+                });
+
+                // USE CASE 5
+                runUseCase("usecase5.log", () -> {
+                System.out.println("\nUSE CASE 5: List Top N Most Populated Countries in a Continent");
+                displayTopCountriesContinent("Asia", 10);
+                });
+
+                // USE CASE 6
+                runUseCase("usecase6.log", () -> {
+                System.out.println("\nUSE CASE 6: List Top N Most Populated Countries in a Region");
+                displayTopCountriesRegion("Caribbean", 10);
+                });
 
                 // === CITY REPORTS (7–16) ===
                 runUseCase("usecase7.log", () -> {
@@ -344,6 +366,35 @@ public class Group4Application implements CommandLineRunner {
                 String continent = scanner.nextLine();
                 runUseCase("interactive-usecase2.log", () -> displayAllCountriesInContinent(continent));
                 break;
+            case 3:
+                System.out.print("Enter region name: ");
+                String region3 = scanner.nextLine();
+                runUseCase("interactive-usecase3.log", () -> displayAllCountriesRegion(region3));
+                break;
+            case 4:
+                System.out.print("Enter number of top countries: ");
+                int limit4 = scanner.nextInt();
+                scanner.nextLine(); // consume newline
+                runUseCase("interactive-usecase4.log", () -> displayTopCountriesWorld(limit4));
+                break;
+
+            case 5:
+                System.out.print("Enter continent name: ");
+                String continent5 = scanner.nextLine();
+                System.out.print("Enter number of top countries: ");
+                int limit5 = scanner.nextInt();
+                scanner.nextLine();
+                runUseCase("interactive-usecase5.log", () -> displayTopCountriesContinent(continent5, limit5));
+                break;
+
+            case 6:
+                System.out.print("Enter region name: ");
+                String region6 = scanner.nextLine();
+                System.out.print("Enter number of top countries: ");
+                int limit6 = scanner.nextInt();
+                scanner.nextLine();
+                runUseCase("interactive-usecase6.log", () -> displayTopCountriesRegion(region6, limit6));
+                break;
             case 7:
                 runUseCase("interactive-usecase7.log", () -> displayCities(cityController.getAllCitiesInTheWorld()));
                 break;
@@ -469,6 +520,30 @@ public class Group4Application implements CommandLineRunner {
         System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", continent.toUpperCase());
         List<Country> countries = countryService.getAllCountriesInContinent(continent);
         displayCountries(countries);
+    }
+
+    // USE CASE 3
+    private void displayAllCountriesRegion(String region) {
+        System.out.println("\n=== ALL COUNTRIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
+        displayCountries(countryService.getCountriesInRegionByPopulation(region));
+    }
+
+    // USE CASE 4
+    private void displayTopCountriesWorld(int limit) {
+        System.out.println("\n=== TOP " + limit + " COUNTRIES IN THE WORLD (BY POPULATION) ===");
+        displayCountries(countryService.getTopCountriesInWorld(limit));
+    }
+
+    // USE CASE 5
+    private void displayTopCountriesContinent(String continent, int limit) {
+        System.out.println("\n=== TOP " + limit + " COUNTRIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
+        displayCountries(countryService.getTopCountriesInContinent(continent, limit));
+    }
+
+    // USE CASE 6
+    private void displayTopCountriesRegion(String region, int limit) {
+        System.out.println("\n=== TOP " + limit + " COUNTRIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
+        displayCountries(countryService.getTopCountriesInRegion(region, limit));
     }
 
     // USE CASE 17: List All Capital Cities in the World by Population

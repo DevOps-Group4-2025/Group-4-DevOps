@@ -18,4 +18,36 @@ public interface CountryRepository extends CrudRepository<Country, String> {
     @Query("SELECT c FROM Country c WHERE c.continent = :continent ORDER BY c.population DESC")
     List<Country> findByContinentOrderByPopulationDesc(@Param("continent") String continent);
 
+    // USE CASE 3: List All Countries in a Region by Population (Descending)
+    @Query("""
+        SELECT c FROM Country c
+        WHERE LOWER(c.region) = LOWER(:region)
+        ORDER BY c.population DESC
+    """)
+    List<Country> findCountriesInRegionByPopulationDesc(@Param("region") String region);
+
+    // USE CASE 4: List Top N Most Populated Countries in the World
+    @Query("""
+        SELECT c FROM Country c
+        ORDER BY c.population DESC
+    """)
+    List<Country> findTopCountriesInWorld();
+
+    // USE CASE 5: List Top N Most Populated Countries in a Continent
+    @Query("""
+        SELECT c FROM Country c
+        WHERE LOWER(c.continent) = LOWER(:continent)
+        ORDER BY c.population DESC
+    """)
+    List<Country> findTopCountriesInContinent(@Param("continent") String continent);
+
+    // USE CASE 6: List Top N Most Populated Countries in a Region
+    @Query("""
+        SELECT c FROM Country c
+        WHERE LOWER(c.region) = LOWER(:region)
+        ORDER BY c.population DESC
+    """)
+    List<Country> findTopCountriesInRegion(@Param("region") String region);
+
+
 }
