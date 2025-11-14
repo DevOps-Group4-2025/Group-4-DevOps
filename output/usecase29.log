@@ -1,32 +1,18 @@
-Report generated on: 2025-11-13 21:23:46
+Report generated on: 2025-11-14 00:13:56
 
 
-=== USE CASE 29: Total population of a country ===
-Country: Japan
+USE CASE 29: The population of a country.
 Hibernate: 
     /* SELECT
-        c 
+        co.population AS CountryPopulation 
     FROM
-        Country c 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
+        Country co 
+    WHERE
+        co.name = :name */ select
+            c1_0.`Population` 
         from
             country c1_0 
-        order by
-            c1_0.`Population` desc
-Total population of country Japan: 126,714,000
+        where
+            c1_0.`Name`=?
+
+The population of Italy : 57680000

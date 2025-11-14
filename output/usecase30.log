@@ -1,26 +1,18 @@
-Report generated on: 2025-11-13 21:23:47
+Report generated on: 2025-11-14 00:13:56
 
 
-=== USE CASE 30: Total population of a district ===
-District: Shanghai
+USE CASE 30: The population of a district.
 Hibernate: 
     /* SELECT
-        c 
+        SUM(c.population) AS DistrictPopulation 
     FROM
         City c 
     WHERE
-        c.district = :district 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`ID`,
-            c1_0.`CountryCode`,
-            c1_0.`District`,
-            c1_0.`Name`,
-            c1_0.`Population` 
+        c.district = :district */ select
+            sum(c1_0.`Population`) 
         from
             city c1_0 
         where
-            c1_0.`District`=? 
-        order by
-            c1_0.`Population` desc
-Total population of district Shanghai: 9,696,300
+            c1_0.`District`=?
+
+The population of Shanghai : 9696300

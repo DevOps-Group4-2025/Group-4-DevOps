@@ -35,45 +35,26 @@ public class AppParameters {
     @Value("${use_case_13.continent}")
     private String useCase13Continent;
 
-        @Value("${use_case_13.limit}")
+    @Value("${use_case_13.limit}")
+    private int useCase13Limit;
 
-        private int useCase13Limit;
+    @Value("${use_case_14.region}")
+    private String useCase14Region;
 
-    
+    @Value("${use_case_14.limit}")
+    private int useCase14Limit;
 
-        @Value("${use_case_14.region}")
+    @Value("${use_case_15.country}")
+    private String useCase15Country;
 
-        private String useCase14Region;
+    @Value("${use_case_15.limit}")
+    private int useCase15Limit;
 
-    
+    @Value("${use_case_16.district}")
+    private String useCase16District;
 
-        @Value("${use_case_14.limit}")
-
-        private int useCase14Limit;
-
-    
-
-        @Value("${use_case_15.country}")
-
-        private String useCase15Country;
-
-    
-
-        @Value("${use_case_15.limit}")
-
-        private int useCase15Limit;
-
-    
-
-        @Value("${use_case_16.district}")
-
-        private String useCase16District;
-
-    
-
-        @Value("${use_case_16.limit}")
-
-        private int useCase16Limit;
+    @Value("${use_case_16.limit}")
+    private int useCase16Limit;
 
     @Value("${use_case_18.continent}")
     private String useCase18Continent;
@@ -96,8 +77,21 @@ public class AppParameters {
     @Value("${use_case_22.limit}")
     private int useCase22Limit;
 
-    
+    @Value("Asia")
+    private String useCase27Continent;
 
-    }
+    @Value("Caribbean")
+    private String useCase28Region;
+
+    @Value("Italy")
+    private String useCase29Country;
+
+    @Value("Shanghai")
+    private String useCase30District;
+
+    @Value("London")
+    private String useCase31City;
+
+}
 
     

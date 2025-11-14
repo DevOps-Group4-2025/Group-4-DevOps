@@ -1,22 +1,15 @@
-Report generated on: 2025-11-13 21:23:47
+Report generated on: 2025-11-14 00:13:56
 
 
-=== USE CASE 31: Population of a single city ===
-City: Tokyo
+USE CASE 31: The population of a city.
 Hibernate: 
-    /* SELECT
-        c 
+    /* dynamic native SQL query */ SELECT
+        Population AS CityPopulation 
     FROM
-        City c 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`ID`,
-            c1_0.`CountryCode`,
-            c1_0.`District`,
-            c1_0.`Name`,
-            c1_0.`Population` 
-        from
-            city c1_0 
-        order by
-            c1_0.`Population` desc
-Population of city Tokyo: 7,980,230
+        city 
+    WHERE
+        Name = ? 
+    LIMIT
+        1
+
+The population of London : 7285000

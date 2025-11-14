@@ -1,6 +1,7 @@
 package com.napier.devops;
 
 import com.napier.devops.controller.CapitalController;
+import com.napier.devops.controller.PopulationController;
 import com.napier.devops.model.CapitalCity;
 import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
@@ -53,6 +54,9 @@ public class Group4Application implements CommandLineRunner {
     private CityController cityController;
 
     @Autowired
+    private PopulationController populationController;
+
+    @Autowired
     private AppParameters appParameters;
 
     @Autowired
@@ -76,14 +80,14 @@ public class Group4Application implements CommandLineRunner {
      * @param fileName the name of the file to write the report to (e.g., "usecase1.log")
      * @param action   a {@link Runnable} representing the use case logic to execute
      *
-     * <p>Behavior:</p>
-     * <ul>
-     *   <li>If the output directory "output" does not exist, it will attempt to create it.</li>
-     *   <li>Prints the current date and time at the beginning of the report.</li>
-     *   <li>Redirects {@link System#out} to a dual stream that prints to both console and file.</li>
-     *   <li>Restores {@link System#out} after execution is complete.</li>
-     *   <li>Catches and logs any exceptions during file writing without terminating the program.</li>
-     * </ul>
+     *                 <p>Behavior:</p>
+     *                 <ul>
+     *                   <li>If the output directory "output" does not exist, it will attempt to create it.</li>
+     *                   <li>Prints the current date and time at the beginning of the report.</li>
+     *                   <li>Redirects {@link System#out} to a dual stream that prints to both console and file.</li>
+     *                   <li>Restores {@link System#out} after execution is complete.</li>
+     *                   <li>Catches and logs any exceptions during file writing without terminating the program.</li>
+     *                 </ul>
      */
     public static void runUseCase(String fileName, Runnable action) {
         java.io.File dir = new java.io.File("output");
@@ -153,78 +157,78 @@ public class Group4Application implements CommandLineRunner {
                     handleMenuSelection(selection, scanner, this);
                 }
             }
-        }else {
-                System.out.println("Running in containerized mode - automatically executing all use cases...");
+        } else {
+            System.out.println("Running in containerized mode - automatically executing all use cases...");
 
-                // === COUNTRY REPORTS ===
-                runUseCase("usecase1.log", () -> {
-                    System.out.println("\n=== USE CASE 1: All countries in the world ===");
-                    displayAllCountriesWorld();
-                });
+            // === COUNTRY REPORTS ===
+            runUseCase("usecase1.log", () -> {
+                System.out.println("\n=== USE CASE 1: All countries in the world ===");
+                displayAllCountriesWorld();
+            });
 
-                runUseCase("usecase2.log", () -> {
-                    System.out.println("\n=== USE CASE 2: All countries in a continent (Asia) ===");
-                    displayAllCountriesInContinent(appParameters.getUseCase2Continent());
-                });
+            runUseCase("usecase2.log", () -> {
+                System.out.println("\n=== USE CASE 2: All countries in a continent (Asia) ===");
+                displayAllCountriesInContinent(appParameters.getUseCase2Continent());
+            });
 
 
-                // === CITY REPORTS (7–16) ===
-                runUseCase("usecase7.log", () -> {
-                    System.out.println("\nUSE CASE 7: All cities in the world ordered by population");
-                    displayCities(cityController.getAllCitiesInTheWorld());
-                });
-                runUseCase("usecase8.log", () -> {
-                    System.out.println("\nUSE CASE 8: All cities in a given continent (" + appParameters.getUseCase8Continent() + ")");
-                    displayCities(cityController.getAllCitiesInAContinent(appParameters.getUseCase8Continent()));
-                });
-                runUseCase("usecase9.log", () -> {
-                    System.out.println("\nUSE CASE 9: All cities in region " + appParameters.getUseCase9Region());
-                    displayCities(cityController.getAllCitiesInARegion(appParameters.getUseCase9Region()));
-                });
-                runUseCase("usecase10.log", () -> {
-                    System.out.println("\nUSE CASE 10: All cities in country " + appParameters.getUseCase10Country());
-                    displayCities(cityController.getAllCitiesInACountry(appParameters.getUseCase10Country()));
-                });
-                runUseCase("usecase11.log", () -> {
-                    System.out.println("\nUSE CASE 11: All cities in district " + appParameters.getUseCase11District());
-                    displayCities(cityController.getAllCitiesInADistrict(appParameters.getUseCase11District()));
-                });
-                runUseCase("usecase12.log", () -> {
-                    System.out.println("\nUSE CASE 12: Top " + appParameters.getUseCase12Limit() + " most populated cities in the world");
-                    displayCities(cityController.getTopNCitiesInTheWorld(appParameters.getUseCase12Limit()));
-                });
-                runUseCase("usecase13.log", () -> {
-                    System.out.println("\nUSE CASE 13: Top " + appParameters.getUseCase13Limit() + " cities in continent " + appParameters.getUseCase13Continent());
-                    displayCities(cityController.getTopNCitiesInAContinent(appParameters.getUseCase13Continent(), appParameters.getUseCase13Limit()));
-                });
-                runUseCase("usecase14.log", () -> {
-                    System.out.println("\nUSE CASE 14: Top " + appParameters.getUseCase14Limit() + " cities in region " + appParameters.getUseCase14Region());
-                    displayCities(cityController.getTopNCitiesInARegion(appParameters.getUseCase14Region(), appParameters.getUseCase14Limit()));
-                });
-                runUseCase("usecase15.log", () -> {
-                    System.out.println("\nUSE CASE 15: Top " + appParameters.getUseCase15Limit() + " cities in country " + appParameters.getUseCase15Country());
-                    displayCities(cityController.getTopNCitiesInACountry(appParameters.getUseCase15Country(), appParameters.getUseCase15Limit()));
-                });
-                runUseCase("usecase16.log", () -> {
-                    System.out.println("\nUSE CASE 16: Top " + appParameters.getUseCase16Limit() + " cities in district " + appParameters.getUseCase16District());
-                    displayCities(cityController.getTopNCitiesInADistrict(appParameters.getUseCase16District(), appParameters.getUseCase16Limit()));
-                });
+            // === CITY REPORTS (7–16) ===
+            runUseCase("usecase7.log", () -> {
+                System.out.println("\nUSE CASE 7: All cities in the world ordered by population");
+                displayCities(cityController.getAllCitiesInTheWorld());
+            });
+            runUseCase("usecase8.log", () -> {
+                System.out.println("\nUSE CASE 8: All cities in a given continent (" + appParameters.getUseCase8Continent() + ")");
+                displayCities(cityController.getAllCitiesInAContinent(appParameters.getUseCase8Continent()));
+            });
+            runUseCase("usecase9.log", () -> {
+                System.out.println("\nUSE CASE 9: All cities in region " + appParameters.getUseCase9Region());
+                displayCities(cityController.getAllCitiesInARegion(appParameters.getUseCase9Region()));
+            });
+            runUseCase("usecase10.log", () -> {
+                System.out.println("\nUSE CASE 10: All cities in country " + appParameters.getUseCase10Country());
+                displayCities(cityController.getAllCitiesInACountry(appParameters.getUseCase10Country()));
+            });
+            runUseCase("usecase11.log", () -> {
+                System.out.println("\nUSE CASE 11: All cities in district " + appParameters.getUseCase11District());
+                displayCities(cityController.getAllCitiesInADistrict(appParameters.getUseCase11District()));
+            });
+            runUseCase("usecase12.log", () -> {
+                System.out.println("\nUSE CASE 12: Top " + appParameters.getUseCase12Limit() + " most populated cities in the world");
+                displayCities(cityController.getTopNCitiesInTheWorld(appParameters.getUseCase12Limit()));
+            });
+            runUseCase("usecase13.log", () -> {
+                System.out.println("\nUSE CASE 13: Top " + appParameters.getUseCase13Limit() + " cities in continent " + appParameters.getUseCase13Continent());
+                displayCities(cityController.getTopNCitiesInAContinent(appParameters.getUseCase13Continent(), appParameters.getUseCase13Limit()));
+            });
+            runUseCase("usecase14.log", () -> {
+                System.out.println("\nUSE CASE 14: Top " + appParameters.getUseCase14Limit() + " cities in region " + appParameters.getUseCase14Region());
+                displayCities(cityController.getTopNCitiesInARegion(appParameters.getUseCase14Region(), appParameters.getUseCase14Limit()));
+            });
+            runUseCase("usecase15.log", () -> {
+                System.out.println("\nUSE CASE 15: Top " + appParameters.getUseCase15Limit() + " cities in country " + appParameters.getUseCase15Country());
+                displayCities(cityController.getTopNCitiesInACountry(appParameters.getUseCase15Country(), appParameters.getUseCase15Limit()));
+            });
+            runUseCase("usecase16.log", () -> {
+                System.out.println("\nUSE CASE 16: Top " + appParameters.getUseCase16Limit() + " cities in district " + appParameters.getUseCase16District());
+                displayCities(cityController.getTopNCitiesInADistrict(appParameters.getUseCase16District(), appParameters.getUseCase16Limit()));
+            });
 
-                // === CAPITAL CITIES REPORTS (17-22)===
-                runUseCase("usecase17.log", () -> {
-                    System.out.println("\nUSE CASE 17: All capital cities in the world by population");
-                    displayAllCapitalCitiesWorld();
-                });
-                runUseCase("usecase18.log", () -> {
+            // === CAPITAL CITIES REPORTS (17-22)===
+            runUseCase("usecase17.log", () -> {
+                System.out.println("\nUSE CASE 17: All capital cities in the world by population");
+                displayAllCapitalCitiesWorld();
+            });
+            runUseCase("usecase18.log", () -> {
                 System.out.println("\nUSE CASE 18: All capital cities in a continent by population");
                 displayCapitalCities(
                         capitalController.getCapitalCitiesInContinent(appParameters.getUseCase18Continent()).getBody()
                 );
-                });
-                runUseCase("usecase19.log", () -> {
+            });
+            runUseCase("usecase19.log", () -> {
                 System.out.println("\nUSE CASE 19: All capital cities in a region by population");
                 displayAllCapitalCitiesRegion(appParameters.getUseCase19Region());
-                });
+            });
             // USE CASE 20
             runUseCase("usecase20.log", () -> {
                 System.out.println("\nUSE CASE 20: Top N capital cities in the world by population");
@@ -248,26 +252,50 @@ public class Group4Application implements CommandLineRunner {
             });
 
             // === POPULATION BREAKDOWNS ===
-                runUseCase("usecase23.log", () -> {
-                    System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
-                    displayPopulationBreakdownsByContinentAll();
-                });
+            runUseCase("usecase23.log", () -> {
+                System.out.println("\n=== USE CASE 23: Population breakdowns by continent ===");
+                displayPopulationBreakdownsByContinentAll();
+            });
 
-                runUseCase("usecase24.log", () -> {
-                    System.out.println("\n=== USE CASE 24: Population breakdowns by region ===");
-                    displayPopulationBreakdownsByRegionAll();
-                });
+            runUseCase("usecase24.log", () -> {
+                System.out.println("\n=== USE CASE 24: Population breakdowns by region ===");
+                displayPopulationBreakdownsByRegionAll();
+            });
 
-                runUseCase("usecase25.log", () -> {
-                    System.out.println("\n=== USE CASE 25: Population breakdowns by country ===");
-                    displayPopulationBreakdownsByCountryAll();
-                });
+            runUseCase("usecase25.log", () -> {
+                System.out.println("\n=== USE CASE 25: Population breakdowns by country ===");
+                displayPopulationBreakdownsByCountryAll();
+            });
 
-                System.out.println("\nAll use cases executed successfully!");
-            }
+            // === POPULATION REPORTS (26–31) ===
+            runUseCase("usecase26.log", () -> {
+                System.out.println("\nUSE CASE 26: The population of the world.");
+                displayBasicPopulation("the world", populationController.getWorldPopulation());
+            });
+            runUseCase("usecase27.log", () -> {
+                System.out.println("\nUSE CASE 27: The population of a continent.");
+                displayBasicPopulation(appParameters.getUseCase27Continent(),populationController.getContinentPopulation(appParameters.getUseCase27Continent()));
+            });
+            runUseCase("usecase28.log", () -> {
+                System.out.println("\nUSE CASE 28: The population of a region.");
+                displayBasicPopulation(appParameters.getUseCase28Region(),populationController.getRegionPopulation(appParameters.getUseCase28Region()));
+            });
+            runUseCase("usecase29.log", () -> {
+                System.out.println("\nUSE CASE 29: The population of a country.");
+                displayBasicPopulation(appParameters.getUseCase29Country(),populationController.getCountryPopulation(appParameters.getUseCase29Country()));
+            });
+            runUseCase("usecase30.log", () -> {
+                System.out.println("\nUSE CASE 30: The population of a district.");
+                displayBasicPopulation(appParameters.getUseCase30District(),populationController.getDistrictPopulation(appParameters.getUseCase30District()));
+            });
+            runUseCase("usecase31.log", () -> {
+                System.out.println("\nUSE CASE 31: The population of a city.");
+                displayBasicPopulation(appParameters.getUseCase31City(),populationController.getCityPopulation(appParameters.getUseCase31City()));
+            });
 
-
+            System.out.println("\nAll use cases executed successfully!");
         }
+    }
 
     /**
      * Displays a welcome message to the console.
@@ -477,27 +505,32 @@ public class Group4Application implements CommandLineRunner {
         List<CapitalCity> capitalCities = capitalCityService.getAllCapitalCitiesByPopulation();
         displayCapitalCities(capitalCities);
     }
+
     // USE CASE 18: List All Capital Cities in a Continent by Population
     private void displayAllCapitalCitiesContinent(String continent) {
         System.out.println("\n=== ALL CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
         List<CapitalCity> capitalCities = capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
         displayCapitalCities(capitalCities);
     }
+
     // USE CASE 19: List All Capital Cities in a Region by Population
     private void displayAllCapitalCitiesRegion(String region) {
         System.out.println("\n=== ALL CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
     }
+
     // USE CASE 20: Produce a Report on Top N Capital Cities in the World
     private void displayTopCapitalCitiesWorld(int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesWorld(limit));
     }
+
     // USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
     private void displayTopCapitalCitiesContinent(String continent, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesInContinent(continent, limit));
     }
+
     // USE CASE 22: Produce a Report on Top N Capital Cities in a Region
     private void displayTopCapitalCitiesRegion(String region, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
@@ -562,6 +595,7 @@ public class Group4Application implements CommandLineRunner {
                     country.getPopulation() != null ? country.getPopulation() : 0L);
         }
     }
+
     /**
      * Displays a list of population breakdowns in a formatted table.
      *
@@ -638,4 +672,8 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    // Basic Population Number Display
+    void displayBasicPopulation(String option, Long population) {
+        System.out.println("\nThe population of " + option + " : " + population);
+    }
 }

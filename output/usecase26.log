@@ -1,31 +1,14 @@
-Report generated on: 2025-11-13 21:23:46
+Report generated on: 2025-11-14 00:13:56
 
 
-=== USE CASE 26: Total population of the world ===
+USE CASE 26: The population of the world.
 Hibernate: 
     /* SELECT
-        c 
+        SUM(co.population) AS WorldPopulation 
     FROM
-        Country c 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
+        Country co */ select
+            sum(c1_0.`Population`) 
         from
-            country c1_0 
-        order by
-            c1_0.`Population` desc
-Total population of the world: 6,078,749,450
+            country c1_0
+
+The population of the world : 6078749450
