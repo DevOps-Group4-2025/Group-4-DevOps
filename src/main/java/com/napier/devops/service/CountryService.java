@@ -18,7 +18,6 @@ public class CountryService {
         return countryRepository.getAllCountriesWorld();
     }
 
-
     /**
      * Retrieves all countries in a given continent, ordered by population.
      * @param continent The name of the continent.
@@ -26,5 +25,27 @@ public class CountryService {
      */
     public List<Country> getAllCountriesInContinent(String continent) {
         return countryRepository.findByContinentOrderByPopulationDesc(continent);
+    }
+    // USE CASE 3
+    public List<Country> getCountriesInRegionByPopulation(String region) {
+        return countryRepository.findCountriesInRegionByPopulationDesc(region);
+    }
+
+    // USE CASE 4
+    public List<Country> getTopCountriesInWorld(int limit) {
+        List<Country> countries = countryRepository.findTopCountriesInWorld();
+        return countries.size() > limit ? countries.subList(0, limit) : countries;
+    }
+
+    // USE CASE 5
+    public List<Country> getTopCountriesInContinent(String continent, int limit) {
+        List<Country> countries = countryRepository.findTopCountriesInContinent(continent);
+        return countries.size() > limit ? countries.subList(0, limit) : countries;
+    }
+
+    // USE CASE 6
+    public List<Country> getTopCountriesInRegion(String region, int limit) {
+        List<Country> countries = countryRepository.findTopCountriesInRegion(region);
+        return countries.size() > limit ? countries.subList(0, limit) : countries;
     }
 }

@@ -1,0 +1,48 @@
+Report generated on: 2025-11-15 00:51:27
+
+
+USE CASE 6: List Top N Most Populated Countries in a Region
+
+=== TOP 10 COUNTRIES IN CARIBBEAN (BY POPULATION) ===
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    WHERE
+        LOWER(c.region) = LOWER(:region) 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        where
+            lower(c1_0.`Region`)=lower(?) 
+        order by
+            c1_0.`Population` desc
+Code Name                                     Continent       Region                    Population
+-----------------------------------------------------------------------------------------------
+CUB  Cuba                                     North America   Caribbean                 11,201,000
+DOM  Dominican Republic                       North America   Caribbean                  8,495,000
+HTI  Haiti                                    North America   Caribbean                  8,222,000
+PRI  Puerto Rico                              North America   Caribbean                  3,869,000
+JAM  Jamaica                                  North America   Caribbean                  2,583,000
+TTO  Trinidad and Tobago                      North America   Caribbean                  1,295,000
+GLP  Guadeloupe                               North America   Caribbean                    456,000
+MTQ  Martinique                               North America   Caribbean                    395,000
+BHS  Bahamas                                  North America   Caribbean                    307,000
+BRB  Barbados                                 North America   Caribbean                    270,000
