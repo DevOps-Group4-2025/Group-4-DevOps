@@ -1,4 +1,9 @@
 package com.napier.devops.repository;
 
-public interface CountryLanguageRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+public interface CountryLanguageRepository extends CrudRepository<com.napier.devops.model.CountryLanguage, com.napier.devops.model.CountryLanguageId>, CountryLanguageRepositoryCustom {
+
 }

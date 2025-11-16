@@ -7,6 +7,8 @@ import com.napier.devops.model.Country;
 import com.napier.devops.model.PopulationBreakdown;
 import com.napier.devops.controller.CityController;
 import com.napier.devops.model.City;
+import com.napier.devops.controller.LanguageController;
+import com.napier.devops.model.LanguageStats;
 import com.napier.devops.service.CapitalCityService;
 import com.napier.devops.service.CountryService;
 import com.napier.devops.service.PopulationBreakdownService;
@@ -61,6 +63,9 @@ public class Group4Application implements CommandLineRunner {
 
     @Autowired
     private CapitalController capitalController;
+
+    @Autowired
+    private LanguageController languageController;
 
 
     /**
@@ -293,6 +298,12 @@ public class Group4Application implements CommandLineRunner {
                 displayBasicPopulation(appParameters.getUseCase31City(),populationController.getCityPopulation(appParameters.getUseCase31City()));
             });
 
+            // === LANGUAGE REPORTS (32) ===
+            runUseCase("usecase32.log", () -> {
+                System.out.println("\nUSE CASE 32: Languages report (Chinese, English, Hindi, Spanish, Arabic)");
+                displayLanguageStatistics();
+            });
+
             System.out.println("\nAll use cases executed successfully!");
         }
     }
@@ -342,6 +353,8 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("23. Population breakdowns by continent (all)");
                 System.out.println("24. Population breakdowns by region (all)");
                 System.out.println("25. Population breakdowns by country (all)");
+                System.out.println("\n--- LANGUAGE REPORTS ---");
+                System.out.println("32. Languages report (Chinese, English, Hindi, Spanish, Arabic)");
                 System.out.println("\n--- SYSTEM ---");
                 System.out.println("100. Exit application");
 
@@ -468,6 +481,9 @@ public class Group4Application implements CommandLineRunner {
                 break;
             case 25:
                 runUseCase("interactive-usecase25.log", this::displayPopulationBreakdownsByCountryAll);
+                break;
+            case 32:
+                runUseCase("interactive-usecase32.log", this::displayLanguageStatistics);
                 break;
             case 100:
                 System.out.println("Thank you for using the World Population Reporting System. Goodbye!");
@@ -675,5 +691,38 @@ public class Group4Application implements CommandLineRunner {
     // Basic Population Number Display
     void displayBasicPopulation(String option, Long population) {
         System.out.println("\nThe population of " + option + " : " + population);
+    }
+
+    /**
+     * USE CASE 32: Displays language statistics for Chinese, English, Hindi, Spanish, and Arabic.
+     * Shows languages ordered by number of speakers (descending), including
+     * total speakers and percentage of world population.
+     */
+    private void displayLanguageStatistics() {
+        System.out.println("\n=== LANGUAGE STATISTICS REPORT ===");
+        List<LanguageStats> languageStats = languageController.getLanguageStatisticsList();
+        displayLanguages(languageStats);
+    }
+
+    /**
+     * Helper method to display a list of language statistics in a formatted table.
+     *
+     * @param languageStats a list of {@link LanguageStats} objects to display
+     */
+    void displayLanguages(List<LanguageStats> languageStats) {
+        if (languageStats == null || languageStats.isEmpty()) {
+            System.out.println("No language statistics found.");
+            return;
+        }
+
+        System.out.printf("%-20s %20s %25s%n", "Language", "Speakers", "Percentage of World");
+        System.out.println("-".repeat(70));
+
+        for (LanguageStats stats : languageStats) {
+            System.out.printf("%-20s %,20d %24.2f%%%n",
+                    stats.getLanguage() != null ? stats.getLanguage() : "Unknown",
+                    stats.getSpeakers() != null ? stats.getSpeakers() : 0L,
+                    stats.getPercentageOfWorldPopulation() != null ? stats.getPercentageOfWorldPopulation() : 0.0);
+        }
     }
 }
