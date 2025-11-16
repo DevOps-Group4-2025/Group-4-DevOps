@@ -1,4 +1,44 @@
-Report generated on: 2025-11-16 14:09:14
+Report generated on: 2025-11-16 15:15:03
 
 
 USE CASE 21: Top N capital cities in a continent by population
+
+=== TOP 10 CAPITAL CITIES IN ASIA (BY POPULATION) ===
+Hibernate: 
+    /* SELECT
+        new com.napier.devops.model.CapitalCity(city.name, country.name, city.population) 
+    FROM
+        Country country 
+    JOIN
+        City city 
+            ON city.id = country.capital 
+    WHERE
+        LOWER(country.continent) = LOWER(:continent) 
+    ORDER BY
+        city.population DESC */ select
+            c2_0.`Name`,
+            c1_0.`Name`,
+            c2_0.`Population` 
+        from
+            country c1_0 
+        join
+            city c2_0 
+                on c2_0.`ID`=c1_0.`Capital` 
+        where
+            lower(c1_0.`Continent`)=lower(?) 
+        order by
+            c2_0.`Population` desc 
+        limit
+            ?
+Capital City                   Country                             Population
+--------------------------------------------------------------------------------
+Seoul                          South Korea                          9,981,619
+Jakarta                        Indonesia                            9,604,900
+Tokyo                          Japan                                7,980,230
+Peking                         China                                7,472,000
+Teheran                        Iran                                 6,758,845
+Bangkok                        Thailand                             6,320,174
+Baghdad                        Iraq                                 4,336,000
+Singapore                      Singapore                            4,017,733
+Dhaka                          Bangladesh                           3,612,850
+Rangoon (Yangon)               Myanmar                              3,361,700

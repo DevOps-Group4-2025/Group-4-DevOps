@@ -1,4 +1,18 @@
-Report generated on: 2025-11-16 14:09:14
+Report generated on: 2025-11-16 15:15:03
 
 
 USE CASE 29: The population of a country.
+Hibernate: 
+    /* SELECT
+        co.population AS CountryPopulation 
+    FROM
+        Country co 
+    WHERE
+        co.name = :name */ select
+            c1_0.`Population` 
+        from
+            country c1_0 
+        where
+            c1_0.`Name`=?
+
+The population of Italy : 57680000
