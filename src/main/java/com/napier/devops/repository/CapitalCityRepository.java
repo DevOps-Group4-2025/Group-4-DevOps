@@ -79,7 +79,6 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
     List<com.napier.devops.model.CapitalCity> findTopCapitalCitiesByContinent(
             @Param("continent") String continent,
             Pageable pageable);
-    List<CapitalCity> findCapitalCitiesByContinentOrderByPopulationDesc(String string);
 
     // 22: Top N capital cities in a region (desc)
     @Query("""

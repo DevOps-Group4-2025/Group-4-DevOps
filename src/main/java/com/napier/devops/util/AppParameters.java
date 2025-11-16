@@ -77,19 +77,19 @@ public class AppParameters {
     @Value("${use_case_22.limit}")
     private int useCase22Limit;
 
-    @Value("Asia")
+    @Value("${use_case_27.continent}")
     private String useCase27Continent;
 
-    @Value("Caribbean")
+    @Value("${use_case_28.region}")
     private String useCase28Region;
 
-    @Value("Italy")
+    @Value("${use_case_29.country}")
     private String useCase29Country;
 
-    @Value("Shanghai")
+    @Value("${use_case_30.district}")
     private String useCase30District;
 
-    @Value("London")
+    @Value("${use_case_31.city}")
     private String useCase31City;
 
 }
