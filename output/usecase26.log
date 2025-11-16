@@ -1,6 +1,14 @@
-Report generated on: 2025-11-16 18:58:52
+Report generated on: 2025-11-16 19:05:42
 
 
 USE CASE 26: The population of the world.
+Hibernate: 
+    /* SELECT
+        SUM(co.population) AS WorldPopulation 
+    FROM
+        Country co */ select
+            sum(c1_0.`Population`) 
+        from
+            country c1_0
 
-The population of the world : null
+The population of the world : 6078749450

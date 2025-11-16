@@ -1,7 +1,40 @@
-Report generated on: 2025-11-16 18:58:52
+Report generated on: 2025-11-16 19:05:42
 
 
 USE CASE 20: Top N capital cities in the world by population
 
 === TOP 10 CAPITAL CITIES IN THE WORLD (BY POPULATION) ===
-No capital cities found for the selected criteria.
+Hibernate: 
+    /* SELECT
+        new com.napier.devops.model.CapitalCity(c.name, co.name, c.population) 
+    FROM
+        Country co 
+    JOIN
+        City c 
+            ON c.id = co.capital 
+    ORDER BY
+        c.population DESC */ select
+            c2_0.`Name`,
+            c1_0.`Name`,
+            c2_0.`Population` 
+        from
+            country c1_0 
+        join
+            city c2_0 
+                on c2_0.`ID`=c1_0.`Capital` 
+        order by
+            c2_0.`Population` desc 
+        limit
+            ?
+Capital City                   Country                             Population
+--------------------------------------------------------------------------------
+Seoul                          South Korea                          9,981,619
+Jakarta                        Indonesia                            9,604,900
+Ciudad de México               Mexico                               8,591,309
+Moscow                         Russian Federation                   8,389,200
+Tokyo                          Japan                                7,980,230
+Peking                         China                                7,472,000
+London                         United Kingdom                       7,285,000
+Cairo                          Egypt                                6,789,479
+Teheran                        Iran                                 6,758,845
+Lima                           Peru                                 6,464,693
