@@ -1,0 +1,32 @@
+Report generated on: 2025-11-16 23:44:06
+
+
+USE CASE 32: Languages report (Chinese, English, Hindi, Spanish, Arabic)
+
+=== LANGUAGE STATISTICS REPORT ===
+Hibernate: 
+    /* dynamic native SQL query */ SELECT
+        cl.`Language` AS language,
+        CAST(SUM(c.`Population` * cl.`Percentage` / 100) AS SIGNED) AS speakers,
+        CAST((SUM(c.`Population` * cl.`Percentage` / 100) * 100.0 /           (SELECT
+            SUM(`Population`) 
+        FROM
+            country)) AS DECIMAL(5, 2)) AS percentageOfWorldPopulation 
+    FROM
+        countrylanguage cl 
+    INNER JOIN
+        country c 
+            ON cl.`CountryCode` = c.`Code` 
+    WHERE
+        cl.`Language` IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic') 
+    GROUP BY
+        cl.`Language` 
+    ORDER BY
+        speakers DESC 
+Language                         Speakers       Percentage of World
+----------------------------------------------------------------------
+Chinese                     1,191,843,539                    19.61%
+Hindi                         405,633,070                     6.67%
+Spanish                       355,029,462                     5.84%
+English                       347,077,867                     5.71%
+Arabic                        233,839,239                     3.85%
