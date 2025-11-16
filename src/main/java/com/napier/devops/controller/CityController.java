@@ -10,7 +10,7 @@ import java.util.List;
 public class CityController {
 
     @Autowired
-    private CityService cityService;
+    CityService cityService;
 
     public List<City> getAllCitiesInTheWorld() {
         return cityService.getAllCitiesInTheWorld();

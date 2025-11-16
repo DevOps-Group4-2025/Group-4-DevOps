@@ -103,6 +103,9 @@ public class Country {
     @Column(name = "`HeadOfState`")
     protected String headOfState;
 
+    public Country(String countryA, String cta, String continent1, long l) {
+    }
+
     public String getCode() {
         return code;
     }
