@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
@@ -46,6 +48,56 @@ class CapitalControllerTest {
     }
 
     @Test
+    void getAllCapitalCities() {
+        List<CapitalCity> response = capitalController.getAllCapitalCities().getBody();
+
+        assertThat(response)
+                .isNotNull()
+                .hasSize(2)
+                .extracting(CapitalCity::getCityName)
+                .containsExactly("Canberra", "Wellington");
+    }
+
+    @Test
+    void getCapitalCitiesInContinent() {
+        List<CapitalCity> response = capitalController.getCapitalCitiesInContinent("Oceania").getBody();
+
+        assertThat(response)
+                .isNotNull()
+                .hasSize(2)
+                .extracting(CapitalCity::getCityName)
+                .containsExactly("Canberra", "Wellington");
+    }
+
+    @Test
+    void getCapitalCitiesInContinent_blankContinent() {
+        ResponseEntity<List<CapitalCity>> response = capitalController.getCapitalCitiesInContinent("");
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+    }
+
+    @Test
+    void getCapitalCitiesInRegion() {
+        List<CapitalCity> response = capitalController.getCapitalCitiesInRegion("Australia and New Zealand").getBody();
+
+        assertThat(response)
+                .isNotNull()
+                .hasSize(2)
+                .extracting(CapitalCity::getCityName)
+                .containsExactly("Canberra", "Wellington");
+    }
+
+    @Test
+    void getTopCapitalCitiesWorld() {
+        List<CapitalCity> response = capitalController.getTopCapitalCitiesWorld(1).getBody();
+
+        assertThat(response)
+                .isNotNull()
+                .hasSize(1)
+                .extracting(CapitalCity::getCityName)
+                .containsExactly("Canberra");
+    }
+
+    @Test
     void getTopCapitalCitiesInContinent_returnsResponse() {
         List<CapitalCity> response = capitalController.getTopCapitalCitiesInContinent("Oceania", 5).getBody();
 
@@ -54,6 +106,17 @@ class CapitalControllerTest {
                 .hasSize(2)
                 .extracting(CapitalCity::getCityName)
                 .containsExactly("Canberra", "Wellington");
+    }
+
+    @Test
+    void getTopCapitalCitiesRegion() {
+        List<CapitalCity> response = capitalController.getTopCapitalCitiesRegion("Australia and New Zealand", 1).getBody();
+
+        assertThat(response)
+                .isNotNull()
+                .hasSize(1)
+                .extracting(CapitalCity::getCityName)
+                .containsExactly("Canberra");
     }
 
     private City buildCity(Long id, String name, String countryCode, String district, int population) {
