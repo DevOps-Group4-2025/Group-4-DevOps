@@ -50,7 +50,7 @@ class CapitalCityRepositoryIT {
     @Test
     void findCapitalCitiesByContinentOrderByPopulationDesc() {
         // When
-        List<CapitalCity> europeanCapitals = capitalCityRepository.findCapitalCitiesByContinentOrderByPopulationDesc("Europe");
+        List<CapitalCity> europeanCapitals = capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc("Europe");
 
         // Then
         assertThat(europeanCapitals)
@@ -60,9 +60,9 @@ class CapitalCityRepositoryIT {
     }
 
     @Test
-    void findCapitalCitiesByRegionOrderByPopulationDesc() {
+    void findCapitalCitiesInRegionByPopulationDesc() {
         // When
-        List<CapitalCity> westernEuropeCapitals = capitalCityRepository.findCapitalCitiesByContinentOrderByPopulationDesc("Western Europe");
+        List<CapitalCity> westernEuropeCapitals = capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc("Western Europe");
 
         // Then
         assertThat(westernEuropeCapitals)
@@ -72,9 +72,9 @@ class CapitalCityRepositoryIT {
     }
 
     @Test
-    void findCapitalCitiesByContinentOrderByPopulationDesc_NoResults() {
+    void findCapitalCitiesInContinentByPopulationDesc_NoResults() {
         // When
-        List<CapitalCity> africanCapitals = capitalCityRepository.findCapitalCitiesByContinentOrderByPopulationDesc("Africa");
+        List<CapitalCity> africanCapitals = capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc("Africa");
 
         // Then
         assertThat(africanCapitals).isEmpty();
