@@ -324,7 +324,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case17_AllCapitalCitiesWorld() throws Exception {
         provideInput("17\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Tokyo", "Japan", 37400000L);
+        CapitalCity capital = new CapitalCity("Tokyo", "Japan", 37400000);
         when(capitalCityService.getAllCapitalCitiesByPopulation()).thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
@@ -337,7 +337,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case18_CapitalCitiesInContinent() throws Exception {
         provideInput("18\nAfrica\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Cairo", "Egypt", 20000000L);
+        CapitalCity capital = new CapitalCity("Cairo", "Egypt", 20000000);
         when(capitalCityService.getCapitalCitiesInContinentByPopulation("Africa"))
             .thenReturn(Collections.singletonList(capital));
 
@@ -351,7 +351,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case19_CapitalCitiesInRegion() throws Exception {
         provideInput("19\nSouthern Europe\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Rome", "Italy", 2800000L);
+        CapitalCity capital = new CapitalCity("Rome", "Italy", 2800000);
         when(capitalCityService.getCapitalCitiesInRegionByPopulation("Southern Europe"))
             .thenReturn(Collections.singletonList(capital));
 
@@ -365,7 +365,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case20_TopNCapitalCitiesWorld() throws Exception {
         provideInput("20\n10\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Beijing", "China", 21000000L);
+        CapitalCity capital = new CapitalCity("Beijing", "China", 21000000);
         when(capitalCityService.getTopCapitalCitiesWorld(10)).thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
@@ -378,7 +378,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case21_TopNCapitalCitiesInContinent() throws Exception {
         provideInput("21\nSouth America\n5\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Buenos Aires", "Argentina", 15000000L);
+        CapitalCity capital = new CapitalCity("Buenos Aires", "Argentina", 15000000);
         when(capitalCityService.getTopCapitalCitiesInContinent("South America", 5))
             .thenReturn(Collections.singletonList(capital));
 
@@ -392,7 +392,7 @@ public class Group4ApplicationTest {
     void testHandleMenuSelection_Case22_TopNCapitalCitiesInRegion() throws Exception {
         provideInput("22\nNorthern Europe\n3\n\n100\n\n");
         
-        CapitalCity capital = new CapitalCity("Stockholm", "Sweden", 1500000L);
+        CapitalCity capital = new CapitalCity("Stockholm", "Sweden", 1500000);
         when(capitalCityService.getTopCapitalCitiesInRegion("Northern Europe", 3))
             .thenReturn(Collections.singletonList(capital));
 
@@ -408,7 +408,7 @@ public class Group4ApplicationTest {
         provideInput("23\n\n100\n\n");
         
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Continent", "Asia", 4500000000L, 2000000000L, 44.4, 2500000000L, 55.6
+            "Continent", "Asia", 4500000000L, 2000000000L, 2500000000L, 44.4, 55.6
         );
         when(populationBreakdownService.getAllByContinent()).thenReturn(Collections.singletonList(breakdown));
 
@@ -423,7 +423,7 @@ public class Group4ApplicationTest {
         provideInput("24\n\n100\n\n");
         
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Region", "Western Europe", 195000000L, 150000000L, 76.9, 45000000L, 23.1
+            "Region", "Western Europe", 195000000L, 150000000L, 45000000L, 76.9, 23.1
         );
         when(populationBreakdownService.getAllByRegion()).thenReturn(Collections.singletonList(breakdown));
 
@@ -438,7 +438,7 @@ public class Group4ApplicationTest {
         provideInput("25\n\n100\n\n");
         
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Country", "United States", 330000000L, 275000000L, 83.3, 55000000L, 16.7
+            "Country", "United States", 330000000L, 275000000L, 55000000L, 83.3, 16.7
         );
         when(populationBreakdownService.getAllByCountry()).thenReturn(Collections.singletonList(breakdown));
 
@@ -557,7 +557,7 @@ public class Group4ApplicationTest {
 
     @Test
     void testDisplayCapitalCitiesWithData() {
-        CapitalCity capital = new CapitalCity("London", "United Kingdom", 8900000L);
+        CapitalCity capital = new CapitalCity("London", "United Kingdom", 8900000);
         group4Application.displayCapitalCities(Collections.singletonList(capital));
 
         String output = outContent.toString();
@@ -591,7 +591,7 @@ public class Group4ApplicationTest {
     @Test
     void testDisplayPopulationBreakdownsWithData() {
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Continent", "Europe", 750000000L, 550000000L, 73.3, 200000000L, 26.7
+            "Continent", "Europe", 750000000L, 550000000L, 200000000L, 73.3, 26.7
         );
         group4Application.displayPopulationBreakdowns(Collections.singletonList(breakdown));
 
