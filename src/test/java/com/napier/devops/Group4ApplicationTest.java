@@ -128,7 +128,6 @@ public class Group4ApplicationTest {
         
         Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000L);
         when(countryService.getAllCountriesInContinent("Asia")).thenReturn(Collections.singletonList(country));
-        when(countryService.getAllCountriesWorld()).thenReturn(new ArrayList<>());
 
         group4Application.run("--interactive");
 
