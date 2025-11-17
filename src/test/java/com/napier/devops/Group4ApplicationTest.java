@@ -125,7 +125,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case2_CountriesInContinent() throws Exception {
         provideInput("2\nAsia\n\n100\n\n");
-        
+
         Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000L);
         when(countryService.getAllCountriesInContinent("Asia")).thenReturn(Collections.singletonList(country));
 
@@ -136,17 +136,84 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("China"));
     }
 
+    @Test
+    void testHandleMenuSelection_Case3_CountriesInRegion() throws Exception {
+        provideInput("3\nWestern Europe\n\n100\n\n");
+
+        Country country = new Country("FRA", "France", "Europe", "Western Europe", 67000000L);
+        when(countryService.getCountriesInRegionByPopulation("Western Europe"))
+                .thenReturn(Collections.singletonList(country));
+
+        group4Application.run("--interactive");
+
+        verify(countryService).getCountriesInRegionByPopulation("Western Europe");
+        String output = outContent.toString();
+        assertTrue(output.contains("France"));
+    }
+
+
+    // Case 4 – Top countries in the world
+    @Test
+    void testHandleMenuSelection_Case4_TopCountriesWorld() throws Exception {
+        provideInput("4\n5\n\n100\n\n"); // menu 4, N=5, extra lines for scanner
+
+        Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000L);
+        when(countryService.getTopCountriesInWorld(5))
+                .thenReturn(Collections.singletonList(country));
+
+        group4Application.run("--interactive");
+
+        verify(countryService).getTopCountriesInWorld(5);
+        String output = outContent.toString();
+        assertTrue(output.contains("China"));
+    }
+
+    // Case 5 – Top countries in a continent
+    @Test
+    void testHandleMenuSelection_Case5_TopCountriesInContinent() throws Exception {
+        provideInput("5\nAsia\n10\n\n100\n\n"); // menu 5, continent=Asia, N=10, extra lines
+
+        Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000L);
+        when(countryService.getTopCountriesInContinent("Asia", 10))
+                .thenReturn(Collections.singletonList(country));
+
+        group4Application.run("--interactive");
+
+        verify(countryService).getTopCountriesInContinent("Asia", 10);
+        String output = outContent.toString();
+        assertTrue(output.contains("China"));
+    }
+
+    // Case 6 – Top countries in a region
+    @Test
+    void testHandleMenuSelection_Case6_TopCountriesInRegion() throws Exception {
+        provideInput("6\nEastern Asia\n5\n\n100\n\n"); // menu 6, region=Eastern Asia, N=5, extra lines
+
+        Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1400000000L);
+        when(countryService.getTopCountriesInRegion("Eastern Asia", 5))
+                .thenReturn(Collections.singletonList(country));
+
+        group4Application.run("--interactive");
+
+        verify(countryService).getTopCountriesInRegion("Eastern Asia", 5);
+        String output = outContent.toString();
+        assertTrue(output.contains("China"));
+    }
+
+
+
+
     // Tests for handleMenuSelection - Cases 7-16 (City Reports)
     @Test
     void testHandleMenuSelection_Case7_AllCitiesWorld() throws Exception {
         provideInput("7\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Tokyo");
         city.setCountryCode("JPN");
         city.setDistrict("Tokyo");
         city.setPopulation(37400000);
-        
+
         when(cityController.getAllCitiesInTheWorld()).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -159,13 +226,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case8_CitiesInContinent() throws Exception {
         provideInput("8\nAsia\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Mumbai");
         city.setCountryCode("IND");
         city.setDistrict("Maharashtra");
         city.setPopulation(20000000);
-        
+
         when(cityController.getAllCitiesInAContinent("Asia")).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -177,13 +244,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case9_CitiesInRegion() throws Exception {
         provideInput("9\nEastern Asia\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Seoul");
         city.setCountryCode("KOR");
         city.setDistrict("Seoul");
         city.setPopulation(9700000);
-        
+
         when(cityController.getAllCitiesInARegion("Eastern Asia")).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -195,13 +262,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case10_CitiesInCountry() throws Exception {
         provideInput("10\nJapan\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Osaka");
         city.setCountryCode("JPN");
         city.setDistrict("Osaka");
         city.setPopulation(2700000);
-        
+
         when(cityController.getAllCitiesInACountry("Japan")).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -213,13 +280,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case11_CitiesInDistrict() throws Exception {
         provideInput("11\nShanghai\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Shanghai");
         city.setCountryCode("CHN");
         city.setDistrict("Shanghai");
         city.setPopulation(24000000);
-        
+
         when(cityController.getAllCitiesInADistrict("Shanghai")).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -231,13 +298,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case12_TopNCitiesWorld() throws Exception {
         provideInput("12\n5\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("New York");
         city.setCountryCode("USA");
         city.setDistrict("New York");
         city.setPopulation(8400000);
-        
+
         when(cityController.getTopNCitiesInTheWorld(5)).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -249,13 +316,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case13_TopNCitiesInContinent() throws Exception {
         provideInput("13\nEurope\n10\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("London");
         city.setCountryCode("GBR");
         city.setDistrict("England");
         city.setPopulation(8900000);
-        
+
         when(cityController.getTopNCitiesInAContinent("Europe", 10)).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -267,13 +334,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case14_TopNCitiesInRegion() throws Exception {
         provideInput("14\nWestern Europe\n5\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Paris");
         city.setCountryCode("FRA");
         city.setDistrict("Île-de-France");
         city.setPopulation(2200000);
-        
+
         when(cityController.getTopNCitiesInARegion("Western Europe", 5)).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -285,13 +352,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case15_TopNCitiesInCountry() throws Exception {
         provideInput("15\nGermany\n3\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Berlin");
         city.setCountryCode("DEU");
         city.setDistrict("Berlin");
         city.setPopulation(3700000);
-        
+
         when(cityController.getTopNCitiesInACountry("Germany", 3)).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -303,13 +370,13 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case16_TopNCitiesInDistrict() throws Exception {
         provideInput("16\nCalifornia\n5\n\n100\n\n");
-        
+
         City city = new City();
         city.setName("Los Angeles");
         city.setCountryCode("USA");
         city.setDistrict("California");
         city.setPopulation(4000000);
-        
+
         when(cityController.getTopNCitiesInADistrict("California", 5)).thenReturn(Collections.singletonList(city));
 
         group4Application.run("--interactive");
@@ -322,7 +389,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case17_AllCapitalCitiesWorld() throws Exception {
         provideInput("17\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Tokyo", "Japan", 37400000);
         when(capitalCityService.getAllCapitalCitiesByPopulation()).thenReturn(Collections.singletonList(capital));
 
@@ -335,7 +402,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case18_CapitalCitiesInContinent() throws Exception {
         provideInput("18\nAfrica\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Cairo", "Egypt", 20000000);
         when(capitalCityService.getCapitalCitiesInContinentByPopulation("Africa"))
             .thenReturn(Collections.singletonList(capital));
@@ -349,7 +416,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case19_CapitalCitiesInRegion() throws Exception {
         provideInput("19\nSouthern Europe\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Rome", "Italy", 2800000);
         when(capitalCityService.getCapitalCitiesInRegionByPopulation("Southern Europe"))
             .thenReturn(Collections.singletonList(capital));
@@ -363,7 +430,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case20_TopNCapitalCitiesWorld() throws Exception {
         provideInput("20\n10\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Beijing", "China", 21000000);
         when(capitalCityService.getTopCapitalCitiesWorld(10)).thenReturn(Collections.singletonList(capital));
 
@@ -376,7 +443,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case21_TopNCapitalCitiesInContinent() throws Exception {
         provideInput("21\nSouth America\n5\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Buenos Aires", "Argentina", 15000000);
         when(capitalCityService.getTopCapitalCitiesInContinent("South America", 5))
             .thenReturn(Collections.singletonList(capital));
@@ -390,7 +457,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case22_TopNCapitalCitiesInRegion() throws Exception {
         provideInput("22\nNorthern Europe\n3\n\n100\n\n");
-        
+
         CapitalCity capital = new CapitalCity("Stockholm", "Sweden", 1500000);
         when(capitalCityService.getTopCapitalCitiesInRegion("Northern Europe", 3))
             .thenReturn(Collections.singletonList(capital));
@@ -405,7 +472,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case23_PopulationBreakdownByContinent() throws Exception {
         provideInput("23\n\n100\n\n");
-        
+
         PopulationBreakdown breakdown = new PopulationBreakdown(
             "Continent", "Asia", 4500000000L, 2000000000L, 2500000000L, 44.4, 55.6
         );
@@ -420,7 +487,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case24_PopulationBreakdownByRegion() throws Exception {
         provideInput("24\n\n100\n\n");
-        
+
         PopulationBreakdown breakdown = new PopulationBreakdown(
             "Region", "Western Europe", 195000000L, 150000000L, 45000000L, 76.9, 23.1
         );
@@ -435,7 +502,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case25_PopulationBreakdownByCountry() throws Exception {
         provideInput("25\n\n100\n\n");
-        
+
         PopulationBreakdown breakdown = new PopulationBreakdown(
             "Country", "United States", 330000000L, 275000000L, 55000000L, 83.3, 16.7
         );
@@ -451,7 +518,7 @@ public class Group4ApplicationTest {
     @Test
     void testHandleMenuSelection_Case32_LanguageStatistics() throws Exception {
         provideInput("32\n\n100\n\n");
-        
+
         LanguageStats stats = new LanguageStats("English", 1500000000L, 19.0);
         when(languageController.getLanguageStatisticsList()).thenReturn(Collections.singletonList(stats));
 
@@ -488,7 +555,7 @@ public class Group4ApplicationTest {
         city.setCountryCode("TS");
         city.setDistrict("Test District");
         city.setPopulation(100000);
-        
+
         when(cityController.getAllCitiesInTheWorld()).thenReturn(Collections.singletonList(city));
         group4Application.displayCities(cityController.getAllCitiesInTheWorld());
 
@@ -505,7 +572,7 @@ public class Group4ApplicationTest {
         city.setCountryCode("TS");
         city.setDistrict("Test District");
         city.setPopulation(null);
-        
+
         group4Application.displayCities(Collections.singletonList(city));
 
         String output = outContent.toString();
@@ -672,7 +739,7 @@ public class Group4ApplicationTest {
     @Test
     void testRunUseCaseWithException() {
         String testFilename = "test-exception.log";
-        
+
         Group4Application.runUseCase(testFilename, () -> {
             throw new RuntimeException("Test exception");
         });
