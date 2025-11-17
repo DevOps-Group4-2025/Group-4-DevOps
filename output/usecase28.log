@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 Report generated on: 2025-11-17 09:44:24
 
 
@@ -16,3 +17,23 @@ Hibernate:
             c1_0.`Region`=?
 
 The population of Caribbean : 38140000
+=======
+Report generated on: 2025-11-17 12:10:31
+
+
+USE CASE 28: The population of a region.
+Hibernate: 
+    /* SELECT
+        SUM(co.population) AS RegionPopulation 
+    FROM
+        Country co 
+    WHERE
+        co.region = :region */ select
+            sum(c1_0.`Population`) 
+        from
+            country c1_0 
+        where
+            c1_0.`Region`=?
+
+The population of Caribbean : 38140000
+>>>>>>> Stashed changes
