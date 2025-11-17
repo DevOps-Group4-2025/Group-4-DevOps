@@ -191,6 +191,11 @@ public class Group4Application implements CommandLineRunner {
                 displayTopCountriesInContinent(appParameters.getUseCase5Continent(), appParameters.getUseCase5Limit());
             });
 
+            runUseCase("usecase6.log", () -> {
+                System.out.println("\n=== USE CASE 6: Top " + appParameters.getUseCase6Limit() + " populated countries in a region (Eastern Asia) ===");
+                displayTopCountriesInRegion(appParameters.getUseCase6Region(), appParameters.getUseCase6Limit());
+            });
+
 
             // === CITY REPORTS (7–16) ===
             runUseCase("usecase7.log", () -> {
@@ -353,6 +358,8 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("2.  All countries in a continent (by population)");
                 System.out.println("3.  All countries in a region (by population)");
                 System.out.println("4.  Top N populated countries in the world");
+                System.out.println("5.  Top N populated countries in a continent");
+                System.out.println("6.  Top N populated countries in a region");
                 System.out.println("\n=== CITY REPORTS ===");
                 System.out.println("7.  Display all cities in the world ordered by population");
                 System.out.println("8.  Display all cities in a given continent (e.g., Asia)");
@@ -409,6 +416,20 @@ public class Group4Application implements CommandLineRunner {
                 System.out.print("Enter N: ");
                 int n = Integer.parseInt(scanner.nextLine());
                 runUseCase("interactive-usecase4.log", () -> displayTopCountriesInWorld(n));
+                break;
+            case 5:
+                System.out.print("Enter continent name: ");
+                String continent5 = scanner.nextLine();
+                System.out.print("Enter N: ");
+                int n5 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase5.log", () -> displayTopCountriesInContinent(continent5, n5));
+                break;
+            case 6:
+                System.out.print("Enter region name: ");
+                String region6 = scanner.nextLine();
+                System.out.print("Enter N: ");
+                int n6 = Integer.parseInt(scanner.nextLine());
+                runUseCase("interactive-usecase6.log", () -> displayTopCountriesInRegion(region6, n6));
                 break;
             case 7:
                 runUseCase("interactive-usecase7.log", () -> displayCities(cityController.getAllCitiesInTheWorld()));
@@ -555,6 +576,12 @@ public class Group4Application implements CommandLineRunner {
     private void displayTopCountriesInContinent(String continent, int n) {
         System.out.printf("\n=== TOP %d COUNTRIES IN %s (BY POPULATION) ===\n", n, continent.toUpperCase());
         List<Country> countries = countryService.getTopCountriesInContinent(continent, n);
+        displayCountries(countries);
+    }
+
+    private void displayTopCountriesInRegion(String region, int n) {
+        System.out.printf("\n=== TOP %d COUNTRIES IN %s (BY POPULATION) ===\n", n, region.toUpperCase());
+        List<Country> countries = countryService.getTopCountriesInRegion(region, n);
         displayCountries(countries);
     }
 
