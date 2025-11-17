@@ -33,19 +33,19 @@ public class CountryService {
 
     // USE CASE 4
     public List<Country> getTopCountriesInWorld(int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInWorld();
+        List<Country> countries = countryRepository.findTopNCountriesInWorld(limit);
         return countries.size() > limit ? countries.subList(0, limit) : countries;
     }
 
     // USE CASE 5
     public List<Country> getTopCountriesInContinent(String continent, int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInContinent(continent);
+        List<Country> countries = countryRepository.findTopNCountriesInContinent(continent, limit);
         return countries.size() > limit ? countries.subList(0, limit) : countries;
     }
 
     // USE CASE 6
     public List<Country> getTopCountriesInRegion(String region, int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInRegion(region);
+        List<Country> countries = countryRepository.findTopNCountriesInRegion(region, limit);
         return countries.size() > limit ? countries.subList(0, limit) : countries;
     }
 }
