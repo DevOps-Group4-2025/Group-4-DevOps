@@ -23,6 +23,12 @@ public class AppParameters {
     @Value("${use_case_4.limit}")
     private int useCase4Limit;
 
+    @Value("${use_case_5.continent}")
+    private String useCase5Continent;
+
+    @Value("${use_case_5.limit}")
+    private int useCase5Limit;
+
     @Value("${use_case_8.continent}")
     private String useCase8Continent;
 

@@ -186,6 +186,11 @@ public class Group4Application implements CommandLineRunner {
                 displayTopCountriesInWorld(appParameters.getUseCase4Limit());
             });
 
+            runUseCase("usecase5.log", () -> {
+                System.out.println("\n=== USE CASE 5: Top " + appParameters.getUseCase5Limit() + " populated countries in a continent (Asia) ===");
+                displayTopCountriesInContinent(appParameters.getUseCase5Continent(), appParameters.getUseCase5Limit());
+            });
+
 
             // === CITY REPORTS (7–16) ===
             runUseCase("usecase7.log", () -> {
@@ -544,6 +549,12 @@ public class Group4Application implements CommandLineRunner {
     private void displayTopCountriesInWorld(int n) {
         System.out.printf("\n=== TOP %d COUNTRIES IN THE WORLD (BY POPULATION) ===\n", n);
         List<Country> countries = countryService.getTopCountriesInWorld(n);
+        displayCountries(countries);
+    }
+
+    private void displayTopCountriesInContinent(String continent, int n) {
+        System.out.printf("\n=== TOP %d COUNTRIES IN %s (BY POPULATION) ===\n", n, continent.toUpperCase());
+        List<Country> countries = countryService.getTopCountriesInContinent(continent, n);
         displayCountries(countries);
     }
 
