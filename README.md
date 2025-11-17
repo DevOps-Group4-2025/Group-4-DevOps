@@ -33,7 +33,7 @@
 If you find a bug, please open an issue using our [Bug Report template](https://github.com/DevOps-Group4-2025/Group-4-DevOps/issues/new?template=bug_report.md). Include steps to reproduce, expected behaviour, and screenshots if possible.
 
 ## Status
-✅ **31 of 32 requirements implemented — 97% complete**
+✅ **32 of 32 requirements implemented — 100% complete**
 
 ---
 
@@ -72,7 +72,7 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | 29 | The population of a country. | ✅ Yes | ![Req29](images/req29.png) | [usecase29.log](output/usecase29.log) |
 | 30 | The population of a district. | ✅ Yes | ![Req30](images/req30.png) | [usecase30.log](output/usecase30.log) |
 | 31 | The population of a city. | ✅ Yes | ![Req31](images/req31.png) | [usecase31.log](output/usecase31.log) |
-| 32 | Languages reports. | ⚙️ In Progress | — | 🚫 Not generated |
+| 32 | Languages reports. | ✅ Yes | ![Req32](images/req31.png) | [usecase32.log](output/usecase32.log) |
 
 
 
