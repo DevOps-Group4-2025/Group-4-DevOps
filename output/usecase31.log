@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-Report generated on: 2025-11-17 09:44:24
+Report generated on: 2025-11-17 12:56:39
 
 
 USE CASE 31: The population of a city.
@@ -14,20 +13,3 @@ Hibernate:
         1
 
 The population of London : 7285000
-=======
-Report generated on: 2025-11-17 12:10:31
-
-
-USE CASE 31: The population of a city.
-Hibernate: 
-    /* dynamic native SQL query */ SELECT
-        Population AS CityPopulation 
-    FROM
-        city 
-    WHERE
-        Name = ? 
-    LIMIT
-        1
-
-The population of London : 7285000
->>>>>>> Stashed changes

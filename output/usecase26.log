@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-Report generated on: 2025-11-17 09:44:24
+Report generated on: 2025-11-17 12:56:39
 
 
 USE CASE 26: The population of the world.
@@ -13,19 +12,3 @@ Hibernate:
             country c1_0
 
 The population of the world : 6078749450
-=======
-Report generated on: 2025-11-17 12:10:31
-
-
-USE CASE 26: The population of the world.
-Hibernate: 
-    /* SELECT
-        SUM(co.population) AS WorldPopulation 
-    FROM
-        Country co */ select
-            sum(c1_0.`Population`) 
-        from
-            country c1_0
-
-The population of the world : 6078749450
->>>>>>> Stashed changes
