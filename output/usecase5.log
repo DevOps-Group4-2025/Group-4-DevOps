@@ -1,48 +1,7 @@
-Report generated on: 2025-11-15 00:51:26
+Report generated on: 2025-11-17 13:12:19
 
 
-USE CASE 5: List Top N Most Populated Countries in a Continent
+=== USE CASE 5: Top 5 populated countries in a continent (Asia) ===
 
-=== TOP 10 COUNTRIES IN ASIA (BY POPULATION) ===
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        Country c 
-    WHERE
-        LOWER(c.continent) = LOWER(:continent) 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
-        from
-            country c1_0 
-        where
-            lower(c1_0.`Continent`)=lower(?) 
-        order by
-            c1_0.`Population` desc
-Code Name                                     Continent       Region                    Population
------------------------------------------------------------------------------------------------
-CHN  China                                    Asia            Eastern Asia           1,277,558,000
-IND  India                                    Asia            Southern and Central Asia   1,013,662,000
-IDN  Indonesia                                Asia            Southeast Asia           212,107,000
-PAK  Pakistan                                 Asia            Southern and Central Asia     156,483,000
-BGD  Bangladesh                               Asia            Southern and Central Asia     129,155,000
-JPN  Japan                                    Asia            Eastern Asia             126,714,000
-VNM  Vietnam                                  Asia            Southeast Asia            79,832,000
-PHL  Philippines                              Asia            Southeast Asia            75,967,000
-IRN  Iran                                     Asia            Southern and Central Asia      67,702,000
-TUR  Turkey                                   Asia            Middle East               66,591,000
+=== TOP 5 POPULATED COUNTRIES IN ASIA ===
+No countries found.
