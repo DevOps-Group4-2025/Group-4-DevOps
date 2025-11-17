@@ -1,44 +1,5 @@
-Report generated on: 2025-11-17 12:56:39
+Report generated on: 2025-11-17 13:12:19
 
 
 USE CASE 13: Top 10 cities in continent Asia
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        City c,
-        Country co 
-    WHERE
-        c.countryCode = co.code 
-        AND co.continent = :continent 
-    ORDER BY
-        c.population DESC 
-    LIMIT
-        :topN */ select
-            c1_0.`ID`,
-            c1_0.`CountryCode`,
-            c1_0.`District`,
-            c1_0.`Name`,
-            c1_0.`Population` 
-        from
-            city c1_0,
-            country c2_0 
-        where
-            c1_0.`CountryCode`=c2_0.`Code` 
-            and c2_0.`Continent`=? 
-        order by
-            c1_0.`Population` desc 
-        limit
-            ?
-Name                           Country         District                  Population
--------------------------------------------------------------------------------------
-Mumbai (Bombay)                IND             Maharashtra               10,500,000
-Seoul                          KOR             Seoul                      9,981,619
-Shanghai                       CHN             Shanghai                   9,696,300
-Jakarta                        IDN             Jakarta Raya               9,604,900
-Karachi                        PAK             Sindh                      9,269,265
-Istanbul                       TUR             Istanbul                   8,787,958
-Tokyo                          JPN             Tokyo-to                   7,980,230
-Peking                         CHN             Peking                     7,472,000
-Delhi                          IND             Delhi                      7,206,704
-Teheran                        IRN             Teheran                    6,758,845
+No city found.

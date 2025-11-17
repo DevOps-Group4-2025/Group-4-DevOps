@@ -1,31 +1,5 @@
-Report generated on: 2025-11-17 12:56:39
+Report generated on: 2025-11-17 13:12:19
 
 
 USE CASE 16: Top 10 cities in district Shanghai
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        City c 
-    WHERE
-        c.district = :district 
-    ORDER BY
-        c.population DESC 
-    LIMIT
-        :topN */ select
-            c1_0.`ID`,
-            c1_0.`CountryCode`,
-            c1_0.`District`,
-            c1_0.`Name`,
-            c1_0.`Population` 
-        from
-            city c1_0 
-        where
-            c1_0.`District`=? 
-        order by
-            c1_0.`Population` desc 
-        limit
-            ?
-Name                           Country         District                  Population
--------------------------------------------------------------------------------------
-Shanghai                       CHN             Shanghai                   9,696,300
+No city found.

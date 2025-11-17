@@ -1,62 +1,7 @@
-Report generated on: 2025-11-15 00:51:25
+Report generated on: 2025-11-17 13:12:19
 
 
-USE CASE 3: List All Countries in a Region by Population (Descending)
+=== USE CASE 3: All countries in a region (Caribbean) ===
 
 === ALL COUNTRIES IN CARIBBEAN (BY POPULATION) ===
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        Country c 
-    WHERE
-        LOWER(c.region) = LOWER(:region) 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
-        from
-            country c1_0 
-        where
-            lower(c1_0.`Region`)=lower(?) 
-        order by
-            c1_0.`Population` desc
-Code Name                                     Continent       Region                    Population
------------------------------------------------------------------------------------------------
-CUB  Cuba                                     North America   Caribbean                 11,201,000
-DOM  Dominican Republic                       North America   Caribbean                  8,495,000
-HTI  Haiti                                    North America   Caribbean                  8,222,000
-PRI  Puerto Rico                              North America   Caribbean                  3,869,000
-JAM  Jamaica                                  North America   Caribbean                  2,583,000
-TTO  Trinidad and Tobago                      North America   Caribbean                  1,295,000
-GLP  Guadeloupe                               North America   Caribbean                    456,000
-MTQ  Martinique                               North America   Caribbean                    395,000
-BHS  Bahamas                                  North America   Caribbean                    307,000
-BRB  Barbados                                 North America   Caribbean                    270,000
-ANT  Netherlands Antilles                     North America   Caribbean                    217,000
-LCA  Saint Lucia                              North America   Caribbean                    154,000
-VCT  Saint Vincent and the Grenadines         North America   Caribbean                    114,000
-ABW  Aruba                                    North America   Caribbean                    103,000
-GRD  Grenada                                  North America   Caribbean                     94,000
-VIR  Virgin Islands, U.S.                     North America   Caribbean                     93,000
-DMA  Dominica                                 North America   Caribbean                     71,000
-ATG  Antigua and Barbuda                      North America   Caribbean                     68,000
-KNA  Saint Kitts and Nevis                    North America   Caribbean                     38,000
-CYM  Cayman Islands                           North America   Caribbean                     38,000
-VGB  Virgin Islands, British                  North America   Caribbean                     21,000
-TCA  Turks and Caicos Islands                 North America   Caribbean                     17,000
-MSR  Montserrat                               North America   Caribbean                     11,000
-AIA  Anguilla                                 North America   Caribbean                      8,000
+No countries found.
