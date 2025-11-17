@@ -41,13 +41,13 @@ public class CountryService {
 
     // USE CASE 5
     public List<Country> getTopCountriesInContinent(String continent, int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInContinent(continent);
-        return countries.size() > limit ? countries.subList(0, limit) : countries;
+        Pageable pageable = PageRequest.of(0, limit);
+        return countryRepository.findTopCountriesInContinent(continent, pageable);
     }
 
     // USE CASE 6
     public List<Country> getTopCountriesInRegion(String region, int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInRegion(region);
-        return countries.size() > limit ? countries.subList(0, limit) : countries;
+        Pageable pageable = PageRequest.of(0, limit);
+        return countryRepository.findTopCountriesInRegion(region, pageable);
     }
 }

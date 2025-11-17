@@ -40,7 +40,7 @@ public interface CountryRepository extends CrudRepository<Country, String> {
         WHERE LOWER(c.continent) = LOWER(:continent)
         ORDER BY c.population DESC
     """)
-    List<Country> findTopCountriesInContinent(@Param("continent") String continent);
+    List<Country> findTopCountriesInContinent(@Param("continent") String continent, Pageable pageable);
 
     // USE CASE 6: List Top N Most Populated Countries in a Region
     @Query("""
@@ -48,7 +48,7 @@ public interface CountryRepository extends CrudRepository<Country, String> {
         WHERE LOWER(c.region) = LOWER(:region)
         ORDER BY c.population DESC
     """)
-    List<Country> findTopCountriesInRegion(@Param("region") String region);
+    List<Country> findTopCountriesInRegion(@Param("region") String region, Pageable pageable);
 
 
 }
