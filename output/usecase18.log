@@ -1,4 +1,81 @@
-Report generated on: 2025-11-17 22:22:03
+Report generated on: 2025-11-17 22:26:56
 
 
 USE CASE 18: All capital cities in a continent by population
+Hibernate: 
+    /* SELECT
+        new com.napier.devops.model.CapitalCity(city.name, country.name, city.population) 
+    FROM
+        Country country 
+    JOIN
+        City city 
+            ON city.id = country.capital 
+    WHERE
+        LOWER(country.continent) = LOWER(:continent) 
+    ORDER BY
+        city.population DESC */ select
+            c2_0.`Name`,
+            c1_0.`Name`,
+            c2_0.`Population` 
+        from
+            country c1_0 
+        join
+            city c2_0 
+                on c2_0.`ID`=c1_0.`Capital` 
+        where
+            lower(c1_0.`Continent`)=lower(?) 
+        order by
+            c2_0.`Population` desc
+Capital City                   Country                             Population
+--------------------------------------------------------------------------------
+Seoul                          South Korea                          9,981,619
+Jakarta                        Indonesia                            9,604,900
+Tokyo                          Japan                                7,980,230
+Peking                         China                                7,472,000
+Teheran                        Iran                                 6,758,845
+Bangkok                        Thailand                             6,320,174
+Baghdad                        Iraq                                 4,336,000
+Singapore                      Singapore                            4,017,733
+Dhaka                          Bangladesh                           3,612,850
+Rangoon (Yangon)               Myanmar                              3,361,700
+Riyadh                         Saudi Arabia                         3,324,000
+Ankara                         Turkey                               3,038,159
+Taipei                         Taiwan                               2,641,312
+Pyongyang                      North Korea                          2,484,000
+Toskent                        Uzbekistan                           2,117,500
+Bakı                           Azerbaijan                           1,787,800
+Kabul                          Afghanistan                          1,780,000
+Manila                         Philippines                          1,581,082
+Hanoi                          Vietnam                              1,410,000
+Damascus                       Syria                                1,347,000
+Victoria                       Hong Kong                            1,312,637
+Kuala Lumpur                   Malaysia                             1,297,526
+Yerevan                        Armenia                              1,248,700
+Tbilisi                        Georgia                              1,235,200
+Beirut                         Lebanon                              1,100,000
+Amman                          Jordan                               1,000,000
+Ulan Bator                     Mongolia                               773,700
+Colombo                        Sri Lanka                              645,000
+Jerusalem                      Israel                                 633,700
+Kathmandu                      Nepal                                  591,835
+Bishkek                        Kyrgyzstan                             589,400
+Phnom Penh                     Cambodia                               570,155
+Ashgabat                       Turkmenistan                           540,600
+Vientiane                      Laos                                   531,800
+Islamabad                      Pakistan                               524,500
+Dushanbe                       Tajikistan                             524,000
+Sanaa                          Yemen                                  503,600
+Macao                          Macao                                  437,500
+Abu Dhabi                      United Arab Emirates                   398,695
+Doha                           Qatar                                  355,000
+Gaza                           Palestine                              353,632
+Astana                         Kazakstan                              311,200
+New Delhi                      India                                  301,297
+Nicosia                        Cyprus                                 195,000
+al-Manama                      Bahrain                                148,000
+Male                           Maldives                                71,000
+Masqat                         Oman                                    51,969
+Dili                           East Timor                              47,900
+Kuwait                         Kuwait                                  28,859
+Thimphu                        Bhutan                                  22,000
+Bandar Seri Begawan            Brunei                                  21,484

@@ -1,4 +1,48 @@
-Report generated on: 2025-11-17 22:22:03
+Report generated on: 2025-11-17 22:26:54
 
 
-=== USE CASE 6: Top 0 populated countries in a region (Eastern Asia) ===
+=== USE CASE 6: Top 10 populated countries in a region (Eastern Asia) ===
+
+=== TOP 10 COUNTRIES IN EASTERN ASIA (BY POPULATION) ===
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    WHERE
+        LOWER(c.region) = LOWER(:region) 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        where
+            lower(c1_0.`Region`)=lower(?) 
+        order by
+            c1_0.`Population` desc 
+        limit
+            ?
+Code Name                                     Continent       Region                    Population
+-----------------------------------------------------------------------------------------------
+CHN  China                                    Asia            Eastern Asia           1,277,558,000
+JPN  Japan                                    Asia            Eastern Asia             126,714,000
+KOR  South Korea                              Asia            Eastern Asia              46,844,000
+PRK  North Korea                              Asia            Eastern Asia              24,039,000
+TWN  Taiwan                                   Asia            Eastern Asia              22,256,000
+HKG  Hong Kong                                Asia            Eastern Asia               6,782,000
+MNG  Mongolia                                 Asia            Eastern Asia               2,662,000
+MAC  Macao                                    Asia            Eastern Asia                 473,000
