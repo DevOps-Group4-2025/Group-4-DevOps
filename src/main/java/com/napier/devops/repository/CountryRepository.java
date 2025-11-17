@@ -2,6 +2,7 @@ package com.napier.devops.repository;
 
 
 import com.napier.devops.model.Country;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -31,7 +32,7 @@ public interface CountryRepository extends CrudRepository<Country, String> {
         SELECT c FROM Country c
         ORDER BY c.population DESC
     """)
-    List<Country> findTopCountriesInWorld();
+    List<Country> findTopCountriesInWorld(Pageable pageable);
 
     // USE CASE 5: List Top N Most Populated Countries in a Continent
     @Query("""

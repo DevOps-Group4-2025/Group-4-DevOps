@@ -4,6 +4,8 @@ package com.napier.devops.service;
 import com.napier.devops.model.Country;
 import com.napier.devops.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,8 +35,8 @@ public class CountryService {
 
     // USE CASE 4
     public List<Country> getTopCountriesInWorld(int limit) {
-        List<Country> countries = countryRepository.findTopCountriesInWorld();
-        return countries.size() > limit ? countries.subList(0, limit) : countries;
+        Pageable pageable = PageRequest.of(0, limit);
+        return countryRepository.findTopCountriesInWorld(pageable);
     }
 
     // USE CASE 5
