@@ -72,23 +72,25 @@ class PopulationBreakdownServiceTest {
 
 
     // Helper to create projection instances
+        
     private PopulationBreakdownProjection proj(
             String type,
             String name,
-            long total,
-            long inCities,
-            long notInCities,
-            double pctIn,
-            double pctOut
+            Long total,
+            Long inCities,
+            Long notInCities,
+            Double pctIn,
+            Double pctOut
     ) {
         return new PopulationBreakdownProjection() {
             @Override public String getType() { return type; }
             @Override public String getName() { return name; }
-            @Override public long getTotalPopulation() { return total; }
-            @Override public long getPopulationInCities() { return inCities; }
-            @Override public long getPopulationNotInCities() { return notInCities; }
-            @Override public double getInCitiesPercentage() { return pctIn; }
-            @Override public double getNotInCitiesPercentage() { return pctOut; }
+            @Override public Long getTotalPopulation() { return total; }        // boxed
+            @Override public Long getPopulationInCities() { return inCities; }  // boxed
+            @Override public Long getPopulationNotInCities() { return notInCities; } // boxed
+            @Override public Double getInCitiesPercentage() { return pctIn; }   // boxed
+            @Override public Double getNotInCitiesPercentage() { return pctOut; } // boxed
         };
     }
+    
 }
