@@ -176,6 +176,11 @@ public class Group4Application implements CommandLineRunner {
                 displayAllCountriesInContinent(appParameters.getUseCase2Continent());
             });
 
+            runUseCase("usecase3.log", () -> {
+                System.out.println("\n=== USE CASE 3: All countries in a region (Western Europe) ===");
+                displayAllCountriesInRegion(appParameters.getUseCase3Region());
+            });
+
 
             // === CITY REPORTS (7–16) ===
             runUseCase("usecase7.log", () -> {
@@ -335,8 +340,8 @@ public class Group4Application implements CommandLineRunner {
                 System.out.println("\n### MAIN MENU ###");
                 System.out.println("\n--- COUNTRY REPORTS ---");
                 System.out.println("1.  All countries in the world (by population)");
-                System.out.println("2.  Population breakdown by continent (example: Africa)");
-                System.out.println("3.  Population breakdown by country (example: Germany)");
+                System.out.println("2.  All countries in a continent (by population)");
+                System.out.println("3.  All countries in a region (by population)");
                 System.out.println("4.  Population breakdown by region (example: Western Europe)");
                 System.out.println("\n=== CITY REPORTS ===");
                 System.out.println("7.  Display all cities in the world ordered by population");
@@ -384,6 +389,11 @@ public class Group4Application implements CommandLineRunner {
                 System.out.print("Enter continent name: ");
                 String continent = scanner.nextLine();
                 runUseCase("interactive-usecase2.log", () -> displayAllCountriesInContinent(continent));
+                break;
+            case 3:
+                System.out.print("Enter region name: ");
+                String region = scanner.nextLine();
+                runUseCase("interactive-usecase3.log", () -> displayAllCountriesInRegion(region));
                 break;
             case 7:
                 runUseCase("interactive-usecase7.log", () -> displayCities(cityController.getAllCitiesInTheWorld()));
@@ -512,6 +522,12 @@ public class Group4Application implements CommandLineRunner {
     private void displayAllCountriesInContinent(String continent) {
         System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", continent.toUpperCase());
         List<Country> countries = countryService.getAllCountriesInContinent(continent);
+        displayCountries(countries);
+    }
+
+    private void displayAllCountriesInRegion(String region) {
+        System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", region.toUpperCase());
+        List<Country> countries = countryService.getCountriesInRegionByPopulation(region);
         displayCountries(countries);
     }
 

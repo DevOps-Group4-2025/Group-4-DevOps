@@ -17,6 +17,9 @@ public class AppParameters {
     @Value("${use_case_2.continent}")
     private String useCase2Continent;
 
+    @Value("${use_case_3.region}")
+    private String useCase3Region;
+
     @Value("${use_case_8.continent}")
     private String useCase8Continent;
 
