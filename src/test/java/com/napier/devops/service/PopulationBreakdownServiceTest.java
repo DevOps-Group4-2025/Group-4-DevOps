@@ -30,8 +30,8 @@ class PopulationBreakdownServiceTest {
     @Test
     void getAllByContinent_returnsDataCorrectly() {
         when(repository.getAllByContinent()).thenReturn(List.of(
-                proj("Continent", "Asia", 4000, 2500, 1500, 62.5, 37.5),
-                proj("Continent", "Europe", 3000, 1200, 1800, 40.0, 60.0)
+                proj("Continent", "Asia", 4000L, 2500L, 1500L, 62.5, 37.5),
+                proj("Continent", "Europe", 3000L, 1200L, 1800L, 40.0, 60.0)
         ));
 
         List<PopulationBreakdown> actual = service.getAllByContinent();
@@ -45,7 +45,7 @@ class PopulationBreakdownServiceTest {
     @Test
     void getAllByRegion_returnsDataCorrectly() {
         when(repository.getAllByRegion()).thenReturn(List.of(
-                proj("Region", "Eastern Asia", 2000, 1200, 800, 60.0, 40.0)
+                proj("Region", "Eastern Asia", 2000L, 1200L, 800L, 60.0, 40.0)
         ));
 
         List<PopulationBreakdown> actual = service.getAllByRegion();
@@ -59,7 +59,7 @@ class PopulationBreakdownServiceTest {
     @Test
     void getAllByCountry_returnsDataCorrectly() {
         when(repository.getAllByCountry()).thenReturn(List.of(
-                proj("Country", "China", 1400, 800, 600, 57.1, 42.9)
+                proj("Country", "China", 1400L, 800L, 600L, 57.1, 42.9)
         ));
 
         List<PopulationBreakdown> actual = service.getAllByCountry();
@@ -70,9 +70,7 @@ class PopulationBreakdownServiceTest {
                 .containsExactly("China");
     }
 
-
     // Helper to create projection instances
-        
     private PopulationBreakdownProjection proj(
             String type,
             String name,
@@ -85,12 +83,11 @@ class PopulationBreakdownServiceTest {
         return new PopulationBreakdownProjection() {
             @Override public String getType() { return type; }
             @Override public String getName() { return name; }
-            @Override public Long getTotalPopulation() { return total; }        // boxed
-            @Override public Long getPopulationInCities() { return inCities; }  // boxed
-            @Override public Long getPopulationNotInCities() { return notInCities; } // boxed
-            @Override public Double getInCitiesPercentage() { return pctIn; }   // boxed
-            @Override public Double getNotInCitiesPercentage() { return pctOut; } // boxed
+            @Override public Long getTotalPopulation() { return total; }
+            @Override public Long getPopulationInCities() { return inCities; }
+            @Override public Long getPopulationNotInCities() { return notInCities; }
+            @Override public Double getInCitiesPercentage() { return pctIn; }
+            @Override public Double getNotInCitiesPercentage() { return pctOut; }
         };
     }
-    
 }
