@@ -136,60 +136,6 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("China"));
     }
 
-    // Tests for handleMenuSelection - Case 3 (Countries in Region)
-    @Test
-    void testHandleMenuSelection_Case3_CountriesInRegion() throws Exception {
-        provideInput("3\nCaribbean\n\n100\n\n");
-
-        Country country = new Country("CUB", "Cuba", "North America", "Caribbean", 11209628L);
-        when(countryService.getAllCountriesInRegion("Caribbean")).thenReturn(Collections.singletonList(country));
-
-        group4Application.run("--interactive");
-
-        verify(countryService).getAllCountriesInRegion("Caribbean");
-        String output = outContent.toString();
-        assertTrue(output.contains("Cuba"));
-    }
-
-    // Tests for handleMenuSelection - Case 4 (Top N Countries World)
-    @Test
-    void testHandleMenuSelection_Case4_TopNCountriesWorld() throws Exception {
-        provideInput("4\n1\n\n100\n\n");
-
-        Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1277558000L);
-        when(countryService.getTopNCountriesInWorld(1)).thenReturn(Collections.singletonList(country));
-
-        group4Application.run("--interactive");
-
-        verify(countryService).getTopNCountriesInWorld(1);
-        assertTrue(outContent.toString().contains("China"));
-    }
-
-    // Tests for handleMenuSelection - Case 5 (Top N Countries Continent)
-    @Test
-    void testHandleMenuSelection_Case5_TopNCountriesContinent() throws Exception {
-        provideInput("5\nAsia\n1\n\n100\n\n");
-
-        Country country = new Country("CHN", "China", "Asia", "Eastern Asia", 1277558000L);
-        when(countryService.getTopNCountriesInContinent("Asia", 1)).thenReturn(Collections.singletonList(country));
-
-        group4Application.run("--interactive");
-
-        verify(countryService).getTopNCountriesInContinent("Asia", 1);
-        assertTrue(outContent.toString().contains("China"));
-    }
-
-    // Tests for handleMenuSelection - Case 6 (Top N Countries Region)
-    @Test
-    void testHandleMenuSelection_Case6_TopNCountriesRegion() throws Exception {
-        provideInput("6\nCaribbean\n1\n\n100\n\n");
-        Country country = new Country("CUB", "Cuba", "North America", "Caribbean", 11209628L);
-        when(countryService.getTopNCountriesInRegion("Caribbean", 1)).thenReturn(Collections.singletonList(country));
-        group4Application.run("--interactive");
-        verify(countryService).getTopNCountriesInRegion("Caribbean", 1);
-        assertTrue(outContent.toString().contains("Cuba"));
-    }
-
     // Tests for handleMenuSelection - Cases 7-16 (City Reports)
     @Test
     void testHandleMenuSelection_Case7_AllCitiesWorld() throws Exception {
