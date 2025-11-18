@@ -72,7 +72,7 @@ If you find a bug, please open an issue using our [Bug Report template](https://
 | 29 | The population of a country. | ✅ Yes | ![Req29](images/req29.png) | [usecase29.log](output/usecase29.log) |
 | 30 | The population of a district. | ✅ Yes | ![Req30](images/req30.png) | [usecase30.log](output/usecase30.log) |
 | 31 | The population of a city. | ✅ Yes | ![Req31](images/req31.png) | [usecase31.log](output/usecase31.log) |
-| 32 | Languages reports. | ✅ Yes | ![Req32](images/req31.png) | [usecase32.log](output/usecase32.log) |
+| 32 | Languages reports. | ✅ Yes | ![Req32](images/req32.png) | [usecase32.log](output/usecase32.log) |
 
 
 
