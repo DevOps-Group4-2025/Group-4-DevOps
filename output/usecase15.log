@@ -1,5 +1,44 @@
-Report generated on: 2025-11-19 23:09:31
+Report generated on: 2025-11-19 23:17:24
 
 
 USE CASE 15: Top 10 cities in country Japan
-No city found.
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        City c,
+        Country co 
+    WHERE
+        c.countryCode = co.code 
+        AND co.name = :country 
+    ORDER BY
+        c.population DESC 
+    LIMIT
+        :topN */ select
+            c1_0.`ID`,
+            c1_0.`CountryCode`,
+            c1_0.`District`,
+            c1_0.`Name`,
+            c1_0.`Population` 
+        from
+            city c1_0,
+            country c2_0 
+        where
+            c1_0.`CountryCode`=c2_0.`Code` 
+            and c2_0.`Name`=? 
+        order by
+            c1_0.`Population` desc 
+        limit
+            ?
+Name                           Country         District                  Population
+-------------------------------------------------------------------------------------
+Tokyo                          JPN             Tokyo-to                   7,980,230
+Jokohama [Yokohama]            JPN             Kanagawa                   3,339,594
+Osaka                          JPN             Osaka                      2,595,674
+Nagoya                         JPN             Aichi                      2,154,376
+Sapporo                        JPN             Hokkaido                   1,790,886
+Kioto                          JPN             Kyoto                      1,461,974
+Kobe                           JPN             Hyogo                      1,425,139
+Fukuoka                        JPN             Fukuoka                    1,308,379
+Kawasaki                       JPN             Kanagawa                   1,217,359
+Hiroshima                      JPN             Hiroshima                  1,119,117
