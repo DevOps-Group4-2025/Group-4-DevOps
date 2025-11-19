@@ -1,7 +1,7 @@
-Report generated on: 2025-11-19 23:00:03
+Report generated on: 2025-11-19 23:09:33
 
 
 USE CASE 31: The population of a city.
-2025-11-19T23:00:03.358Z  WARN 1141753 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
-2025-11-19T23:00:03.398Z ERROR 1141753 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "POPULATION" not found; SQL statement:
+2025-11-19T23:09:33.216Z  WARN 1149373 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2025-11-19T23:09:33.263Z ERROR 1149373 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "POPULATION" not found; SQL statement:
 SELECT Population AS CityPopulation FROM city WHERE Name = ? LIMIT 1 [42122-232]

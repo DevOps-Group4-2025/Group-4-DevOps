@@ -48,6 +48,7 @@ public class Group4ApplicationTest {
     private final PrintStream originalOut = System.out;
     private final InputStream originalIn = System.in;
 
+
     @Mock
     private CountryService countryService;
     @Mock
@@ -454,20 +455,41 @@ public class Group4ApplicationTest {
     }
 
     // Tests for Population Breakdown Reports (Cases 23-25)
+
     @Test
-    void testHandleMenuSelection_Case23_PopulationBreakdownByContinent() throws Exception {
+    void testHandleMenuSelection_Case23_PopulationBreakdownByContinent_MockOnly() throws Exception {
+        // Provide fake input as if user selected option 23
         provideInput("23\n\n100\n\n");
 
-        PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Continent", "Asia", 4500000000L, 2000000000L, 2500000000L, 44.4, 55.6
+        // Create a mock PopulationBreakdown object
+        PopulationBreakdown mockBreakdown = new PopulationBreakdown(
+                "Continent",        // type
+                "Asia",             // name
+                4500000000L,        // totalPopulation
+                2000000000L,        // populationInCities
+                2500000000L,        // populationNotInCities
+                44.4,               // inCitiesPercentage
+                55.6                // notInCitiesPercentage
         );
-        when(populationBreakdownService.getAllByContinent()).thenReturn(Collections.singletonList(breakdown));
 
+        // Mock the service to return the fake object
+        when(populationBreakdownService.getAllByContinent())
+                .thenReturn(Collections.singletonList(mockBreakdown));
+
+        // Run the application (interactive mode)
         group4Application.run("--interactive");
 
+        // Verify that the service method was called at least once
         verify(populationBreakdownService, atLeastOnce()).getAllByContinent();
-        assertTrue(outContent.toString().contains("Asia"));
+
+        // Capture the console output and assert it contains expected values
+        String output = outContent.toString();
+        assertTrue(output.contains("Asia"));
+        assertTrue(output.contains("4,500,000,000"));   // formatted total population
+        assertTrue(output.contains("44.4"));           // inCitiesPercentage
+        assertTrue(output.contains("55.6"));           // notInCitiesPercentage
     }
+
 
     @Test
     void testHandleMenuSelection_Case24_PopulationBreakdownByRegion() throws Exception {

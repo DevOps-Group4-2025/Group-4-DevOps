@@ -1,9 +1,9 @@
-Report generated on: 2025-11-19 23:00:02
+Report generated on: 2025-11-19 23:09:32
 
 
 === USE CASE 24: Population breakdowns by region ===
 
 === POPULATION BREAKDOWNS BY REGION ===
-2025-11-19T23:00:02.664Z  WARN 1141753 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
-2025-11-19T23:00:02.703Z ERROR 1141753 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "COUNTRY.REGION" not found; SQL statement:
+2025-11-19T23:09:32.520Z  WARN 1149373 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2025-11-19T23:09:32.556Z ERROR 1149373 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "COUNTRY.REGION" not found; SQL statement:
 SELECT 'region' AS type, country.region AS name, SUM(country.Population) AS totalPopulation, COALESCE(SUM(city.Population),0) AS populationInCities, SUM(country.Population) - COALESCE(SUM(city.Population),0) AS populationNotInCities, ROUND(CASE WHEN SUM(country.Population) > 0 THEN COALESCE(SUM(city.Population),0) / SUM(country.Population) * 100 ELSE 0 END, 2) AS inCitiesPercentage, ROUND(CASE WHEN SUM(country.Population) > 0 THEN (SUM(country.Population) - COALESCE(SUM(city.Population),0)) / SUM(country.Population) * 100 ELSE 0 END, 2) AS notInCitiesPercentage FROM country LEFT JOIN city ON country.code = city.countrycode GROUP BY country.region ORDER BY totalPopulation DESC [42122-232]
