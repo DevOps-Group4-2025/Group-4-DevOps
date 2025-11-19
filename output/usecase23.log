@@ -1,41 +1,9 @@
-Report generated on: 2025-11-19 23:17:24
+Report generated on: 2025-11-19 23:25:33
 
 
 === USE CASE 23: Population breakdowns by continent ===
 
 === POPULATION BREAKDOWNS BY CONTINENT ===
-Hibernate: 
-    /* dynamic native SQL query */ SELECT
-        'continent' AS type,
-        country.continent AS name,
-        SUM(country.Population) AS totalPopulation,
-        COALESCE(SUM(city.Population), 0) AS populationInCities,
-        SUM(country.Population) - COALESCE(SUM(city.Population), 0) AS populationNotInCities,
-        ROUND(CASE 
-            WHEN SUM(country.Population) > 0 
-                THEN COALESCE(SUM(city.Population), 0) / SUM(country.Population) * 100 
-            ELSE 0 
-    END, 2) AS inCitiesPercentage,
-    ROUND(CASE 
-        WHEN SUM(country.Population) > 0 
-            THEN (SUM(country.Population) - COALESCE(SUM(city.Population), 0)) / SUM(country.Population) * 100 
-        ELSE 0 
-END, 2) AS notInCitiesPercentage 
-FROM
-    country 
-LEFT JOIN
-    city 
-        ON country.code = city.countrycode 
-GROUP BY
-    country.continent 
-ORDER BY
-    totalPopulation DESC
-Type         Name                           Total Population Population in Cities Population not in Cities
----------------------------------------------------------------------------------------------------------
-continent    Asia                           900,937,599,400          697,604,103 (0.08%)      900,239,995,297 (99.92%)
-continent    North America                   95,330,838,000          168,250,381 (0.18%)       95,162,587,619 (99.82%)
-continent    Europe                          55,118,944,000          241,942,813 (0.44%)       54,877,001,187 (99.56%)
-continent    South America                   48,533,025,000          172,037,859 (0.35%)       48,360,987,141 (99.65%)
-continent    Africa                          16,179,610,000          135,838,579 (0.84%)       16,043,771,421 (99.16%)
-continent    Oceania                            307,500,750           13,886,149 (4.52%)          293,614,601 (95.48%)
-continent    Antarctica                                   0                    0 (0.00%)                    0 (0.00%)
+2025-11-19T23:25:33.884Z  WARN 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2025-11-19T23:25:33.918Z ERROR 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "COUNTRY.CONTINENT" not found; SQL statement:
+SELECT 'continent' AS type, country.continent AS name, SUM(country.Population) AS totalPopulation, COALESCE(SUM(city.Population),0) AS populationInCities, SUM(country.Population) - COALESCE(SUM(city.Population),0) AS populationNotInCities, ROUND(CASE WHEN SUM(country.Population) > 0 THEN COALESCE(SUM(city.Population),0) / SUM(country.Population) * 100 ELSE 0 END, 2) AS inCitiesPercentage, ROUND(CASE WHEN SUM(country.Population) > 0 THEN (SUM(country.Population) - COALESCE(SUM(city.Population),0)) / SUM(country.Population) * 100 ELSE 0 END, 2) AS notInCitiesPercentage FROM country LEFT JOIN city ON country.code = city.countrycode GROUP BY country.continent ORDER BY totalPopulation DESC [42122-232]

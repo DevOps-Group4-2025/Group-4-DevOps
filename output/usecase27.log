@@ -1,18 +1,6 @@
-Report generated on: 2025-11-19 23:17:25
+Report generated on: 2025-11-19 23:25:34
 
 
 USE CASE 27: The population of a continent.
-Hibernate: 
-    /* SELECT
-        SUM(co.population) AS ContinentPopulation 
-    FROM
-        Country co 
-    WHERE
-        co.continent = :continent */ select
-            sum(c1_0.`Population`) 
-        from
-            country c1_0 
-        where
-            c1_0.`Continent`=?
 
-The population of Asia : 3705025700
+The population of Asia : null

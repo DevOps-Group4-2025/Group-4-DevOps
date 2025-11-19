@@ -1,15 +1,7 @@
-Report generated on: 2025-11-19 23:17:25
+Report generated on: 2025-11-19 23:25:34
 
 
 USE CASE 31: The population of a city.
-Hibernate: 
-    /* dynamic native SQL query */ SELECT
-        Population AS CityPopulation 
-    FROM
-        city 
-    WHERE
-        Name = ? 
-    LIMIT
-        1
-
-The population of London : 7285000
+2025-11-19T23:25:34.873Z  WARN 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
+2025-11-19T23:25:34.912Z ERROR 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "POPULATION" not found; SQL statement:
+SELECT Population AS CityPopulation FROM city WHERE Name = ? LIMIT 1 [42122-232]

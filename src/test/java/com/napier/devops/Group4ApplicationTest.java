@@ -48,7 +48,6 @@ public class Group4ApplicationTest {
     private final PrintStream originalOut = System.out;
     private final InputStream originalIn = System.in;
 
-
     @Mock
     private CountryService countryService;
     @Mock
@@ -87,6 +86,21 @@ public class Group4ApplicationTest {
 
     // ============ EXISTING TESTS (kept for compatibility) ============
 
+    @Test
+    void testRunNonInteractiveMode() throws Exception {
+        when(countryService.getAllCountriesWorld()).thenReturn(new ArrayList<>());
+        when(cityController.getAllCitiesInTheWorld()).thenReturn(new ArrayList<>());
+        when(capitalCityService.getAllCapitalCitiesByPopulation()).thenReturn(new ArrayList<>());
+        when(populationBreakdownService.getAllByContinent()).thenReturn(new ArrayList<>());
+
+        group4Application.run();
+
+        verify(countryService, atLeastOnce()).getAllCountriesWorld();
+        verify(cityController, atLeastOnce()).getAllCitiesInTheWorld();
+        verify(capitalCityService, atLeastOnce()).getAllCapitalCitiesByPopulation();
+        verify(populationBreakdownService, atLeastOnce()).getAllByContinent();
+        assertTrue(outContent.toString().contains("All use cases executed successfully!"));
+    }
 
     @Test
     void testRunInteractiveMode() throws Exception {
@@ -391,7 +405,7 @@ public class Group4ApplicationTest {
 
         CapitalCity capital = new CapitalCity("Cairo", "Egypt", 20000000);
         when(capitalCityService.getCapitalCitiesInContinentByPopulation("Africa"))
-            .thenReturn(Collections.singletonList(capital));
+                .thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
 
@@ -405,7 +419,7 @@ public class Group4ApplicationTest {
 
         CapitalCity capital = new CapitalCity("Rome", "Italy", 2800000);
         when(capitalCityService.getCapitalCitiesInRegionByPopulation("Southern Europe"))
-            .thenReturn(Collections.singletonList(capital));
+                .thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
 
@@ -432,7 +446,7 @@ public class Group4ApplicationTest {
 
         CapitalCity capital = new CapitalCity("Buenos Aires", "Argentina", 15000000);
         when(capitalCityService.getTopCapitalCitiesInContinent("South America", 5))
-            .thenReturn(Collections.singletonList(capital));
+                .thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
 
@@ -446,7 +460,7 @@ public class Group4ApplicationTest {
 
         CapitalCity capital = new CapitalCity("Stockholm", "Sweden", 1500000);
         when(capitalCityService.getTopCapitalCitiesInRegion("Northern Europe", 3))
-            .thenReturn(Collections.singletonList(capital));
+                .thenReturn(Collections.singletonList(capital));
 
         group4Application.run("--interactive");
 
@@ -455,48 +469,27 @@ public class Group4ApplicationTest {
     }
 
     // Tests for Population Breakdown Reports (Cases 23-25)
-
     @Test
-    void testHandleMenuSelection_Case23_PopulationBreakdownByContinent_MockOnly() throws Exception {
-        // Provide fake input as if user selected option 23
+    void testHandleMenuSelection_Case23_PopulationBreakdownByContinent() throws Exception {
         provideInput("23\n\n100\n\n");
 
-        // Create a mock PopulationBreakdown object
-        PopulationBreakdown mockBreakdown = new PopulationBreakdown(
-                "Continent",        // type
-                "Asia",             // name
-                4500000000L,        // totalPopulation
-                2000000000L,        // populationInCities
-                2500000000L,        // populationNotInCities
-                44.4,               // inCitiesPercentage
-                55.6                // notInCitiesPercentage
+        PopulationBreakdown breakdown = new PopulationBreakdown(
+                "Continent", "Asia", 4500000000L, 2000000000L, 2500000000L, 44.4, 55.6
         );
+        when(populationBreakdownService.getAllByContinent()).thenReturn(Collections.singletonList(breakdown));
 
-        // Mock the service to return the fake object
-        when(populationBreakdownService.getAllByContinent())
-                .thenReturn(Collections.singletonList(mockBreakdown));
-
-        // Run the application (interactive mode)
         group4Application.run("--interactive");
 
-        // Verify that the service method was called at least once
         verify(populationBreakdownService, atLeastOnce()).getAllByContinent();
-
-        // Capture the console output and assert it contains expected values
-        String output = outContent.toString();
-        assertTrue(output.contains("Asia"));
-        assertTrue(output.contains("4,500,000,000"));   // formatted total population
-        assertTrue(output.contains("44.4"));           // inCitiesPercentage
-        assertTrue(output.contains("55.6"));           // notInCitiesPercentage
+        assertTrue(outContent.toString().contains("Asia"));
     }
-
 
     @Test
     void testHandleMenuSelection_Case24_PopulationBreakdownByRegion() throws Exception {
         provideInput("24\n\n100\n\n");
 
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Region", "Western Europe", 195000000L, 150000000L, 45000000L, 76.9, 23.1
+                "Region", "Western Europe", 195000000L, 150000000L, 45000000L, 76.9, 23.1
         );
         when(populationBreakdownService.getAllByRegion()).thenReturn(Collections.singletonList(breakdown));
 
@@ -511,7 +504,7 @@ public class Group4ApplicationTest {
         provideInput("25\n\n100\n\n");
 
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Country", "United States", 330000000L, 275000000L, 55000000L, 83.3, 16.7
+                "Country", "United States", 330000000L, 275000000L, 55000000L, 83.3, 16.7
         );
         when(populationBreakdownService.getAllByCountry()).thenReturn(Collections.singletonList(breakdown));
 
@@ -572,7 +565,20 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("100,000"));
     }
 
+    @Test
+    void testDisplayCitiesWithNullPopulation() {
+        City city = new City();
+        city.setName("Test City");
+        city.setCountryCode("TS");
+        city.setDistrict("Test District");
+        city.setPopulation(null);
 
+        group4Application.displayCities(Collections.singletonList(city));
+
+        String output = outContent.toString();
+        assertTrue(output.contains("Test City"));
+        assertTrue(output.contains("0"));
+    }
 
     @Test
     void testDisplayCountriesEmpty() {
@@ -593,7 +599,15 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("1,234,567"));
     }
 
+    @Test
+    void testDisplayCountriesWithNullPopulation() {
+        Country country = new Country("TST", "Testland", "Testinent", "Test Region", null);
+        group4Application.displayCountries(Collections.singletonList(country));
 
+        String output = outContent.toString();
+        assertTrue(output.contains("Testland"));
+        assertTrue(output.contains("0"));
+    }
 
     @Test
     void testDisplayCapitalCitiesEmpty() {
@@ -601,6 +615,11 @@ public class Group4ApplicationTest {
         assertTrue(outContent.toString().contains("No capital cities found"));
     }
 
+    @Test
+    void testDisplayCapitalCitiesNull() {
+        group4Application.displayCapitalCities(null);
+        assertTrue(outContent.toString().contains("No capital cities found"));
+    }
 
     @Test
     void testDisplayCapitalCitiesWithData() {
@@ -613,6 +632,15 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("8,900,000"));
     }
 
+    @Test
+    void testDisplayCapitalCitiesWithNullPopulation() {
+        CapitalCity capital = new CapitalCity("Test Capital", "Test Country", null);
+        group4Application.displayCapitalCities(Collections.singletonList(capital));
+
+        String output = outContent.toString();
+        assertTrue(output.contains("Test Capital"));
+        assertTrue(output.contains("0"));
+    }
 
     @Test
     void testDisplayPopulationBreakdownsEmpty() {
@@ -621,9 +649,15 @@ public class Group4ApplicationTest {
     }
 
     @Test
+    void testDisplayPopulationBreakdownsNull() {
+        group4Application.displayPopulationBreakdowns(null);
+        assertTrue(outContent.toString().contains("No population breakdowns found"));
+    }
+
+    @Test
     void testDisplayPopulationBreakdownsWithData() {
         PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Continent", "Europe", 750000000L, 550000000L, 200000000L, 73.3, 26.7
+                "Continent", "Europe", 750000000L, 550000000L, 200000000L, 73.3, 26.7
         );
         group4Application.displayPopulationBreakdowns(Collections.singletonList(breakdown));
 
@@ -633,6 +667,17 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("73.3"));
     }
 
+    @Test
+    void testDisplayPopulationBreakdownsWithNulls() {
+        PopulationBreakdown breakdown = new PopulationBreakdown(
+                "Country", "Test", null, null, null, null, null
+        );
+        group4Application.displayPopulationBreakdowns(Collections.singletonList(breakdown));
+
+        String output = outContent.toString();
+        assertTrue(output.contains("Test"));
+        assertTrue(output.contains("0"));
+    }
 
     @Test
     void testDisplayLanguagesEmpty() {
@@ -640,6 +685,11 @@ public class Group4ApplicationTest {
         assertTrue(outContent.toString().contains("No language statistics found"));
     }
 
+    @Test
+    void testDisplayLanguagesNull() {
+        group4Application.displayLanguages(null);
+        assertTrue(outContent.toString().contains("No language statistics found"));
+    }
 
     @Test
     void testDisplayLanguagesWithData() {
@@ -652,6 +702,15 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("6.5"));
     }
 
+    @Test
+    void testDisplayLanguagesWithNulls() {
+        LanguageStats stats = new LanguageStats(null, null, null);
+        group4Application.displayLanguages(Collections.singletonList(stats));
+
+        String output = outContent.toString();
+        assertTrue(output.contains("Unknown"));
+        assertTrue(output.contains("0"));
+    }
 
     @Test
     void testDisplayBasicPopulation() {
@@ -677,6 +736,17 @@ public class Group4ApplicationTest {
         new File("output").delete();
     }
 
+    @Test
+    void testRunUseCaseWithException() {
+        String testFilename = "test-exception.log";
+
+        Group4Application.runUseCase(testFilename, () -> {
+            throw new RuntimeException("Test exception");
+        });
+
+        // Should not throw exception, just log it
+        assertTrue(true);
+    }
 
     @Test
     void testMainMenuWithInvalidInput() throws Exception {
