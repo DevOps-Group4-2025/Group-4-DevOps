@@ -16,6 +16,10 @@ public class CapitalCityService {
 
     private final CapitalCityRepository capitalCityRepository;
 
+    /**
+     * Constructor for CapitalCityService
+     * @param capitalCityRepository the repository to handle capital city data
+     */
     public CapitalCityService(CapitalCityRepository capitalCityRepository) {
         this.capitalCityRepository = capitalCityRepository;
     }
@@ -43,24 +47,48 @@ public class CapitalCityService {
                 PageRequest.of(0, limit)
         );
     }
-    // USE CASE 17: List All Capital Cities in the World by Population
+
+    /**
+     * USE CASE 17: List All Capital Cities in the World by Population
+     * @return a list of all capital cities in the world ordered by population
+     */
     public List<CapitalCity> getAllCapitalCitiesByPopulation() {
         return capitalCityRepository.findAllCapitalCitiesByPopulationDesc();
     }
-    // USE CASE 18: List All Capital Cities in a Continent by Population
+
+    /**
+     * USE CASE 18: List All Capital Cities in a Continent by Population
+     * @param continent the continent to get the capital cities from
+     * @return a list of all capital cities in a continent ordered by population
+     */
     public List<CapitalCity> getCapitalCitiesInContinentByPopulation(String continent) {
         return capitalCityRepository.findCapitalCitiesInContinentByPopulationDesc(continent);
     }
-    // USE CASE 19: List All Capital Cities in a Region by Population
+
+    /**
+     * USE CASE 19: List All Capital Cities in a Region by Population
+     * @param region the region to get the capital cities from
+     * @return a list of all capital cities in a region ordered by population
+     */
     public List<CapitalCity> getCapitalCitiesInRegionByPopulation(String region) {
         return capitalCityRepository.findCapitalCitiesInRegionByPopulationDesc(region);
     }
-    // USE CASE 20: Produce a Report on Top N Capital Cities in the World
+
+    /**
+     * USE CASE 20: Produce a Report on Top N Capital Cities in the World
+     * @param limit the number of capital cities to return
+     * @return a list of top N capital cities in the world
+     */
     public List<CapitalCity> getTopCapitalCitiesWorld(int limit) {
         return capitalCityRepository.findTopCapitalCitiesWorld(org.springframework.data.domain.PageRequest.of(0, limit));
     }
 
-    // USE CASE 22: Produce a Report on Top N Capital Cities in a Region
+    /**
+     * USE CASE 22: Produce a Report on Top N Capital Cities in a Region
+     * @param region the region to get the capital cities from
+     * @param limit the number of capital cities to return
+     * @return a list of top N capital cities in a region
+     */
     public List<CapitalCity> getTopCapitalCitiesInRegion(String region, int limit) {
         return capitalCityRepository.findTopCapitalCitiesByRegion(
                 region, org.springframework.data.domain.PageRequest.of(0, limit));

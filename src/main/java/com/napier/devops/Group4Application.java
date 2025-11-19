@@ -43,9 +43,15 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private CountryService countryService;
 
+    /**
+     * Service for managing and retrieving population breakdown data.
+     */
     @Autowired
     private PopulationBreakdownService populationBreakdownService;
 
+    /**
+     * Service for managing and retrieving capital city data.
+     */
     @Autowired
     private CapitalCityService capitalCityService;
 
@@ -55,15 +61,27 @@ public class Group4Application implements CommandLineRunner {
     @Autowired
     private CityController cityController;
 
+    /**
+     * Controller for managing and retrieving population data.
+     */
     @Autowired
     private PopulationController populationController;
 
+    /**
+     * Application parameters.
+     */
     @Autowired
     private AppParameters appParameters;
 
+    /**
+     * Controller for managing and retrieving capital city data.
+     */
     @Autowired
     private CapitalController capitalController;
 
+    /**
+     * Controller for managing and retrieving language data.
+     */
     @Autowired
     private LanguageController languageController;
 
@@ -555,74 +573,124 @@ public class Group4Application implements CommandLineRunner {
         displayCountries(countries);
     }
 
+    /**
+     * Use Case 2:
+     * Displays all countries in a continent ordered by population (largest to smallest).
+     * @param continent the continent to display the countries of
+     */
     private void displayAllCountriesInContinent(String continent) {
         System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", continent.toUpperCase());
         List<Country> countries = countryService.getAllCountriesInContinent(continent);
         displayCountries(countries);
     }
 
+    /**
+     * Use Case 3:
+     * Displays all countries in a region ordered by population (largest to smallest).
+     * @param region the region to display the countries of
+     */
     private void displayAllCountriesInRegion(String region) {
         System.out.printf("\n=== ALL COUNTRIES IN %s (BY POPULATION) ===\n", region.toUpperCase());
         List<Country> countries = countryService.getCountriesInRegionByPopulation(region);
         displayCountries(countries);
     }
 
+    /**
+     * Use Case 4:
+     * Displays top N countries in the world ordered by population (largest to smallest).
+     * @param n the number of countries to display
+     */
     private void displayTopCountriesInWorld(int n) {
         System.out.printf("\n=== TOP %d COUNTRIES IN THE WORLD (BY POPULATION) ===\n", n);
         List<Country> countries = countryService.getTopCountriesInWorld(n);
         displayCountries(countries);
     }
 
+    /**
+     * Use Case 5:
+     * Displays top N countries in a continent ordered by population (largest to smallest).
+     * @param continent the continent to display the countries of
+     * @param n the number of countries to display
+     */
     private void displayTopCountriesInContinent(String continent, int n) {
         System.out.printf("\n=== TOP %d COUNTRIES IN %s (BY POPULATION) ===\n", n, continent.toUpperCase());
         List<Country> countries = countryService.getTopCountriesInContinent(continent, n);
         displayCountries(countries);
     }
 
+    /**
+     * Use Case 6:
+     * Displays top N countries in a region ordered by population (largest to smallest).
+     * @param region the region to display the countries of
+     * @param n the number of countries to display
+     */
     private void displayTopCountriesInRegion(String region, int n) {
         System.out.printf("\n=== TOP %d COUNTRIES IN %s (BY POPULATION) ===\n", n, region.toUpperCase());
         List<Country> countries = countryService.getTopCountriesInRegion(region, n);
         displayCountries(countries);
     }
 
-    // USE CASE 17: List All Capital Cities in the World by Population
+    /**
+     * USE CASE 17: List All Capital Cities in the World by Population
+     */
     private void displayAllCapitalCitiesWorld() {
         System.out.println("\n=== ALL CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         List<CapitalCity> capitalCities = capitalCityService.getAllCapitalCitiesByPopulation();
         displayCapitalCities(capitalCities);
     }
 
-    // USE CASE 18: List All Capital Cities in a Continent by Population
+    /**
+     * USE CASE 18: List All Capital Cities in a Continent by Population
+     * @param continent the continent to display the capital cities of
+     */
     private void displayAllCapitalCitiesContinent(String continent) {
         System.out.println("\n=== ALL CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
         List<CapitalCity> capitalCities = capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
         displayCapitalCities(capitalCities);
     }
 
-    // USE CASE 19: List All Capital Cities in a Region by Population
+    /**
+     * USE CASE 19: List All Capital Cities in a Region by Population
+     * @param region the region to display the capital cities of
+     */
     private void displayAllCapitalCitiesRegion(String region) {
         System.out.println("\n=== ALL CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
     }
 
-    // USE CASE 20: Produce a Report on Top N Capital Cities in the World
+    /**
+     * USE CASE 20: Produce a Report on Top N Capital Cities in the World
+     * @param limit the number of capital cities to display
+     */
     private void displayTopCapitalCitiesWorld(int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN THE WORLD (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesWorld(limit));
     }
 
-    // USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
+    /**
+     * USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
+     * @param continent the continent to display the capital cities of
+     * @param limit the number of capital cities to display
+     */
     private void displayTopCapitalCitiesContinent(String continent, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + continent.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesInContinent(continent, limit));
     }
 
-    // USE CASE 22: Produce a Report on Top N Capital Cities in a Region
+    /**
+     * USE CASE 22: Produce a Report on Top N Capital Cities in a Region
+     * @param region the region to display the capital cities of
+     * @param limit the number of capital cities to display
+     */
     private void displayTopCapitalCitiesRegion(String region, int limit) {
         System.out.println("\n=== TOP " + limit + " CAPITAL CITIES IN " + region.toUpperCase() + " (BY POPULATION) ===");
         displayCapitalCities(capitalCityService.getTopCapitalCitiesInRegion(region, limit));
     }
 
+    /**
+     * Displays top capital cities by continent
+     * @param scanner the scanner to use for user input
+     */
     private void displayTopCapitalCitiesByContinent(Scanner scanner) {
         try {
             System.out.print("Enter continent: ");
@@ -641,6 +709,10 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
+    /**
+     * Helper method to display a list of capital cities in a formatted table.
+     * @param capitals a list of {@link CapitalCity} objects to display
+     */
     void displayCapitalCities(List<CapitalCity> capitals) {
         if (capitals == null || capitals.isEmpty()) {
             System.out.println("No capital cities found for the selected criteria.");
@@ -708,21 +780,27 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    // Use Case 23: Display population breakdowns for all continents
+    /**
+     * Use Case 23: Display population breakdowns for all continents
+     */
     private void displayPopulationBreakdownsByContinentAll() {
         System.out.println("\n=== POPULATION BREAKDOWNS BY CONTINENT ===");
         List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByContinent();
         displayPopulationBreakdowns(breakdowns);
     }
 
-    // Use Case 24: Display population breakdowns for all regions
+    /**
+     * Use Case 24: Display population breakdowns for all regions
+     */
     private void displayPopulationBreakdownsByRegionAll() {
         System.out.println("\n=== POPULATION BREAKDOWNS BY REGION ===");
         List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByRegion();
         displayPopulationBreakdowns(breakdowns);
     }
 
-    // Use Case 25: Display population breakdowns for all countries
+    /**
+     * Use Case 25: Display population breakdowns for all countries
+     */
     private void displayPopulationBreakdownsByCountryAll() {
         System.out.println("\n=== POPULATION BREAKDOWNS BY COUNTRY ===");
         List<PopulationBreakdown> breakdowns = populationBreakdownService.getAllByCountry();
@@ -758,7 +836,11 @@ public class Group4Application implements CommandLineRunner {
         }
     }
 
-    // Basic Population Number Display
+    /**
+     * Basic Population Number Display
+     * @param option the option to display the population of
+     * @param population the population to display
+     */
     void displayBasicPopulation(String option, Long population) {
         System.out.println("\nThe population of " + option + " : " + population);
     }

@@ -103,124 +103,11 @@ public class Country {
     @Column(name = "`HeadOfState`")
     protected String headOfState;
 
-    public Country(String countryA, String cta, String continent1, long l) {
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContinent() {
-        return continent;
-    }
-
-    public void setContinent(String continent) {
-        this.continent = continent;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public Float getSurfaceArea() {
-        return surfaceArea;
-    }
-
-    public void setSurfaceArea(Float surfaceArea) {
-        this.surfaceArea = surfaceArea;
-    }
-
-    public Integer getIndepYear() {
-        return indepYear;
-    }
-
-    public void setIndepYear(Integer indepYear) {
-        this.indepYear = indepYear;
-    }
-
-    public Long getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(Long population) {
-        this.population = population;
-    }
-
-    public Float getLifeExpectancy() {
-        return lifeExpectancy;
-    }
-
-    public void setLifeExpectancy(Float lifeExpectancy) {
-        this.lifeExpectancy = lifeExpectancy;
-    }
-
-    public Float getGnp() {
-        return gnp;
-    }
-
-    public void setGnp(Float gnp) {
-        this.gnp = gnp;
-    }
-
-    public Float getGnpOld() {
-        return gnpOld;
-    }
-
-    public void setGnpOld(Float gnpOld) {
-        this.gnpOld = gnpOld;
-    }
-
-    public String getLocalName() {
-        return localName;
-    }
-
-    public void setLocalName(String localName) {
-        this.localName = localName;
-    }
-
-    public String getGovernmentForm() {
-        return governmentForm;
-    }
-
-    public void setGovernmentForm(String governmentForm) {
-        this.governmentForm = governmentForm;
-    }
-
-    public String getHeadOfState() {
-        return headOfState;
-    }
-
-    public void setHeadOfState(String headOfState) {
-        this.headOfState = headOfState;
-    }
-
-    public Long getCapital() {
-        return capital;
-    }
-
-    public void setCapital(Long capital) {
-        this.capital = capital;
-    }
-
+    /**
+     * The capital city of the country
+     */
     @Column(name = "`Capital`")
     protected Long capital;
-
 
     /**
      * Alternative 2-letter country code (ISO 3166-1 alpha-2)
@@ -229,10 +116,242 @@ public class Country {
     @Column(name = "`Code2`")
     protected String code2;
 
+    /**
+     * Gets the country code.
+     * @return the country code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * Sets the country code.
+     * @param code the country code
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    /**
+     * Gets the name of the country.
+     * @return the name of the country
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the country.
+     * @param name the name of the country
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets the continent.
+     * @return the continent
+     */
+    public String getContinent() {
+        return continent;
+    }
+
+    /**
+     * Sets the continent.
+     * @param continent the continent
+     */
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
+
+    /**
+     * Gets the region.
+     * @return the region
+     */
+    public String getRegion() {
+        return region;
+    }
+
+    /**
+     * Sets the region.
+     * @param region the region
+     */
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    /**
+     * Gets the surface area.
+     * @return the surface area
+     */
+    public Float getSurfaceArea() {
+        return surfaceArea;
+    }
+
+    /**
+     * Sets the surface area.
+     * @param surfaceArea the surface area
+     */
+    public void setSurfaceArea(Float surfaceArea) {
+        this.surfaceArea = surfaceArea;
+    }
+
+    /**
+     * Gets the independence year.
+     * @return the independence year
+     */
+    public Integer getIndepYear() {
+        return indepYear;
+    }
+
+    /**
+     * Sets the independence year.
+     * @param indepYear the independence year
+     */
+    public void setIndepYear(Integer indepYear) {
+        this.indepYear = indepYear;
+    }
+
+    /**
+     * Gets the population.
+     * @return the population
+     */
+    public Long getPopulation() {
+        return population;
+    }
+
+    /**
+     * Sets the population.
+     * @param population the population
+     */
+    public void setPopulation(Long population) {
+        this.population = population;
+    }
+
+    /**
+     * Gets the life expectancy.
+     * @return the life expectancy
+     */
+    public Float getLifeExpectancy() {
+        return lifeExpectancy;
+    }
+
+    /**
+     * Sets the life expectancy.
+     * @param lifeExpectancy the life expectancy
+     */
+    public void setLifeExpectancy(Float lifeExpectancy) {
+        this.lifeExpectancy = lifeExpectancy;
+    }
+
+    /**
+     * Gets the GNP.
+     * @return the GNP
+     */
+    public Float getGnp() {
+        return gnp;
+    }
+
+    /**
+     * Sets the GNP.
+     * @param gnp the GNP
+     */
+    public void setGnp(Float gnp) {
+        this.gnp = gnp;
+    }
+
+    /**
+     * Gets the old GNP.
+     * @return the old GNP
+     */
+    public Float getGnpOld() {
+        return gnpOld;
+    }
+
+    /**
+     * Sets the old GNP.
+     * @param gnpOld the old GNP
+     */
+    public void setGnpOld(Float gnpOld) {
+        this.gnpOld = gnpOld;
+    }
+
+    /**
+     * Gets the local name.
+     * @return the local name
+     */
+    public String getLocalName() {
+        return localName;
+    }
+
+    /**
+     * Sets the local name.
+     * @param localName the local name
+     */
+    public void setLocalName(String localName) {
+        this.localName = localName;
+    }
+
+    /**
+     * Gets the government form.
+     * @return the government form
+     */
+    public String getGovernmentForm() {
+        return governmentForm;
+    }
+
+    /**
+     * Sets the government form.
+     * @param governmentForm the government form
+     */
+    public void setGovernmentForm(String governmentForm) {
+        this.governmentForm = governmentForm;
+    }
+
+    /**
+     * Gets the head of state.
+     * @return the head of state
+     */
+    public String getHeadOfState() {
+        return headOfState;
+    }
+
+    /**
+     * Sets the head of state.
+     * @param headOfState the head of state
+     */
+    public void setHeadOfState(String headOfState) {
+        this.headOfState = headOfState;
+    }
+
+    /**
+     * Gets the capital.
+     * @return the capital
+     */
+    public Long getCapital() {
+        return capital;
+    }
+
+    /**
+     * Sets the capital.
+     * @param capital the capital
+     */
+    public void setCapital(Long capital) {
+        this.capital = capital;
+    }
+
+    /**
+     * Gets the code2.
+     * @return the code2
+     */
     public String getCode2() {
         return code2;
     }
 
+    /**
+     * Sets the code2.
+     * @param code2 the code2
+     */
     public void setCode2(String code2) {
         this.code2 = code2;
     }
@@ -243,7 +362,6 @@ public class Country {
      */
     public Country() {
     }
-   /* public Weather(String country, String city, String description, double temprature, double wind_M_S, double humidity, String feelsLike) {
 
     /**
      * Constructor for creating a Country instance with essential fields.
@@ -261,18 +379,6 @@ public class Country {
         this.region = region;
         this.population = population;
     }
-
-    /* public Weather(String country, String city, String description, double temprature, double wind_M_S, double humidity, String feelsLike) {
-        this.country = country;
-        this.city = city;
-        this.description = description;
-        this.temprature = temprature;
-        this.wind_M_S = wind_M_S;
-        this.humidity = humidity;
-        this.feelsLike = feelsLike;
-    }
-
-    */
 
     @Override
     public String toString() {

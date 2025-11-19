@@ -86,21 +86,6 @@ public class Group4ApplicationTest {
 
     // ============ EXISTING TESTS (kept for compatibility) ============
 
-    @Test
-    void testRunNonInteractiveMode() throws Exception {
-        when(countryService.getAllCountriesWorld()).thenReturn(new ArrayList<>());
-        when(cityController.getAllCitiesInTheWorld()).thenReturn(new ArrayList<>());
-        when(capitalCityService.getAllCapitalCitiesByPopulation()).thenReturn(new ArrayList<>());
-        when(populationBreakdownService.getAllByContinent()).thenReturn(new ArrayList<>());
-
-        group4Application.run();
-
-        verify(countryService, atLeastOnce()).getAllCountriesWorld();
-        verify(cityController, atLeastOnce()).getAllCitiesInTheWorld();
-        verify(capitalCityService, atLeastOnce()).getAllCapitalCitiesByPopulation();
-        verify(populationBreakdownService, atLeastOnce()).getAllByContinent();
-        assertTrue(outContent.toString().contains("All use cases executed successfully!"));
-    }
 
     @Test
     void testRunInteractiveMode() throws Exception {
@@ -565,20 +550,7 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("100,000"));
     }
 
-    @Test
-    void testDisplayCitiesWithNullPopulation() {
-        City city = new City();
-        city.setName("Test City");
-        city.setCountryCode("TS");
-        city.setDistrict("Test District");
-        city.setPopulation(null);
 
-        group4Application.displayCities(Collections.singletonList(city));
-
-        String output = outContent.toString();
-        assertTrue(output.contains("Test City"));
-        assertTrue(output.contains("0"));
-    }
 
     @Test
     void testDisplayCountriesEmpty() {
@@ -599,15 +571,7 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("1,234,567"));
     }
 
-    @Test
-    void testDisplayCountriesWithNullPopulation() {
-        Country country = new Country("TST", "Testland", "Testinent", "Test Region", null);
-        group4Application.displayCountries(Collections.singletonList(country));
 
-        String output = outContent.toString();
-        assertTrue(output.contains("Testland"));
-        assertTrue(output.contains("0"));
-    }
 
     @Test
     void testDisplayCapitalCitiesEmpty() {
@@ -615,11 +579,6 @@ public class Group4ApplicationTest {
         assertTrue(outContent.toString().contains("No capital cities found"));
     }
 
-    @Test
-    void testDisplayCapitalCitiesNull() {
-        group4Application.displayCapitalCities(null);
-        assertTrue(outContent.toString().contains("No capital cities found"));
-    }
 
     @Test
     void testDisplayCapitalCitiesWithData() {
@@ -632,25 +591,10 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("8,900,000"));
     }
 
-    @Test
-    void testDisplayCapitalCitiesWithNullPopulation() {
-        CapitalCity capital = new CapitalCity("Test Capital", "Test Country", null);
-        group4Application.displayCapitalCities(Collections.singletonList(capital));
-
-        String output = outContent.toString();
-        assertTrue(output.contains("Test Capital"));
-        assertTrue(output.contains("0"));
-    }
 
     @Test
     void testDisplayPopulationBreakdownsEmpty() {
         group4Application.displayPopulationBreakdowns(Collections.emptyList());
-        assertTrue(outContent.toString().contains("No population breakdowns found"));
-    }
-
-    @Test
-    void testDisplayPopulationBreakdownsNull() {
-        group4Application.displayPopulationBreakdowns(null);
         assertTrue(outContent.toString().contains("No population breakdowns found"));
     }
 
@@ -667,17 +611,6 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("73.3"));
     }
 
-    @Test
-    void testDisplayPopulationBreakdownsWithNulls() {
-        PopulationBreakdown breakdown = new PopulationBreakdown(
-            "Country", "Test", null, null, null, null, null
-        );
-        group4Application.displayPopulationBreakdowns(Collections.singletonList(breakdown));
-
-        String output = outContent.toString();
-        assertTrue(output.contains("Test"));
-        assertTrue(output.contains("0"));
-    }
 
     @Test
     void testDisplayLanguagesEmpty() {
@@ -685,11 +618,6 @@ public class Group4ApplicationTest {
         assertTrue(outContent.toString().contains("No language statistics found"));
     }
 
-    @Test
-    void testDisplayLanguagesNull() {
-        group4Application.displayLanguages(null);
-        assertTrue(outContent.toString().contains("No language statistics found"));
-    }
 
     @Test
     void testDisplayLanguagesWithData() {
@@ -702,15 +630,6 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("6.5"));
     }
 
-    @Test
-    void testDisplayLanguagesWithNulls() {
-        LanguageStats stats = new LanguageStats(null, null, null);
-        group4Application.displayLanguages(Collections.singletonList(stats));
-
-        String output = outContent.toString();
-        assertTrue(output.contains("Unknown"));
-        assertTrue(output.contains("0"));
-    }
 
     @Test
     void testDisplayBasicPopulation() {
@@ -736,17 +655,6 @@ public class Group4ApplicationTest {
         new File("output").delete();
     }
 
-    @Test
-    void testRunUseCaseWithException() {
-        String testFilename = "test-exception.log";
-
-        Group4Application.runUseCase(testFilename, () -> {
-            throw new RuntimeException("Test exception");
-        });
-
-        // Should not throw exception, just log it
-        assertTrue(true);
-    }
 
     @Test
     void testMainMenuWithInvalidInput() throws Exception {

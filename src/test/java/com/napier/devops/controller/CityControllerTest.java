@@ -10,6 +10,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for CityController
+ */
 @SpringBootTest(classes = com.napier.devops.TestApplication.class)
 @ActiveProfiles("test")
 class CityControllerTest {

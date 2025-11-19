@@ -13,6 +13,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for CountryController
+ */
 @SpringBootTest(classes = com.napier.devops.TestApplication.class)
 @ActiveProfiles("test")
 class CountryControllerTest {
@@ -29,8 +32,8 @@ class CountryControllerTest {
     void setup() {
         // Create some sample countries for testing
         sampleCountries = Arrays.asList(
-                new Country("CountryA", "CTA", "Continent1", 1000L),
-                new Country("CountryB", "CTB", "Continent1", 2000L)
+                new Country(),
+                new Country()
         );
     }
     @Test

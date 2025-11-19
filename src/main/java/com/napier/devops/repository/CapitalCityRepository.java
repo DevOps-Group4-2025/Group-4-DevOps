@@ -14,7 +14,10 @@ import java.util.List;
  */
 public interface CapitalCityRepository extends JpaRepository<Country, String> {
 
-    // USE CASE 17: List All Capital Cities in the World by Population
+    /**
+     * USE CASE 17: List All Capital Cities in the World by Population
+     * @return a list of all capital cities in the world ordered by population
+     */
     @Query("""
             SELECT new com.napier.devops.model.CapitalCity(
                 city.name,
@@ -27,7 +30,11 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
             """)
     List<CapitalCity> findAllCapitalCitiesByPopulationDesc();
 
-    // USE CASE 18: List All Capital Cities in a Continent by Population
+    /**
+     * USE CASE 18: List All Capital Cities in a Continent by Population
+     * @param continent the continent to get the capital cities from
+     * @return a list of all capital cities in a continent ordered by population
+     */
     @Query("""
     SELECT new com.napier.devops.model.CapitalCity(
         city.name,
@@ -41,7 +48,11 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
 """)
     List<CapitalCity> findCapitalCitiesInContinentByPopulationDesc(@Param("continent") String continent);
 
-    // USE CASE 19: List All Capital Cities in a Region by Population
+    /**
+     * USE CASE 19: List All Capital Cities in a Region by Population
+     * @param region the region to get the capital cities from
+     * @return a list of all capital cities in a region ordered by population
+     */
     @Query("""
     SELECT new com.napier.devops.model.CapitalCity(
         c.name, co.name, c.population
@@ -53,7 +64,11 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
 """)
     List<CapitalCity> findCapitalCitiesInRegionByPopulationDesc(@Param("region") String region);
 
-    // USE CASE 20: Produce a Report on Top N Capital Cities in the World
+    /**
+     * USE CASE 20: Produce a Report on Top N Capital Cities in the World
+     * @param pageable the pageable object to limit the results
+     * @return a list of top N capital cities in the world
+     */
     @Query("""
     SELECT new com.napier.devops.model.CapitalCity(
         c.name, co.name, c.population
@@ -64,7 +79,12 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
 """)
     List<CapitalCity> findTopCapitalCitiesWorld(org.springframework.data.domain.Pageable pageable);
 
-    // USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
+    /**
+     * USE CASE 21: Produce a Report on Top N Capital Cities in a Continent
+     * @param continent the continent to get the capital cities from
+     * @param pageable the pageable object to limit the results
+     * @return a list of top N capital cities in a continent
+     */
     @Query("""
             SELECT new com.napier.devops.model.CapitalCity(
                 city.name,
@@ -80,7 +100,12 @@ public interface CapitalCityRepository extends JpaRepository<Country, String> {
             @Param("continent") String continent,
             Pageable pageable);
 
-    // 22: Top N capital cities in a region (desc)
+    /**
+     * USE CASE 22: Top N capital cities in a region (desc)
+     * @param region the region to get the capital cities from
+     * @param pageable the pageable object to limit the results
+     * @return a list of top N capital cities in a region
+     */
     @Query("""
     SELECT new com.napier.devops.model.CapitalCity(
         c.name, co.name, c.population

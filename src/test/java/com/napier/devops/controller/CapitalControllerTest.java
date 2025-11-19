@@ -18,6 +18,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Integration tests for CapitalController
+ */
 @SpringBootTest(classes = TestApplication.class)
 @ActiveProfiles("test")
 class CapitalControllerTest {

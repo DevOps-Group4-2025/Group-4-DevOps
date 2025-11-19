@@ -1,47 +1,7 @@
-Report generated on: 2025-11-19 20:19:05
+Report generated on: 2025-11-19 23:00:01
 
 
 === USE CASE 3: All countries in a region (Western Europe) ===
 
 === ALL COUNTRIES IN WESTERN EUROPE (BY POPULATION) ===
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        Country c 
-    WHERE
-        LOWER(c.region) = LOWER(:region) 
-    ORDER BY
-        c.population DESC */ select
-            c1_0.`Code`,
-            c1_0.`Capital`,
-            c1_0.`Code2`,
-            c1_0.`Continent`,
-            c1_0.`GNP`,
-            c1_0.`GNPOld`,
-            c1_0.`GovernmentForm`,
-            c1_0.`HeadOfState`,
-            c1_0.`IndepYear`,
-            c1_0.`LifeExpectancy`,
-            c1_0.`LocalName`,
-            c1_0.`Name`,
-            c1_0.`Population`,
-            c1_0.`Region`,
-            c1_0.`SurfaceArea` 
-        from
-            country c1_0 
-        where
-            lower(c1_0.`Region`)=lower(?) 
-        order by
-            c1_0.`Population` desc
-Code Name                                     Continent       Region                    Population
------------------------------------------------------------------------------------------------
-DEU  Germany                                  Europe          Western Europe            82,164,700
-FRA  France                                   Europe          Western Europe            59,225,700
-NLD  Netherlands                              Europe          Western Europe            15,864,000
-BEL  Belgium                                  Europe          Western Europe            10,239,000
-AUT  Austria                                  Europe          Western Europe             8,091,800
-CHE  Switzerland                              Europe          Western Europe             7,160,400
-LUX  Luxembourg                               Europe          Western Europe               435,700
-MCO  Monaco                                   Europe          Western Europe                34,000
-LIE  Liechtenstein                            Europe          Western Europe                32,300
+No countries found.

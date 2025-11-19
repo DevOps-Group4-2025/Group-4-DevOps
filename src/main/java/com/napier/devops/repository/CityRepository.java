@@ -7,45 +7,91 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Repository for City entities
+ */
 public interface CityRepository extends CrudRepository<City, String> {
 
-    // Requirement 7: All the cities in the world organised by largest population to smallest.
+    /**
+     * Requirement 7: All the cities in the world organised by largest population to smallest.
+     * @return a list of all cities in the world
+     */
     @Query("SELECT c FROM City c ORDER BY c.population DESC")
     List<City> getAllCitiesInTheWorld();
 
-    // Requirement 8: All the cities in a continent organised by largest population to smallest.
+    /**
+     * Requirement 8: All the cities in a continent organised by largest population to smallest.
+     * @param continent the continent to get the cities from
+     * @return a list of all cities in a continent
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.continent = :continent ORDER BY c.population DESC")
     List<City> getAllCitiesInAContinent(@Param("continent") String continent);
 
-    // Requirement 9: All the cities in a region organised by largest population to smallest.
+    /**
+     * Requirement 9: All the cities in a region organised by largest population to smallest.
+     * @param region the region to get the cities from
+     * @return a list of all cities in a region
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.region = :region ORDER BY c.population DESC")
     List<City> getAllCitiesInARegion(@Param("region") String region);
 
-    // Requirement 10: All the cities in a country organised by largest population to smallest.
+    /**
+     * Requirement 10: All the cities in a country organised by largest population to smallest.
+     * @param country the country to get the cities from
+     * @return a list of all cities in a country
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.name = :country ORDER BY c.population DESC")
     List<City> getAllCitiesInACountry(@Param("country") String country);
 
-    // Requirement 11: All the cities in a district organised by largest population to smallest.
+    /**
+     * Requirement 11: All the cities in a district organised by largest population to smallest.
+     * @param district the district to get the cities from
+     * @return a list of all cities in a district
+     */
     @Query("SELECT c FROM City c WHERE c.district = :district ORDER BY c.population DESC")
     List<City> getAllCitiesInADistrict(@Param("district") String district);
 
-    // Requirement 12: The top N populated cities in the world where N is provided by the user.
+    /**
+     * Requirement 12: The top N populated cities in the world where N is provided by the user.
+     * @param topN the number of cities to return
+     * @return a list of top N cities in the world
+     */
     @Query("SELECT c FROM City c ORDER BY c.population DESC LIMIT :topN")
     List<City> getTopNCitiesInTheWorld(@Param("topN") int topN);
 
-    // Requirement 13: The top N populated cities in a continent where N is provided by the user.
+    /**
+     * Requirement 13: The top N populated cities in a continent where N is provided by the user.
+     * @param continent the continent to get the cities from
+     * @param topN the number of cities to return
+     * @return a list of top N cities in a continent
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.continent = :continent ORDER BY c.population DESC LIMIT :topN")
     List<City> getTopNCitiesInAContinent(@Param("continent") String continent, @Param("topN") int topN);
 
-    // Requirement 14: The top N populated cities in a region where N is provided by the user.
+    /**
+     * Requirement 14: The top N populated cities in a region where N is provided by the user.
+     * @param region the region to get the cities from
+     * @param topN the number of cities to return
+     * @return a list of top N cities in a region
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.region = :region ORDER BY c.population DESC LIMIT :topN")
     List<City> getTopNCitiesInARegion(@Param("region") String region, @Param("topN") int topN);
 
-    // Requirement 15: The top N populated cities in a country where N is provided by the user.
+    /**
+     * Requirement 15: The top N populated cities in a country where N is provided by the user.
+     * @param country the country to get the cities from
+     * @param topN the number of cities to return
+     * @return a list of top N cities in a country
+     */
     @Query("SELECT c FROM City c, Country co WHERE c.countryCode = co.code AND co.name = :country ORDER BY c.population DESC LIMIT :topN")
     List<City> getTopNCitiesInACountry(@Param("country") String country, @Param("topN") int topN);
 
-    // Requirement 16: The top N populated cities in a district where N is provided by the user.
+    /**
+     * Requirement 16: The top N populated cities in a district where N is provided by the user.
+     * @param district the district to get the cities from
+     * @param topN the number of cities to return
+     * @return a list of top N cities in a district
+     */
     @Query("SELECT c FROM City c WHERE c.district = :district ORDER BY c.population DESC LIMIT :topN")
     List<City> getTopNCitiesInADistrict(@Param("district") String district, @Param("topN") int topN);
 }

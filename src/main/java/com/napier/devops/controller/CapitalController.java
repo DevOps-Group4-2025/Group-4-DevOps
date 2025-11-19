@@ -10,23 +10,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Controller for capital city related endpoints
+ */
 @RestController
 @RequestMapping("/api/capitals")
 public class CapitalController {
 
     private final CapitalCityService capitalCityService;
 
+    /**
+     * Constructor for CapitalController
+     * @param capitalCityService the service to handle capital city logic
+     */
     public CapitalController(CapitalCityService capitalCityService) {
         this.capitalCityService = capitalCityService;
     }
 
-    // USE CASE 17: List All Capital Cities in the World by Population
+    /**
+     * USE CASE 17: List All Capital Cities in the World by Population
+     * @return a list of all capital cities in the world ordered by population
+     */
     @GetMapping("/world")
     public ResponseEntity<List<CapitalCity>> getAllCapitalCities() {
         List<CapitalCity> results = capitalCityService.getAllCapitalCitiesByPopulation();
         return ResponseEntity.ok(results);
     }
-    // USE CASE 18: List All Capital Cities in a Continent by Population
+
+    /**
+     * USE CASE 18: List All Capital Cities in a Continent by Population
+     * @param continent the continent to get the capital cities from
+     * @return a list of all capital cities in a continent ordered by population
+     */
     @GetMapping("/continent")
     public ResponseEntity<List<CapitalCity>> getCapitalCitiesInContinent(
             @RequestParam String continent
@@ -38,17 +53,33 @@ public class CapitalController {
                 capitalCityService.getCapitalCitiesInContinentByPopulation(continent);
         return ResponseEntity.ok(results);
     }
-    // USE CASE 19: List All Capital Cities in a Region by Population
+
+    /**
+     * USE CASE 19: List All Capital Cities in a Region by Population
+     * @param region the region to get the capital cities from
+     * @return a list of all capital cities in a region ordered by population
+     */
     @GetMapping("/region")
     public ResponseEntity<List<CapitalCity>> getCapitalCitiesInRegion(@RequestParam String region) {
         return ResponseEntity.ok(capitalCityService.getCapitalCitiesInRegionByPopulation(region));
     }
-    // 20: GET /api/capitals/world/top?limit=10
+
+    /**
+     * USE CASE 20: GET /api/capitals/world/top?limit=10
+     * @param limit the number of capital cities to return
+     * @return a list of top N capital cities in the world
+     */
     @GetMapping("/world/top")
     public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesWorld(@RequestParam int limit) {
         return ResponseEntity.ok(capitalCityService.getTopCapitalCitiesWorld(limit));
     }
-    // 21: GET /api/capitals/continent/top?continent=Asia&limit=10
+
+    /**
+     * USE CASE 21: GET /api/capitals/continent/top?continent=Asia&limit=10
+     * @param continent the continent to get the capital cities from
+     * @param limit the number of capital cities to return
+     * @return a list of top N capital cities in a continent
+     */
     @GetMapping("/top")
     public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesInContinent(
             @RequestParam String continent,
@@ -57,7 +88,13 @@ public class CapitalController {
         List<CapitalCity> results = capitalCityService.getTopCapitalCitiesInContinent(continent, limit);
         return ResponseEntity.ok(results);
     }
-    // 22: GET /api/capitals/region/top?region=Caribbean&limit=10
+
+    /**
+     * USE CASE 22: GET /api/capitals/region/top?region=Caribbean&limit=10
+     * @param region the region to get the capital cities from
+     * @param limit the number of capital cities to return
+     * @return a list of top N capital cities in a region
+     */
     @GetMapping("/region/top")
     public ResponseEntity<List<CapitalCity>> getTopCapitalCitiesRegion(
             @RequestParam String region,

@@ -1,44 +1,5 @@
-Report generated on: 2025-11-19 20:19:06
+Report generated on: 2025-11-19 23:00:02
 
 
 USE CASE 14: Top 10 cities in region Eastern Asia
-Hibernate: 
-    /* SELECT
-        c 
-    FROM
-        City c,
-        Country co 
-    WHERE
-        c.countryCode = co.code 
-        AND co.region = :region 
-    ORDER BY
-        c.population DESC 
-    LIMIT
-        :topN */ select
-            c1_0.`ID`,
-            c1_0.`CountryCode`,
-            c1_0.`District`,
-            c1_0.`Name`,
-            c1_0.`Population` 
-        from
-            city c1_0,
-            country c2_0 
-        where
-            c1_0.`CountryCode`=c2_0.`Code` 
-            and c2_0.`Region`=? 
-        order by
-            c1_0.`Population` desc 
-        limit
-            ?
-Name                           Country         District                  Population
--------------------------------------------------------------------------------------
-Seoul                          KOR             Seoul                      9,981,619
-Shanghai                       CHN             Shanghai                   9,696,300
-Tokyo                          JPN             Tokyo-to                   7,980,230
-Peking                         CHN             Peking                     7,472,000
-Chongqing                      CHN             Chongqing                  6,351,600
-Tianjin                        CHN             Tianjin                    5,286,800
-Wuhan                          CHN             Hubei                      4,344,600
-Harbin                         CHN             Heilongjiang               4,289,800
-Shenyang                       CHN             Liaoning                   4,265,200
-Kanton [Guangzhou]             CHN             Guangdong                  4,256,300
+No city found.
