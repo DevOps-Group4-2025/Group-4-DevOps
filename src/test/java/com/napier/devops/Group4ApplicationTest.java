@@ -76,7 +76,6 @@ public class Group4ApplicationTest {
         System.setIn(testIn);
     }
 
-    // ============ EXISTING TESTS (kept for compatibility) ============
 
     @Test
     void testRunNonInteractiveMode() throws Exception {
@@ -111,7 +110,6 @@ public class Group4ApplicationTest {
         assertTrue(output.contains("Thank you for using the World Population Reporting System. Goodbye!"));
     }
 
-    // ============ NEW COMPREHENSIVE TESTS ============
 
     // Tests for handleMenuSelection - Case 2 (Countries in Continent)
     @Test
