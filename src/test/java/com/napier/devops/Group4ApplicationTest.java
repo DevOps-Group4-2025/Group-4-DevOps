@@ -23,7 +23,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -54,13 +53,7 @@ public class Group4ApplicationTest {
     @Mock
     private CityController cityController;
     @Mock
-    private CapitalController capitalController;
-    @Mock
-    private PopulationController populationController;
-    @Mock
     private LanguageController languageController;
-    @Mock
-    private AppParameters appParameters;
 
 
 

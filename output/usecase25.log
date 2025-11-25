@@ -1,9 +1,7 @@
-Report generated on: 2025-11-19 23:25:34
+Report generated on: 2025-11-25 08:49:42
 
 
 === USE CASE 25: Population breakdowns by country ===
 
 === POPULATION BREAKDOWNS BY COUNTRY ===
-2025-11-19T23:25:34.459Z  WARN 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 42122, SQLState: 42S22
-2025-11-19T23:25:34.503Z ERROR 1160670 --- [Group4] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column "COUNTRY.NAME" not found; SQL statement:
-SELECT 'country' AS type, country.Name AS name, country.Population AS totalPopulation, COALESCE(SUM(city.Population),0) AS populationInCities, country.Population - COALESCE(SUM(city.Population),0) AS populationNotInCities, ROUND(CASE WHEN country.Population > 0 THEN COALESCE(SUM(city.Population),0) / country.Population * 100 ELSE 0 END, 2) AS inCitiesPercentage, ROUND(CASE WHEN country.Population > 0 THEN (country.Population - COALESCE(SUM(city.Population),0)) / country.Population * 100 ELSE 0 END, 2) AS notInCitiesPercentage FROM country LEFT JOIN city ON country.code = city.countrycode GROUP BY country.Name, country.Population ORDER BY totalPopulation DESC [42122-232]
+No population breakdowns found.
