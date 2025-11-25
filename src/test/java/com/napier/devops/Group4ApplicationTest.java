@@ -44,6 +44,7 @@ public class Group4ApplicationTest {
     private final PrintStream originalOut = System.out;
     private final InputStream originalIn = System.in;
 
+
     @Mock
     private CountryService countryService;
     @Mock
@@ -53,8 +54,15 @@ public class Group4ApplicationTest {
     @Mock
     private CityController cityController;
     @Mock
+    private CapitalController capitalController;
+    @Mock
+    private PopulationController populationController;
+    @Mock
     private LanguageController languageController;
     @Mock
+    private AppParameters appParameters;
+
+
 
     @InjectMocks
     private Group4Application group4Application;
