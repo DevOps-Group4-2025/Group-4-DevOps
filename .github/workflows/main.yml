@@ -68,7 +68,7 @@ jobs:
           git push origin HEAD:${GITHUB_REF#refs/heads/}
 
       - name: Package JAR
-        run: mvn -B package
+        run: mvn -B package -DskipTests # Preventing testing to run twice
 
       - name: Debug file structure after build
         run: ls -la target/
