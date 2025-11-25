@@ -1,4 +1,15 @@
-Report generated on: 2025-11-25 08:49:43
+Report generated on: 2025-11-25 08:17:10
 
 
 USE CASE 31: The population of a city.
+Hibernate: 
+    /* dynamic native SQL query */ SELECT
+        Population AS CityPopulation 
+    FROM
+        city 
+    WHERE
+        Name = ? 
+    LIMIT
+        1
+
+The population of London : 7285000

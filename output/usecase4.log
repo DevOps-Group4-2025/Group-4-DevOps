@@ -1,2 +1,46 @@
-Report generated on: 2025-11-25 08:49:42
+Report generated on: 2025-11-25 08:17:08
 
+
+=== USE CASE 4: Top 10 populated countries in the world ===
+
+=== TOP 10 COUNTRIES IN THE WORLD (BY POPULATION) ===
+Hibernate: 
+    /* SELECT
+        c 
+    FROM
+        Country c 
+    ORDER BY
+        c.population DESC */ select
+            c1_0.`Code`,
+            c1_0.`Capital`,
+            c1_0.`Code2`,
+            c1_0.`Continent`,
+            c1_0.`GNP`,
+            c1_0.`GNPOld`,
+            c1_0.`GovernmentForm`,
+            c1_0.`HeadOfState`,
+            c1_0.`IndepYear`,
+            c1_0.`LifeExpectancy`,
+            c1_0.`LocalName`,
+            c1_0.`Name`,
+            c1_0.`Population`,
+            c1_0.`Region`,
+            c1_0.`SurfaceArea` 
+        from
+            country c1_0 
+        order by
+            c1_0.`Population` desc 
+        limit
+            ?
+Code Name                                     Continent       Region                    Population
+-----------------------------------------------------------------------------------------------
+CHN  China                                    Asia            Eastern Asia           1,277,558,000
+IND  India                                    Asia            Southern and Central Asia   1,013,662,000
+USA  United States                            North America   North America            278,357,000
+IDN  Indonesia                                Asia            Southeast Asia           212,107,000
+BRA  Brazil                                   South America   South America            170,115,000
+PAK  Pakistan                                 Asia            Southern and Central Asia     156,483,000
+RUS  Russian Federation                       Europe          Eastern Europe           146,934,000
+BGD  Bangladesh                               Asia            Southern and Central Asia     129,155,000
+JPN  Japan                                    Asia            Eastern Asia             126,714,000
+NGA  Nigeria                                  Africa          Western Africa           111,506,000
