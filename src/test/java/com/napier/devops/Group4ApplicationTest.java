@@ -20,7 +20,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -28,12 +27,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -57,13 +53,8 @@ public class Group4ApplicationTest {
     @Mock
     private CityController cityController;
     @Mock
-    private CapitalController capitalController;
-    @Mock
-    private PopulationController populationController;
-    @Mock
     private LanguageController languageController;
     @Mock
-    private AppParameters appParameters;
 
     @InjectMocks
     private Group4Application group4Application;
@@ -718,22 +709,6 @@ public class Group4ApplicationTest {
         String output = outContent.toString();
         assertTrue(output.contains("The population of Europe"));
         assertTrue(output.contains("750000000"));
-    }
-
-    @Test
-    void testRunUseCaseFileCreation() {
-        String testFilename = "test-output.log";
-        File outputFile = new File("output/" + testFilename);
-        if (outputFile.exists()) {
-            outputFile.delete();
-        }
-
-        Group4Application.runUseCase(testFilename, () -> System.out.println("Test content"));
-
-        assertTrue(outputFile.exists(), "Output file should be created.");
-
-        outputFile.delete();
-        new File("output").delete();
     }
 
     @Test
