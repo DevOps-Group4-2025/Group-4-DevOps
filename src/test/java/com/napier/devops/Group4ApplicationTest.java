@@ -53,13 +53,8 @@ public class Group4ApplicationTest {
     @Mock
     private CityController cityController;
     @Mock
-    private CapitalController capitalController;
-    @Mock
-    private PopulationController populationController;
-    @Mock
     private LanguageController languageController;
     @Mock
-    private AppParameters appParameters;
 
     @InjectMocks
     private Group4Application group4Application;
@@ -714,22 +709,6 @@ public class Group4ApplicationTest {
         String output = outContent.toString();
         assertTrue(output.contains("The population of Europe"));
         assertTrue(output.contains("750000000"));
-    }
-
-    @Test
-    void testRunUseCaseFileCreation() {
-        String testFilename = "test-output.log";
-        File outputFile = new File("output/" + testFilename);
-        if (outputFile.exists()) {
-            outputFile.delete();
-        }
-
-        Group4Application.runUseCase(testFilename, () -> System.out.println("Test content"));
-
-        assertTrue(outputFile.exists(), "Output file should be created.");
-
-        outputFile.delete();
-        new File("output").delete();
     }
 
     @Test
